@@ -1,0 +1,125 @@
+{
+    "name": "Libro",
+    "fields": [
+        {
+            "fieldName": "codigo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "20"
+        },
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "60"
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "250"
+        },
+        {
+            "fieldName": "fechaCreacion",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fechaApertura",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fechaCierre",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "aperturaMandante",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "aperturaContratista",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "escrituraMandante",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "escrituraContratista",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "cierreMandante",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "cierreContratista",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "lecturaMandante",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "lecturaContratista",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "folio",
+            "otherEntityRelationshipName": "libro",
+            "relationshipName": "folio"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "usuarioLibro",
+            "otherEntityRelationshipName": "libro",
+            "relationshipName": "usuarioLibro"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "contrato",
+            "otherEntityRelationshipName": "libro",
+            "relationshipName": "contrato",
+            "otherEntityField": "codigo"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tipoLibro",
+            "otherEntityRelationshipName": "libro",
+            "relationshipName": "tipoLibro",
+            "otherEntityField": "descripcion"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tipoFirma",
+            "otherEntityRelationshipName": "libro",
+            "relationshipName": "tipoFirma",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "estadoLibro",
+            "otherEntityRelationshipName": "libro",
+            "relationshipName": "estadoLibro",
+            "otherEntityField": "nombre"
+        }
+    ],
+    "changelogDate": "20200603183600",
+    "entityTableName": "libro",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

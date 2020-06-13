@@ -1,0 +1,27 @@
+{
+    "name": "EstadoServicio",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "contrato",
+            "otherEntityRelationshipName": "estadoServicio",
+            "relationshipName": "contrato"
+        }
+    ],
+    "changelogDate": "20200603183100",
+    "entityTableName": "estado_servicio",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

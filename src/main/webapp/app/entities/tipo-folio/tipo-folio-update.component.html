@@ -1,0 +1,86 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-tipo-folio-heading">Create or edit a Tipo Folio</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                           formControlName="nombre"/>
+                    <div *ngIf="editForm.get('nombre')!.invalid && (editForm.get('nombre')!.dirty || editForm.get('nombre')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nombre')?.errors?.maxlength">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_visibleMaestro">Visible Maestro</label>
+                    <input type="checkbox" class="form-control" name="visibleMaestro" id="field_visibleMaestro"
+                           formControlName="visibleMaestro"/>
+                    <div *ngIf="editForm.get('visibleMaestro')!.invalid && (editForm.get('visibleMaestro')!.dirty || editForm.get('visibleMaestro')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('visibleMaestro')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_visibleAuxliar">Visible Auxliar</label>
+                    <input type="checkbox" class="form-control" name="visibleAuxliar" id="field_visibleAuxliar"
+                           formControlName="visibleAuxliar"/>
+                    <div *ngIf="editForm.get('visibleAuxliar')!.invalid && (editForm.get('visibleAuxliar')!.dirty || editForm.get('visibleAuxliar')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('visibleAuxliar')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_visibleMandante">Visible Mandante</label>
+                    <input type="checkbox" class="form-control" name="visibleMandante" id="field_visibleMandante"
+                           formControlName="visibleMandante"/>
+                    <div *ngIf="editForm.get('visibleMandante')!.invalid && (editForm.get('visibleMandante')!.dirty || editForm.get('visibleMandante')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('visibleMandante')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_visibleContratista">Visible Contratista</label>
+                    <input type="checkbox" class="form-control" name="visibleContratista" id="field_visibleContratista"
+                           formControlName="visibleContratista"/>
+                    <div *ngIf="editForm.get('visibleContratista')!.invalid && (editForm.get('visibleContratista')!.dirty || editForm.get('visibleContratista')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('visibleContratista')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

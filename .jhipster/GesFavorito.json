@@ -1,0 +1,52 @@
+{
+    "name": "GesFavorito",
+    "fields": [
+        {
+            "fieldName": "nota",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "fechaCreacion",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fechaModificacion",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "favorito",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "folio",
+            "otherEntityRelationshipName": "gesFavorito",
+            "relationshipName": "folio",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "usuarioLibro",
+            "otherEntityRelationshipName": "gesFavorito",
+            "relationshipName": "usuarioLibro",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200603184700",
+    "entityTableName": "ges_favorito",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

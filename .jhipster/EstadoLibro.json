@@ -1,0 +1,27 @@
+{
+    "name": "EstadoLibro",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "libro",
+            "otherEntityRelationshipName": "estadoLibro",
+            "relationshipName": "libro"
+        }
+    ],
+    "changelogDate": "20200603183700",
+    "entityTableName": "estado_libro",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="entidad">
+            <h2><span>Entidad</span> {{ entidad.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Rut</span></dt>
+                <dd>
+                    <span>{{ entidad.rut }}</span>
+                </dd>
+                <dt><span>Nombre</span></dt>
+                <dd>
+                    <span>{{ entidad.nombre }}</span>
+                </dd>
+                <dt><span>Direccion</span></dt>
+                <dd>
+                    <span>{{ entidad.direccion }}</span>
+                </dd>
+                <dt><span>Fecha Creacion</span></dt>
+                <dd>
+                    <span>{{ entidad.fechaCreacion }}</span>
+                </dd>
+                <dt><span>Fecha Modificacion</span></dt>
+                <dd>
+                    <span>{{ entidad.fechaModificacion }}</span>
+                </dd>
+                <dt><span>Region</span></dt>
+                <dd>
+                    <div *ngIf="entidad.region">
+                        <a [routerLink]="['/region', entidad.region?.id, 'view']">{{ entidad.region?.nombre }}</a>
+                    </div>
+                </dd>
+                <dt><span>Tipo Entidad</span></dt>
+                <dd>
+                    <div *ngIf="entidad.tipoEntidad">
+                        <a [routerLink]="['/tipo-entidad', entidad.tipoEntidad?.id, 'view']">{{ entidad.tipoEntidad?.nombre }}</a>
+                    </div>
+                </dd>
+                <dt><span>Actividad Rubro</span></dt>
+                <dd>
+                    <div *ngIf="entidad.actividadRubro">
+                        <a [routerLink]="['/actividad-rubro', entidad.actividadRubro?.id, 'view']">{{ entidad.actividadRubro?.nombre }}</a>
+                    </div>
+                </dd>
+                <dt><span>Comuna</span></dt>
+                <dd>
+                    <div *ngIf="entidad.comuna">
+                        <a [routerLink]="['/comuna', entidad.comuna?.id, 'view']">{{ entidad.comuna?.nombre }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/entidad', entidad.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+{
+    "name": "TipoMoneda",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "contrato",
+            "otherEntityRelationshipName": "tipoMoneda",
+            "relationshipName": "contrato"
+        }
+    ],
+    "changelogDate": "20200603183200",
+    "entityTableName": "tipo_moneda",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

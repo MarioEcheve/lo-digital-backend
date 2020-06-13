@@ -1,0 +1,114 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="folio">
+            <h2><span>Folio</span> {{ folio.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Id Usuario Creador</span></dt>
+                <dd>
+                    <span>{{ folio.idUsuarioCreador }}</span>
+                </dd>
+                <dt><span>Id Usuario Firma</span></dt>
+                <dd>
+                    <span>{{ folio.idUsuarioFirma }}</span>
+                </dd>
+                <dt><span>Id Usuario Lectura</span></dt>
+                <dd>
+                    <span>{{ folio.idUsuarioLectura }}</span>
+                </dd>
+                <dt><span>Numero Folio</span></dt>
+                <dd>
+                    <span>{{ folio.numeroFolio }}</span>
+                </dd>
+                <dt><span>Requiere Respuesta</span></dt>
+                <dd>
+                    <span>{{ folio.requiereRespuesta }}</span>
+                </dd>
+                <dt><span>Fecha Requerida</span></dt>
+                <dd>
+                    <span>{{ folio.fechaRequerida }}</span>
+                </dd>
+                <dt><span>Estado Lectura</span></dt>
+                <dd>
+                    <span>{{ folio.estadoLectura }}</span>
+                </dd>
+                <dt><span>Estado Folio</span></dt>
+                <dd>
+                    <span>{{ folio.estadoFolio }}</span>
+                </dd>
+                <dt><span>Entidad Creacion</span></dt>
+                <dd>
+                    <span>{{ folio.entidadCreacion }}</span>
+                </dd>
+                <dt><span>Fecha Creacion</span></dt>
+                <dd>
+                    <span>{{ folio.fechaCreacion }}</span>
+                </dd>
+                <dt><span>Fecha Modificacion</span></dt>
+                <dd>
+                    <span>{{ folio.fechaModificacion }}</span>
+                </dd>
+                <dt><span>Fecha Firma</span></dt>
+                <dd>
+                    <span>{{ folio.fechaFirma }}</span>
+                </dd>
+                <dt><span>Fecha Lectura</span></dt>
+                <dd>
+                    <span>{{ folio.fechaLectura }}</span>
+                </dd>
+                <dt><span>Asunto</span></dt>
+                <dd>
+                    <span>{{ folio.asunto }}</span>
+                </dd>
+                <dt><span>Pdf Firmado</span></dt>
+                <dd>
+                    <div *ngIf="folio.pdfFirmado">
+                        <a (click)="openFile(folio.pdfFirmadoContentType!, folio.pdfFirmado)">open</a>
+                        {{ folio.pdfFirmadoContentType }}, {{ byteSize(folio.pdfFirmado) }}
+                    </div>
+                </dd>
+                <dt><span>Pdf Lectura</span></dt>
+                <dd>
+                    <div *ngIf="folio.pdfLectura">
+                        <a (click)="openFile(folio.pdfLecturaContentType!, folio.pdfLectura)">open</a>
+                        {{ folio.pdfLecturaContentType }}, {{ byteSize(folio.pdfLectura) }}
+                    </div>
+                </dd>
+                <dt><span>Libro</span></dt>
+                <dd>
+                    <div *ngIf="folio.libro">
+                        <a [routerLink]="['/libro', folio.libro?.id, 'view']">{{ folio.libro?.codigo }}</a>
+                    </div>
+                </dd>
+                <dt><span>Tipo Folio</span></dt>
+                <dd>
+                    <div *ngIf="folio.tipoFolio">
+                        <a [routerLink]="['/tipo-folio', folio.tipoFolio?.id, 'view']">{{ folio.tipoFolio?.nombre }}</a>
+                    </div>
+                </dd>
+                <dt><span>Estado Respuesta</span></dt>
+                <dd>
+                    <div *ngIf="folio.estadoRespuesta">
+                        <a [routerLink]="['/estado-respuesta', folio.estadoRespuesta?.id, 'view']">{{ folio.estadoRespuesta?.nombre }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/folio', folio.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-dependencia-heading">Create or edit a Dependencia</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                           formControlName="nombre"/>
+                    <div *ngIf="editForm.get('nombre')!.invalid && (editForm.get('nombre')!.dirty || editForm.get('nombre')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nombre')?.errors?.maxlength">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_direccion">Direccion</label>
+                    <input type="text" class="form-control" name="direccion" id="field_direccion"
+                           formControlName="direccion"/>
+                    <div *ngIf="editForm.get('direccion')!.invalid && (editForm.get('direccion')!.dirty || editForm.get('direccion')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('direccion')?.errors?.maxlength">
+                        This field cannot be longer than 110 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_descripcion">Descripcion</label>
+                    <input type="text" class="form-control" name="descripcion" id="field_descripcion"
+                           formControlName="descripcion"/>
+                    <div *ngIf="editForm.get('descripcion')!.invalid && (editForm.get('descripcion')!.dirty || editForm.get('descripcion')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('descripcion')?.errors?.maxlength">
+                        This field cannot be longer than 150 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaCreacion">Fecha Creacion</label>
+                    <div class="d-flex">
+                        <input id="field_fechaCreacion" type="datetime-local" class="form-control" name="fechaCreacion" formControlName="fechaCreacion" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaModificacion">Fecha Modificacion</label>
+                    <div class="d-flex">
+                        <input id="field_fechaModificacion" type="datetime-local" class="form-control" name="fechaModificacion" formControlName="fechaModificacion" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_entidad">Entidad</label>
+                    <select class="form-control" id="field_entidad" name="entidad" formControlName="entidad">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="entidadOption.id === editForm.get('entidad')!.value?.id ? editForm.get('entidad')!.value : entidadOption" *ngFor="let entidadOption of entidads; trackBy: trackById">{{ entidadOption.nombre }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_region">Region</label>
+                    <select class="form-control" id="field_region" name="region" formControlName="region">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="regionOption.id === editForm.get('region')!.value?.id ? editForm.get('region')!.value : regionOption" *ngFor="let regionOption of regions; trackBy: trackById">{{ regionOption.nombre }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_comuna">Comuna</label>
+                    <select class="form-control" id="field_comuna" name="comuna" formControlName="comuna">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="comunaOption.id === editForm.get('comuna')!.value?.id ? editForm.get('comuna')!.value : comunaOption" *ngFor="let comunaOption of comunas; trackBy: trackById">{{ comunaOption.nombre }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

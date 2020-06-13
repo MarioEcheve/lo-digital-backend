@@ -1,0 +1,163 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-libro-heading">Create or edit a Libro</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_codigo">Codigo</label>
+                    <input type="text" class="form-control" name="codigo" id="field_codigo"
+                           formControlName="codigo"/>
+                    <div *ngIf="editForm.get('codigo')!.invalid && (editForm.get('codigo')!.dirty || editForm.get('codigo')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('codigo')?.errors?.maxlength">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                           formControlName="nombre"/>
+                    <div *ngIf="editForm.get('nombre')!.invalid && (editForm.get('nombre')!.dirty || editForm.get('nombre')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nombre')?.errors?.maxlength">
+                        This field cannot be longer than 60 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_descripcion">Descripcion</label>
+                    <input type="text" class="form-control" name="descripcion" id="field_descripcion"
+                           formControlName="descripcion"/>
+                    <div *ngIf="editForm.get('descripcion')!.invalid && (editForm.get('descripcion')!.dirty || editForm.get('descripcion')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('descripcion')?.errors?.maxlength">
+                        This field cannot be longer than 250 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaCreacion">Fecha Creacion</label>
+                    <div class="d-flex">
+                        <input id="field_fechaCreacion" type="datetime-local" class="form-control" name="fechaCreacion" formControlName="fechaCreacion" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaApertura">Fecha Apertura</label>
+                    <div class="d-flex">
+                        <input id="field_fechaApertura" type="datetime-local" class="form-control" name="fechaApertura" formControlName="fechaApertura" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaCierre">Fecha Cierre</label>
+                    <div class="d-flex">
+                        <input id="field_fechaCierre" type="datetime-local" class="form-control" name="fechaCierre" formControlName="fechaCierre" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_aperturaMandante">Apertura Mandante</label>
+                    <input type="checkbox" class="form-control" name="aperturaMandante" id="field_aperturaMandante"
+                           formControlName="aperturaMandante"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_aperturaContratista">Apertura Contratista</label>
+                    <input type="checkbox" class="form-control" name="aperturaContratista" id="field_aperturaContratista"
+                           formControlName="aperturaContratista"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_escrituraMandante">Escritura Mandante</label>
+                    <input type="checkbox" class="form-control" name="escrituraMandante" id="field_escrituraMandante"
+                           formControlName="escrituraMandante"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_escrituraContratista">Escritura Contratista</label>
+                    <input type="checkbox" class="form-control" name="escrituraContratista" id="field_escrituraContratista"
+                           formControlName="escrituraContratista"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cierreMandante">Cierre Mandante</label>
+                    <input type="checkbox" class="form-control" name="cierreMandante" id="field_cierreMandante"
+                           formControlName="cierreMandante"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cierreContratista">Cierre Contratista</label>
+                    <input type="checkbox" class="form-control" name="cierreContratista" id="field_cierreContratista"
+                           formControlName="cierreContratista"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lecturaMandante">Lectura Mandante</label>
+                    <input type="checkbox" class="form-control" name="lecturaMandante" id="field_lecturaMandante"
+                           formControlName="lecturaMandante"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lecturaContratista">Lectura Contratista</label>
+                    <input type="checkbox" class="form-control" name="lecturaContratista" id="field_lecturaContratista"
+                           formControlName="lecturaContratista"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_contrato">Contrato</label>
+                    <select class="form-control" id="field_contrato" name="contrato" formControlName="contrato">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="contratoOption.id === editForm.get('contrato')!.value?.id ? editForm.get('contrato')!.value : contratoOption" *ngFor="let contratoOption of contratoes; trackBy: trackById">{{ contratoOption.codigo }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipoLibro">Tipo Libro</label>
+                    <select class="form-control" id="field_tipoLibro" name="tipoLibro" formControlName="tipoLibro">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="tipoLibroOption.id === editForm.get('tipoLibro')!.value?.id ? editForm.get('tipoLibro')!.value : tipoLibroOption" *ngFor="let tipoLibroOption of tipolibros; trackBy: trackById">{{ tipoLibroOption.descripcion }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipoFirma">Tipo Firma</label>
+                    <select class="form-control" id="field_tipoFirma" name="tipoFirma" formControlName="tipoFirma">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="tipoFirmaOption.id === editForm.get('tipoFirma')!.value?.id ? editForm.get('tipoFirma')!.value : tipoFirmaOption" *ngFor="let tipoFirmaOption of tipofirmas; trackBy: trackById">{{ tipoFirmaOption.nombre }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_estadoLibro">Estado Libro</label>
+                    <select class="form-control" id="field_estadoLibro" name="estadoLibro" formControlName="estadoLibro">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="estadoLibroOption.id === editForm.get('estadoLibro')!.value?.id ? editForm.get('estadoLibro')!.value : estadoLibroOption" *ngFor="let estadoLibroOption of estadolibros; trackBy: trackById">{{ estadoLibroOption.nombre }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

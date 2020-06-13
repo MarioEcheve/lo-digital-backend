@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="usuario">
+            <h2><span>Usuario</span> {{ usuario.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Rut</span></dt>
+                <dd>
+                    <span>{{ usuario.rut }}</span>
+                </dd>
+                <dt><span>Nombre</span></dt>
+                <dd>
+                    <span>{{ usuario.nombre }}</span>
+                </dd>
+                <dt><span>Apellido Paterno</span></dt>
+                <dd>
+                    <span>{{ usuario.apellidoPaterno }}</span>
+                </dd>
+                <dt><span>Apellido Materno</span></dt>
+                <dd>
+                    <span>{{ usuario.apellidoMaterno }}</span>
+                </dd>
+                <dt><span>Profesion Oficio</span></dt>
+                <dd>
+                    <span>{{ usuario.profesionOficio }}</span>
+                </dd>
+                <dt><span>Email Principal</span></dt>
+                <dd>
+                    <span>{{ usuario.emailPrincipal }}</span>
+                </dd>
+                <dt><span>Email Secundario</span></dt>
+                <dd>
+                    <span>{{ usuario.emailSecundario }}</span>
+                </dd>
+                <dt><span>Telefono Principal</span></dt>
+                <dd>
+                    <span>{{ usuario.telefonoPrincipal }}</span>
+                </dd>
+                <dt><span>Telefono Secundario</span></dt>
+                <dd>
+                    <span>{{ usuario.telefonoSecundario }}</span>
+                </dd>
+                <dt><span>Fecha Creacion</span></dt>
+                <dd>
+                    <span>{{ usuario.fechaCreacion }}</span>
+                </dd>
+                <dt><span>Fecha Modificacion</span></dt>
+                <dd>
+                    <span>{{ usuario.fechaModificacion }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/usuario', usuario.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

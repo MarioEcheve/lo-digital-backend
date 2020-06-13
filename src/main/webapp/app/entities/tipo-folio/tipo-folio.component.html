@@ -1,0 +1,69 @@
+<div>
+    <h2 id="page-heading">
+        <span>Tipo Folios</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-tipo-folio" [routerLink]="['/tipo-folio/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Tipo Folio
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="tipoFolios?.length === 0">
+        <span>No tipoFolios found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="tipoFolios?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Nombre</span></th>
+                    <th scope="col" ><span>Visible Maestro</span></th>
+                    <th scope="col" ><span>Visible Auxliar</span></th>
+                    <th scope="col" ><span>Visible Mandante</span></th>
+                    <th scope="col" ><span>Visible Contratista</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let tipoFolio of tipoFolios ;trackBy: trackId">
+                    <td><a [routerLink]="['/tipo-folio', tipoFolio.id, 'view']">{{ tipoFolio.id }}</a></td>
+                    <td>{{ tipoFolio.nombre }}</td>
+                    <td>{{ tipoFolio.visibleMaestro }}</td>
+                    <td>{{ tipoFolio.visibleAuxliar }}</td>
+                    <td>{{ tipoFolio.visibleMandante }}</td>
+                    <td>{{ tipoFolio.visibleContratista }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/tipo-folio', tipoFolio.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/tipo-folio', tipoFolio.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(tipoFolio)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

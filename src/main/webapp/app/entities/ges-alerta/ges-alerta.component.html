@@ -1,0 +1,79 @@
+<div>
+    <h2 id="page-heading">
+        <span>Ges Alertas</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-ges-alerta" [routerLink]="['/ges-alerta/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Ges Alerta
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="gesAlertas?.length === 0">
+        <span>No gesAlertas found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="gesAlertas?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Nota</span></th>
+                    <th scope="col" ><span>Fecha Alerta</span></th>
+                    <th scope="col" ><span>Fecha Creacion</span></th>
+                    <th scope="col" ><span>Fecha Modificacion</span></th>
+                    <th scope="col" ><span>Folio</span></th>
+                    <th scope="col" ><span>Usuario Libro</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let gesAlerta of gesAlertas ;trackBy: trackId">
+                    <td><a [routerLink]="['/ges-alerta', gesAlerta.id, 'view']">{{ gesAlerta.id }}</a></td>
+                    <td>{{ gesAlerta.nota }}</td>
+                    <td>{{ gesAlerta.fechaAlerta | date:'medium' }}</td>
+                    <td>{{ gesAlerta.fechaCreacion | date:'medium' }}</td>
+                    <td>{{ gesAlerta.fechaModificacion | date:'medium' }}</td>
+                    <td>
+                        <div *ngIf="gesAlerta.folio">
+                            <a [routerLink]="['/folio', gesAlerta.folio?.id, 'view']" >{{ gesAlerta.folio?.numeroFolio }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="gesAlerta.usuarioLibro">
+                            <a [routerLink]="['/usuario-libro', gesAlerta.usuarioLibro?.id, 'view']" >{{ gesAlerta.usuarioLibro?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/ges-alerta', gesAlerta.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/ges-alerta', gesAlerta.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(gesAlerta)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

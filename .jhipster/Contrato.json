@@ -1,0 +1,198 @@
+{
+    "name": "Contrato",
+    "fields": [
+        {
+            "fieldName": "fechaInicioServicio",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fechaTerminoServicio",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fechaTerminoAcceso",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "observacionesServicio",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "250"
+        },
+        {
+            "fieldName": "codigo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMaxlength": "20"
+        },
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMaxlength": "60"
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "200"
+        },
+        {
+            "fieldName": "tipoOtro",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "25"
+        },
+        {
+            "fieldName": "modalidadOtra",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "25"
+        },
+        {
+            "fieldName": "direccion",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "monto",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "fechaInicio",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fechaTermino",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "observaciones",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "200"
+        },
+        {
+            "fieldName": "nombreContacto",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "telefonoContacto",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "emailContacto",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "idDependenciaContratista",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "libro",
+            "otherEntityRelationshipName": "contrato",
+            "relationshipName": "libro"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dependencia",
+            "otherEntityRelationshipName": "contrato",
+            "relationshipName": "dependenciaMandante",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "region",
+            "otherEntityRelationshipName": "contrato",
+            "relationshipName": "region",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tipoContrato",
+            "otherEntityRelationshipName": "contrato",
+            "relationshipName": "tipoContrato",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "modalidad",
+            "otherEntityRelationshipName": "contrato",
+            "relationshipName": "modalidad",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "comuna",
+            "otherEntityRelationshipName": "contrato",
+            "relationshipName": "comuna",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tipoMoneda",
+            "otherEntityRelationshipName": "contrato",
+            "relationshipName": "tipoMoneda",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tipoMonto",
+            "otherEntityRelationshipName": "contrato",
+            "relationshipName": "tipoMonto",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "estadoServicio",
+            "otherEntityRelationshipName": "contrato",
+            "relationshipName": "estadoServicio",
+            "otherEntityField": "nombre"
+        }
+    ],
+    "changelogDate": "20200603183000",
+    "entityTableName": "contrato",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

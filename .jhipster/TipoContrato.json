@@ -1,0 +1,30 @@
+{
+    "name": "TipoContrato",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "contrato",
+            "otherEntityRelationshipName": "tipoContrato",
+            "relationshipName": "contrato"
+        }
+    ],
+    "changelogDate": "20200603183400",
+    "entityTableName": "tipo_contrato",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

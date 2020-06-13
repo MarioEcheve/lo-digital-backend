@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="dependencia">
+            <h2><span>Dependencia</span> {{ dependencia.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nombre</span></dt>
+                <dd>
+                    <span>{{ dependencia.nombre }}</span>
+                </dd>
+                <dt><span>Direccion</span></dt>
+                <dd>
+                    <span>{{ dependencia.direccion }}</span>
+                </dd>
+                <dt><span>Descripcion</span></dt>
+                <dd>
+                    <span>{{ dependencia.descripcion }}</span>
+                </dd>
+                <dt><span>Fecha Creacion</span></dt>
+                <dd>
+                    <span>{{ dependencia.fechaCreacion }}</span>
+                </dd>
+                <dt><span>Fecha Modificacion</span></dt>
+                <dd>
+                    <span>{{ dependencia.fechaModificacion }}</span>
+                </dd>
+                <dt><span>Entidad</span></dt>
+                <dd>
+                    <div *ngIf="dependencia.entidad">
+                        <a [routerLink]="['/entidad', dependencia.entidad?.id, 'view']">{{ dependencia.entidad?.nombre }}</a>
+                    </div>
+                </dd>
+                <dt><span>Region</span></dt>
+                <dd>
+                    <div *ngIf="dependencia.region">
+                        <a [routerLink]="['/region', dependencia.region?.id, 'view']">{{ dependencia.region?.nombre }}</a>
+                    </div>
+                </dd>
+                <dt><span>Comuna</span></dt>
+                <dd>
+                    <div *ngIf="dependencia.comuna">
+                        <a [routerLink]="['/comuna', dependencia.comuna?.id, 'view']">{{ dependencia.comuna?.nombre }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/dependencia', dependencia.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

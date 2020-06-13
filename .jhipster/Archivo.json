@@ -1,0 +1,47 @@
+{
+    "name": "Archivo",
+    "fields": [
+        {
+            "fieldName": "archivo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "30"
+        },
+        {
+            "fieldName": "size",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "folio",
+            "otherEntityRelationshipName": "archivo",
+            "relationshipName": "folio",
+            "otherEntityField": "numeroFolio"
+        }
+    ],
+    "changelogDate": "20200603184400",
+    "entityTableName": "archivo",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

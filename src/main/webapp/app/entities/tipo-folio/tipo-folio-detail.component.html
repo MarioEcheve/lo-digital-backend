@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="tipoFolio">
+            <h2><span>Tipo Folio</span> {{ tipoFolio.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nombre</span></dt>
+                <dd>
+                    <span>{{ tipoFolio.nombre }}</span>
+                </dd>
+                <dt><span>Visible Maestro</span></dt>
+                <dd>
+                    <span>{{ tipoFolio.visibleMaestro }}</span>
+                </dd>
+                <dt><span>Visible Auxliar</span></dt>
+                <dd>
+                    <span>{{ tipoFolio.visibleAuxliar }}</span>
+                </dd>
+                <dt><span>Visible Mandante</span></dt>
+                <dd>
+                    <span>{{ tipoFolio.visibleMandante }}</span>
+                </dd>
+                <dt><span>Visible Contratista</span></dt>
+                <dd>
+                    <span>{{ tipoFolio.visibleContratista }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/tipo-folio', tipoFolio.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

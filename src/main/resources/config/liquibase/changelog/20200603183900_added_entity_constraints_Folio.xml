@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Folio.
+    -->
+    <changeSet id="20200603183900-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="libro_id"
+                                 baseTableName="folio"
+                                 constraintName="fk_folio_libro_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="libro"/>
+
+        <addForeignKeyConstraint baseColumnNames="tipo_folio_id"
+                                 baseTableName="folio"
+                                 constraintName="fk_folio_tipo_folio_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipo_folio"/>
+
+        <addForeignKeyConstraint baseColumnNames="estado_respuesta_id"
+                                 baseTableName="folio"
+                                 constraintName="fk_folio_estado_respuesta_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="estado_respuesta"/>
+
+    </changeSet>
+</databaseChangeLog>

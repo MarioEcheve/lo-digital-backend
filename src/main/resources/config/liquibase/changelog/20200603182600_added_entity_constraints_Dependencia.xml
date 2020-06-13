@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Dependencia.
+    -->
+    <changeSet id="20200603182600-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="entidad_id"
+                                 baseTableName="dependencia"
+                                 constraintName="fk_dependencia_entidad_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="entidad"/>
+
+        <addForeignKeyConstraint baseColumnNames="region_id"
+                                 baseTableName="dependencia"
+                                 constraintName="fk_dependencia_region_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="region"/>
+
+        <addForeignKeyConstraint baseColumnNames="comuna_id"
+                                 baseTableName="dependencia"
+                                 constraintName="fk_dependencia_comuna_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="comuna"/>
+
+    </changeSet>
+</databaseChangeLog>

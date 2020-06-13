@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="gesFavorito">
+            <h2><span>Ges Favorito</span> {{ gesFavorito.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nota</span></dt>
+                <dd>
+                    <span>{{ gesFavorito.nota }}</span>
+                </dd>
+                <dt><span>Fecha Creacion</span></dt>
+                <dd>
+                    <span>{{ gesFavorito.fechaCreacion }}</span>
+                </dd>
+                <dt><span>Fecha Modificacion</span></dt>
+                <dd>
+                    <span>{{ gesFavorito.fechaModificacion }}</span>
+                </dd>
+                <dt><span>Favorito</span></dt>
+                <dd>
+                    <span>{{ gesFavorito.favorito }}</span>
+                </dd>
+                <dt><span>Folio</span></dt>
+                <dd>
+                    <div *ngIf="gesFavorito.folio">
+                        <a [routerLink]="['/folio', gesFavorito.folio?.id, 'view']">{{ gesFavorito.folio?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>Usuario Libro</span></dt>
+                <dd>
+                    <div *ngIf="gesFavorito.usuarioLibro">
+                        <a [routerLink]="['/usuario-libro', gesFavorito.usuarioLibro?.id, 'view']">{{ gesFavorito.usuarioLibro?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ges-favorito', gesFavorito.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

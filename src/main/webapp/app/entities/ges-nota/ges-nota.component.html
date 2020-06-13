@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span>Ges Notas</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-ges-nota" [routerLink]="['/ges-nota/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Ges Nota
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="gesNotas?.length === 0">
+        <span>No gesNotas found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="gesNotas?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Nota</span></th>
+                    <th scope="col" ><span>Fecha Creacion</span></th>
+                    <th scope="col" ><span>Fecha Modificacion</span></th>
+                    <th scope="col" ><span>Folio</span></th>
+                    <th scope="col" ><span>Usuario Libro</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let gesNota of gesNotas ;trackBy: trackId">
+                    <td><a [routerLink]="['/ges-nota', gesNota.id, 'view']">{{ gesNota.id }}</a></td>
+                    <td>{{ gesNota.nota }}</td>
+                    <td>{{ gesNota.fechaCreacion | date:'medium' }}</td>
+                    <td>{{ gesNota.fechaModificacion | date:'medium' }}</td>
+                    <td>
+                        <div *ngIf="gesNota.folio">
+                            <a [routerLink]="['/folio', gesNota.folio?.id, 'view']" >{{ gesNota.folio?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="gesNota.usuarioLibro">
+                            <a [routerLink]="['/usuario-libro', gesNota.usuarioLibro?.id, 'view']" >{{ gesNota.usuarioLibro?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/ges-nota', gesNota.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/ges-nota', gesNota.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(gesNota)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

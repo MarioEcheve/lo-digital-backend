@@ -1,0 +1,146 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="contrato">
+            <h2><span>Contrato</span> {{ contrato.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Fecha Inicio Servicio</span></dt>
+                <dd>
+                    <span>{{ contrato.fechaInicioServicio }}</span>
+                </dd>
+                <dt><span>Fecha Termino Servicio</span></dt>
+                <dd>
+                    <span>{{ contrato.fechaTerminoServicio }}</span>
+                </dd>
+                <dt><span>Fecha Termino Acceso</span></dt>
+                <dd>
+                    <span>{{ contrato.fechaTerminoAcceso }}</span>
+                </dd>
+                <dt><span>Observaciones Servicio</span></dt>
+                <dd>
+                    <span>{{ contrato.observacionesServicio }}</span>
+                </dd>
+                <dt><span>Codigo</span></dt>
+                <dd>
+                    <span>{{ contrato.codigo }}</span>
+                </dd>
+                <dt><span>Nombre</span></dt>
+                <dd>
+                    <span>{{ contrato.nombre }}</span>
+                </dd>
+                <dt><span>Descripcion</span></dt>
+                <dd>
+                    <span>{{ contrato.descripcion }}</span>
+                </dd>
+                <dt><span>Tipo Otro</span></dt>
+                <dd>
+                    <span>{{ contrato.tipoOtro }}</span>
+                </dd>
+                <dt><span>Modalidad Otra</span></dt>
+                <dd>
+                    <span>{{ contrato.modalidadOtra }}</span>
+                </dd>
+                <dt><span>Direccion</span></dt>
+                <dd>
+                    <span>{{ contrato.direccion }}</span>
+                </dd>
+                <dt><span>Monto</span></dt>
+                <dd>
+                    <span>{{ contrato.monto }}</span>
+                </dd>
+                <dt><span>Fecha Inicio</span></dt>
+                <dd>
+                    <span>{{ contrato.fechaInicio }}</span>
+                </dd>
+                <dt><span>Fecha Termino</span></dt>
+                <dd>
+                    <span>{{ contrato.fechaTermino }}</span>
+                </dd>
+                <dt><span>Observaciones</span></dt>
+                <dd>
+                    <span>{{ contrato.observaciones }}</span>
+                </dd>
+                <dt><span>Nombre Contacto</span></dt>
+                <dd>
+                    <span>{{ contrato.nombreContacto }}</span>
+                </dd>
+                <dt><span>Telefono Contacto</span></dt>
+                <dd>
+                    <span>{{ contrato.telefonoContacto }}</span>
+                </dd>
+                <dt><span>Email Contacto</span></dt>
+                <dd>
+                    <span>{{ contrato.emailContacto }}</span>
+                </dd>
+                <dt><span>Id Dependencia Contratista</span></dt>
+                <dd>
+                    <span>{{ contrato.idDependenciaContratista }}</span>
+                </dd>
+                <dt><span>Dependencia Mandante</span></dt>
+                <dd>
+                    <div *ngIf="contrato.dependenciaMandante">
+                        <a [routerLink]="['/dependencia', contrato.dependenciaMandante?.id, 'view']">{{ contrato.dependenciaMandante?.nombre }}</a>
+                    </div>
+                </dd>
+                <dt><span>Region</span></dt>
+                <dd>
+                    <div *ngIf="contrato.region">
+                        <a [routerLink]="['/region', contrato.region?.id, 'view']">{{ contrato.region?.nombre }}</a>
+                    </div>
+                </dd>
+                <dt><span>Tipo Contrato</span></dt>
+                <dd>
+                    <div *ngIf="contrato.tipoContrato">
+                        <a [routerLink]="['/tipo-contrato', contrato.tipoContrato?.id, 'view']">{{ contrato.tipoContrato?.nombre }}</a>
+                    </div>
+                </dd>
+                <dt><span>Modalidad</span></dt>
+                <dd>
+                    <div *ngIf="contrato.modalidad">
+                        <a [routerLink]="['/modalidad', contrato.modalidad?.id, 'view']">{{ contrato.modalidad?.nombre }}</a>
+                    </div>
+                </dd>
+                <dt><span>Comuna</span></dt>
+                <dd>
+                    <div *ngIf="contrato.comuna">
+                        <a [routerLink]="['/comuna', contrato.comuna?.id, 'view']">{{ contrato.comuna?.nombre }}</a>
+                    </div>
+                </dd>
+                <dt><span>Tipo Moneda</span></dt>
+                <dd>
+                    <div *ngIf="contrato.tipoMoneda">
+                        <a [routerLink]="['/tipo-moneda', contrato.tipoMoneda?.id, 'view']">{{ contrato.tipoMoneda?.nombre }}</a>
+                    </div>
+                </dd>
+                <dt><span>Tipo Monto</span></dt>
+                <dd>
+                    <div *ngIf="contrato.tipoMonto">
+                        <a [routerLink]="['/tipo-monto', contrato.tipoMonto?.id, 'view']">{{ contrato.tipoMonto?.nombre }}</a>
+                    </div>
+                </dd>
+                <dt><span>Estado Servicio</span></dt>
+                <dd>
+                    <div *ngIf="contrato.estadoServicio">
+                        <a [routerLink]="['/estado-servicio', contrato.estadoServicio?.id, 'view']">{{ contrato.estadoServicio?.nombre }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/contrato', contrato.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

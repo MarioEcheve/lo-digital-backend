@@ -1,0 +1,27 @@
+{
+    "name": "EstadoRespuesta",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "folio",
+            "otherEntityRelationshipName": "estadoRespuesta",
+            "relationshipName": "folio"
+        }
+    ],
+    "changelogDate": "20200603184000",
+    "entityTableName": "estado_respuesta",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

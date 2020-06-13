@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="archivo">
+            <h2><span>Archivo</span> {{ archivo.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Archivo</span></dt>
+                <dd>
+                    <div *ngIf="archivo.archivo">
+                        <a (click)="openFile(archivo.archivoContentType!, archivo.archivo)">open</a>
+                        {{ archivo.archivoContentType }}, {{ byteSize(archivo.archivo) }}
+                    </div>
+                </dd>
+                <dt><span>Descripcion</span></dt>
+                <dd>
+                    <span>{{ archivo.descripcion }}</span>
+                </dd>
+                <dt><span>Size</span></dt>
+                <dd>
+                    <span>{{ archivo.size }}</span>
+                </dd>
+                <dt><span>Folio</span></dt>
+                <dd>
+                    <div *ngIf="archivo.folio">
+                        <a [routerLink]="['/folio', archivo.folio?.id, 'view']">{{ archivo.folio?.numeroFolio }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/archivo', archivo.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

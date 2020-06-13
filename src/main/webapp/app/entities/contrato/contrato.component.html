@@ -1,0 +1,143 @@
+<div>
+    <h2 id="page-heading">
+        <span>Contratoes</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-contrato" [routerLink]="['/contrato/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Contrato
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="contratoes?.length === 0">
+        <span>No contratoes found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="contratoes?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Fecha Inicio Servicio</span></th>
+                    <th scope="col" ><span>Fecha Termino Servicio</span></th>
+                    <th scope="col" ><span>Fecha Termino Acceso</span></th>
+                    <th scope="col" ><span>Observaciones Servicio</span></th>
+                    <th scope="col" ><span>Codigo</span></th>
+                    <th scope="col" ><span>Nombre</span></th>
+                    <th scope="col" ><span>Descripcion</span></th>
+                    <th scope="col" ><span>Tipo Otro</span></th>
+                    <th scope="col" ><span>Modalidad Otra</span></th>
+                    <th scope="col" ><span>Direccion</span></th>
+                    <th scope="col" ><span>Monto</span></th>
+                    <th scope="col" ><span>Fecha Inicio</span></th>
+                    <th scope="col" ><span>Fecha Termino</span></th>
+                    <th scope="col" ><span>Observaciones</span></th>
+                    <th scope="col" ><span>Nombre Contacto</span></th>
+                    <th scope="col" ><span>Telefono Contacto</span></th>
+                    <th scope="col" ><span>Email Contacto</span></th>
+                    <th scope="col" ><span>Id Dependencia Contratista</span></th>
+                    <th scope="col" ><span>Dependencia Mandante</span></th>
+                    <th scope="col" ><span>Region</span></th>
+                    <th scope="col" ><span>Tipo Contrato</span></th>
+                    <th scope="col" ><span>Modalidad</span></th>
+                    <th scope="col" ><span>Comuna</span></th>
+                    <th scope="col" ><span>Tipo Moneda</span></th>
+                    <th scope="col" ><span>Tipo Monto</span></th>
+                    <th scope="col" ><span>Estado Servicio</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let contrato of contratoes ;trackBy: trackId">
+                    <td><a [routerLink]="['/contrato', contrato.id, 'view']">{{ contrato.id }}</a></td>
+                    <td>{{ contrato.fechaInicioServicio | date:'medium' }}</td>
+                    <td>{{ contrato.fechaTerminoServicio | date:'medium' }}</td>
+                    <td>{{ contrato.fechaTerminoAcceso | date:'medium' }}</td>
+                    <td>{{ contrato.observacionesServicio }}</td>
+                    <td>{{ contrato.codigo }}</td>
+                    <td>{{ contrato.nombre }}</td>
+                    <td>{{ contrato.descripcion }}</td>
+                    <td>{{ contrato.tipoOtro }}</td>
+                    <td>{{ contrato.modalidadOtra }}</td>
+                    <td>{{ contrato.direccion }}</td>
+                    <td>{{ contrato.monto }}</td>
+                    <td>{{ contrato.fechaInicio | date:'medium' }}</td>
+                    <td>{{ contrato.fechaTermino | date:'medium' }}</td>
+                    <td>{{ contrato.observaciones }}</td>
+                    <td>{{ contrato.nombreContacto }}</td>
+                    <td>{{ contrato.telefonoContacto }}</td>
+                    <td>{{ contrato.emailContacto }}</td>
+                    <td>{{ contrato.idDependenciaContratista }}</td>
+                    <td>
+                        <div *ngIf="contrato.dependenciaMandante">
+                            <a [routerLink]="['/dependencia', contrato.dependenciaMandante?.id, 'view']" >{{ contrato.dependenciaMandante?.nombre }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="contrato.region">
+                            <a [routerLink]="['/region', contrato.region?.id, 'view']" >{{ contrato.region?.nombre }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="contrato.tipoContrato">
+                            <a [routerLink]="['/tipo-contrato', contrato.tipoContrato?.id, 'view']" >{{ contrato.tipoContrato?.nombre }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="contrato.modalidad">
+                            <a [routerLink]="['/modalidad', contrato.modalidad?.id, 'view']" >{{ contrato.modalidad?.nombre }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="contrato.comuna">
+                            <a [routerLink]="['/comuna', contrato.comuna?.id, 'view']" >{{ contrato.comuna?.nombre }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="contrato.tipoMoneda">
+                            <a [routerLink]="['/tipo-moneda', contrato.tipoMoneda?.id, 'view']" >{{ contrato.tipoMoneda?.nombre }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="contrato.tipoMonto">
+                            <a [routerLink]="['/tipo-monto', contrato.tipoMonto?.id, 'view']" >{{ contrato.tipoMonto?.nombre }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="contrato.estadoServicio">
+                            <a [routerLink]="['/estado-servicio', contrato.estadoServicio?.id, 'view']" >{{ contrato.estadoServicio?.nombre }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/contrato', contrato.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/contrato', contrato.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(contrato)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

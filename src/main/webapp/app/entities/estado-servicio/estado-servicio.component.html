@@ -1,0 +1,61 @@
+<div>
+    <h2 id="page-heading">
+        <span>Estado Servicios</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-estado-servicio" [routerLink]="['/estado-servicio/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Estado Servicio
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="estadoServicios?.length === 0">
+        <span>No estadoServicios found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="estadoServicios?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Nombre</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let estadoServicio of estadoServicios ;trackBy: trackId">
+                    <td><a [routerLink]="['/estado-servicio', estadoServicio.id, 'view']">{{ estadoServicio.id }}</a></td>
+                    <td>{{ estadoServicio.nombre }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/estado-servicio', estadoServicio.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/estado-servicio', estadoServicio.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(estadoServicio)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

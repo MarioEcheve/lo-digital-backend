@@ -1,0 +1,30 @@
+{
+    "name": "TipoEntidad",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "entidad",
+            "otherEntityRelationshipName": "tipoEntidad",
+            "relationshipName": "entidad"
+        }
+    ],
+    "changelogDate": "20200603182500",
+    "entityTableName": "tipo_entidad",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

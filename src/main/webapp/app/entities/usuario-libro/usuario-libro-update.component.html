@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-usuario-libro-heading">Create or edit a Usuario Libro</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_estado">Estado</label>
+                    <input type="checkbox" class="form-control" name="estado" id="field_estado"
+                           formControlName="estado"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cargoFuncion">Cargo Funcion</label>
+                    <input type="text" class="form-control" name="cargoFuncion" id="field_cargoFuncion"
+                           formControlName="cargoFuncion"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaCreacion">Fecha Creacion</label>
+                    <div class="d-flex">
+                        <input id="field_fechaCreacion" type="datetime-local" class="form-control" name="fechaCreacion" formControlName="fechaCreacion" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaModificacion">Fecha Modificacion</label>
+                    <div class="d-flex">
+                        <input id="field_fechaModificacion" type="datetime-local" class="form-control" name="fechaModificacion" formControlName="fechaModificacion" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_libro">Libro</label>
+                    <select class="form-control" id="field_libro" name="libro" formControlName="libro">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="libroOption.id === editForm.get('libro')!.value?.id ? editForm.get('libro')!.value : libroOption" *ngFor="let libroOption of libros; trackBy: trackById">{{ libroOption.nombre }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_usuarioDependencia">Usuario Dependencia</label>
+                    <select class="form-control" id="field_usuarioDependencia" name="usuarioDependencia" formControlName="usuarioDependencia">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="usuarioDependenciaOption.id === editForm.get('usuarioDependencia')!.value?.id ? editForm.get('usuarioDependencia')!.value : usuarioDependenciaOption" *ngFor="let usuarioDependenciaOption of usuariodependencias; trackBy: trackById">{{ usuarioDependenciaOption.nombre }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_perfilUsuarioLibro">Perfil Usuario Libro</label>
+                    <select class="form-control" id="field_perfilUsuarioLibro" name="perfilUsuarioLibro" formControlName="perfilUsuarioLibro">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="usuarioLibroPerfilOption.id === editForm.get('perfilUsuarioLibro')!.value?.id ? editForm.get('perfilUsuarioLibro')!.value : usuarioLibroPerfilOption" *ngFor="let usuarioLibroPerfilOption of usuariolibroperfils; trackBy: trackById">{{ usuarioLibroPerfilOption.nombre }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

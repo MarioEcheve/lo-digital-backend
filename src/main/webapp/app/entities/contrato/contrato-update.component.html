@@ -1,0 +1,281 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-contrato-heading">Create or edit a Contrato</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaInicioServicio">Fecha Inicio Servicio</label>
+                    <div class="d-flex">
+                        <input id="field_fechaInicioServicio" type="datetime-local" class="form-control" name="fechaInicioServicio" formControlName="fechaInicioServicio" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaTerminoServicio">Fecha Termino Servicio</label>
+                    <div class="d-flex">
+                        <input id="field_fechaTerminoServicio" type="datetime-local" class="form-control" name="fechaTerminoServicio" formControlName="fechaTerminoServicio" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaTerminoAcceso">Fecha Termino Acceso</label>
+                    <div class="d-flex">
+                        <input id="field_fechaTerminoAcceso" type="datetime-local" class="form-control" name="fechaTerminoAcceso" formControlName="fechaTerminoAcceso" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_observacionesServicio">Observaciones Servicio</label>
+                    <input type="text" class="form-control" name="observacionesServicio" id="field_observacionesServicio"
+                           formControlName="observacionesServicio"/>
+                    <div *ngIf="editForm.get('observacionesServicio')!.invalid && (editForm.get('observacionesServicio')!.dirty || editForm.get('observacionesServicio')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('observacionesServicio')?.errors?.maxlength">
+                        This field cannot be longer than 250 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_codigo">Codigo</label>
+                    <input type="text" class="form-control" name="codigo" id="field_codigo"
+                           formControlName="codigo"/>
+                    <div *ngIf="editForm.get('codigo')!.invalid && (editForm.get('codigo')!.dirty || editForm.get('codigo')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('codigo')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('codigo')?.errors?.maxlength">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                           formControlName="nombre"/>
+                    <div *ngIf="editForm.get('nombre')!.invalid && (editForm.get('nombre')!.dirty || editForm.get('nombre')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nombre')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nombre')?.errors?.maxlength">
+                        This field cannot be longer than 60 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_descripcion">Descripcion</label>
+                    <input type="text" class="form-control" name="descripcion" id="field_descripcion"
+                           formControlName="descripcion"/>
+                    <div *ngIf="editForm.get('descripcion')!.invalid && (editForm.get('descripcion')!.dirty || editForm.get('descripcion')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('descripcion')?.errors?.maxlength">
+                        This field cannot be longer than 200 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipoOtro">Tipo Otro</label>
+                    <input type="text" class="form-control" name="tipoOtro" id="field_tipoOtro"
+                           formControlName="tipoOtro"/>
+                    <div *ngIf="editForm.get('tipoOtro')!.invalid && (editForm.get('tipoOtro')!.dirty || editForm.get('tipoOtro')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('tipoOtro')?.errors?.maxlength">
+                        This field cannot be longer than 25 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_modalidadOtra">Modalidad Otra</label>
+                    <input type="text" class="form-control" name="modalidadOtra" id="field_modalidadOtra"
+                           formControlName="modalidadOtra"/>
+                    <div *ngIf="editForm.get('modalidadOtra')!.invalid && (editForm.get('modalidadOtra')!.dirty || editForm.get('modalidadOtra')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('modalidadOtra')?.errors?.maxlength">
+                        This field cannot be longer than 25 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_direccion">Direccion</label>
+                    <input type="text" class="form-control" name="direccion" id="field_direccion"
+                           formControlName="direccion"/>
+                    <div *ngIf="editForm.get('direccion')!.invalid && (editForm.get('direccion')!.dirty || editForm.get('direccion')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('direccion')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('direccion')?.errors?.maxlength">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_monto">Monto</label>
+                    <input type="number" class="form-control" name="monto" id="field_monto"
+                           formControlName="monto"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaInicio">Fecha Inicio</label>
+                    <div class="d-flex">
+                        <input id="field_fechaInicio" type="datetime-local" class="form-control" name="fechaInicio" formControlName="fechaInicio" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaTermino">Fecha Termino</label>
+                    <div class="d-flex">
+                        <input id="field_fechaTermino" type="datetime-local" class="form-control" name="fechaTermino" formControlName="fechaTermino" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_observaciones">Observaciones</label>
+                    <input type="text" class="form-control" name="observaciones" id="field_observaciones"
+                           formControlName="observaciones"/>
+                    <div *ngIf="editForm.get('observaciones')!.invalid && (editForm.get('observaciones')!.dirty || editForm.get('observaciones')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('observaciones')?.errors?.maxlength">
+                        This field cannot be longer than 200 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nombreContacto">Nombre Contacto</label>
+                    <input type="text" class="form-control" name="nombreContacto" id="field_nombreContacto"
+                           formControlName="nombreContacto"/>
+                    <div *ngIf="editForm.get('nombreContacto')!.invalid && (editForm.get('nombreContacto')!.dirty || editForm.get('nombreContacto')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nombreContacto')?.errors?.maxlength">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_telefonoContacto">Telefono Contacto</label>
+                    <input type="text" class="form-control" name="telefonoContacto" id="field_telefonoContacto"
+                           formControlName="telefonoContacto"/>
+                    <div *ngIf="editForm.get('telefonoContacto')!.invalid && (editForm.get('telefonoContacto')!.dirty || editForm.get('telefonoContacto')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('telefonoContacto')?.errors?.maxlength">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_emailContacto">Email Contacto</label>
+                    <input type="text" class="form-control" name="emailContacto" id="field_emailContacto"
+                           formControlName="emailContacto"/>
+                    <div *ngIf="editForm.get('emailContacto')!.invalid && (editForm.get('emailContacto')!.dirty || editForm.get('emailContacto')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('emailContacto')?.errors?.maxlength">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_idDependenciaContratista">Id Dependencia Contratista</label>
+                    <input type="number" class="form-control" name="idDependenciaContratista" id="field_idDependenciaContratista"
+                           formControlName="idDependenciaContratista"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dependenciaMandante">Dependencia Mandante</label>
+                    <select class="form-control" id="field_dependenciaMandante" name="dependenciaMandante" formControlName="dependenciaMandante">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dependenciaOption.id === editForm.get('dependenciaMandante')!.value?.id ? editForm.get('dependenciaMandante')!.value : dependenciaOption" *ngFor="let dependenciaOption of dependencias; trackBy: trackById">{{ dependenciaOption.nombre }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_region">Region</label>
+                    <select class="form-control" id="field_region" name="region" formControlName="region">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="regionOption.id === editForm.get('region')!.value?.id ? editForm.get('region')!.value : regionOption" *ngFor="let regionOption of regions; trackBy: trackById">{{ regionOption.nombre }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipoContrato">Tipo Contrato</label>
+                    <select class="form-control" id="field_tipoContrato" name="tipoContrato" formControlName="tipoContrato">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="tipoContratoOption.id === editForm.get('tipoContrato')!.value?.id ? editForm.get('tipoContrato')!.value : tipoContratoOption" *ngFor="let tipoContratoOption of tipocontratoes; trackBy: trackById">{{ tipoContratoOption.nombre }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_modalidad">Modalidad</label>
+                    <select class="form-control" id="field_modalidad" name="modalidad" formControlName="modalidad">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="modalidadOption.id === editForm.get('modalidad')!.value?.id ? editForm.get('modalidad')!.value : modalidadOption" *ngFor="let modalidadOption of modalidads; trackBy: trackById">{{ modalidadOption.nombre }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_comuna">Comuna</label>
+                    <select class="form-control" id="field_comuna" name="comuna" formControlName="comuna">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="comunaOption.id === editForm.get('comuna')!.value?.id ? editForm.get('comuna')!.value : comunaOption" *ngFor="let comunaOption of comunas; trackBy: trackById">{{ comunaOption.nombre }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipoMoneda">Tipo Moneda</label>
+                    <select class="form-control" id="field_tipoMoneda" name="tipoMoneda" formControlName="tipoMoneda">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="tipoMonedaOption.id === editForm.get('tipoMoneda')!.value?.id ? editForm.get('tipoMoneda')!.value : tipoMonedaOption" *ngFor="let tipoMonedaOption of tipomonedas; trackBy: trackById">{{ tipoMonedaOption.nombre }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipoMonto">Tipo Monto</label>
+                    <select class="form-control" id="field_tipoMonto" name="tipoMonto" formControlName="tipoMonto">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="tipoMontoOption.id === editForm.get('tipoMonto')!.value?.id ? editForm.get('tipoMonto')!.value : tipoMontoOption" *ngFor="let tipoMontoOption of tipomontos; trackBy: trackById">{{ tipoMontoOption.nombre }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_estadoServicio">Estado Servicio</label>
+                    <select class="form-control" id="field_estadoServicio" name="estadoServicio" formControlName="estadoServicio">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="estadoServicioOption.id === editForm.get('estadoServicio')!.value?.id ? editForm.get('estadoServicio')!.value : estadoServicioOption" *ngFor="let estadoServicioOption of estadoservicios; trackBy: trackById">{{ estadoServicioOption.nombre }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

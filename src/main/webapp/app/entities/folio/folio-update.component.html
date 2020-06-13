@@ -1,0 +1,187 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-folio-heading">Create or edit a Folio</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_idUsuarioCreador">Id Usuario Creador</label>
+                    <input type="number" class="form-control" name="idUsuarioCreador" id="field_idUsuarioCreador"
+                           formControlName="idUsuarioCreador"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_idUsuarioFirma">Id Usuario Firma</label>
+                    <input type="number" class="form-control" name="idUsuarioFirma" id="field_idUsuarioFirma"
+                           formControlName="idUsuarioFirma"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_idUsuarioLectura">Id Usuario Lectura</label>
+                    <input type="number" class="form-control" name="idUsuarioLectura" id="field_idUsuarioLectura"
+                           formControlName="idUsuarioLectura"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_numeroFolio">Numero Folio</label>
+                    <input type="number" class="form-control" name="numeroFolio" id="field_numeroFolio"
+                           formControlName="numeroFolio"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_requiereRespuesta">Requiere Respuesta</label>
+                    <input type="checkbox" class="form-control" name="requiereRespuesta" id="field_requiereRespuesta"
+                           formControlName="requiereRespuesta"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaRequerida">Fecha Requerida</label>
+                    <div class="d-flex">
+                        <input id="field_fechaRequerida" type="datetime-local" class="form-control" name="fechaRequerida" formControlName="fechaRequerida" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_estadoLectura">Estado Lectura</label>
+                    <input type="checkbox" class="form-control" name="estadoLectura" id="field_estadoLectura"
+                           formControlName="estadoLectura"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_estadoFolio">Estado Folio</label>
+                    <input type="checkbox" class="form-control" name="estadoFolio" id="field_estadoFolio"
+                           formControlName="estadoFolio"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_entidadCreacion">Entidad Creacion</label>
+                    <input type="checkbox" class="form-control" name="entidadCreacion" id="field_entidadCreacion"
+                           formControlName="entidadCreacion"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaCreacion">Fecha Creacion</label>
+                    <div class="d-flex">
+                        <input id="field_fechaCreacion" type="datetime-local" class="form-control" name="fechaCreacion" formControlName="fechaCreacion" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaModificacion">Fecha Modificacion</label>
+                    <div class="d-flex">
+                        <input id="field_fechaModificacion" type="datetime-local" class="form-control" name="fechaModificacion" formControlName="fechaModificacion" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaFirma">Fecha Firma</label>
+                    <div class="d-flex">
+                        <input id="field_fechaFirma" type="datetime-local" class="form-control" name="fechaFirma" formControlName="fechaFirma" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fechaLectura">Fecha Lectura</label>
+                    <div class="d-flex">
+                        <input id="field_fechaLectura" type="datetime-local" class="form-control" name="fechaLectura" formControlName="fechaLectura" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_asunto">Asunto</label>
+                    <input type="text" class="form-control" name="asunto" id="field_asunto"
+                           formControlName="asunto"/>
+                    <div *ngIf="editForm.get('asunto')!.invalid && (editForm.get('asunto')!.dirty || editForm.get('asunto')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('asunto')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('asunto')?.errors?.maxlength">
+                        This field cannot be longer than 80 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_pdfFirmado">Pdf Firmado</label>
+                    <div>
+                        <div *ngIf="editForm.get('pdfFirmado')!.value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('pdfFirmadoContentType')!.value, editForm.get('pdfFirmado')!.value)">open</a><br>
+                            <span class="pull-left">{{ editForm.get('pdfFirmadoContentType')!.value }}, {{ byteSize(editForm.get('pdfFirmado')!.value) }}</span>
+                            <button type="button" (click)="editForm.patchValue({pdfFirmado: null});editForm.patchValue({pdfFirmadoContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_pdfFirmado" (change)="setFileData($event, 'pdfFirmado', false)"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="pdfFirmado" id="field_pdfFirmado"
+                           formControlName="pdfFirmado"/>
+                    <input type="hidden" class="form-control" name="pdfFirmadoContentType" id="field_pdfFirmadoContentType"
+                           formControlName="pdfFirmadoContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_pdfLectura">Pdf Lectura</label>
+                    <div>
+                        <div *ngIf="editForm.get('pdfLectura')!.value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('pdfLecturaContentType')!.value, editForm.get('pdfLectura')!.value)">open</a><br>
+                            <span class="pull-left">{{ editForm.get('pdfLecturaContentType')!.value }}, {{ byteSize(editForm.get('pdfLectura')!.value) }}</span>
+                            <button type="button" (click)="editForm.patchValue({pdfLectura: null});editForm.patchValue({pdfLecturaContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_pdfLectura" (change)="setFileData($event, 'pdfLectura', false)"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="pdfLectura" id="field_pdfLectura"
+                           formControlName="pdfLectura"/>
+                    <input type="hidden" class="form-control" name="pdfLecturaContentType" id="field_pdfLecturaContentType"
+                           formControlName="pdfLecturaContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_libro">Libro</label>
+                    <select class="form-control" id="field_libro" name="libro" formControlName="libro">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="libroOption.id === editForm.get('libro')!.value?.id ? editForm.get('libro')!.value : libroOption" *ngFor="let libroOption of libros; trackBy: trackById">{{ libroOption.codigo }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipoFolio">Tipo Folio</label>
+                    <select class="form-control" id="field_tipoFolio" name="tipoFolio" formControlName="tipoFolio">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="tipoFolioOption.id === editForm.get('tipoFolio')!.value?.id ? editForm.get('tipoFolio')!.value : tipoFolioOption" *ngFor="let tipoFolioOption of tipofolios; trackBy: trackById">{{ tipoFolioOption.nombre }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_estadoRespuesta">Estado Respuesta</label>
+                    <select class="form-control" id="field_estadoRespuesta" name="estadoRespuesta" formControlName="estadoRespuesta">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="estadoRespuestaOption.id === editForm.get('estadoRespuesta')!.value?.id ? editForm.get('estadoRespuesta')!.value : estadoRespuestaOption" *ngFor="let estadoRespuestaOption of estadorespuestas; trackBy: trackById">{{ estadoRespuestaOption.nombre }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

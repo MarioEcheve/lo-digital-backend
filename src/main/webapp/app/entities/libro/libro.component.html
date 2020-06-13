@@ -1,0 +1,111 @@
+<div>
+    <h2 id="page-heading">
+        <span>Libros</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-libro" [routerLink]="['/libro/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Libro
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="libros?.length === 0">
+        <span>No libros found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="libros?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Codigo</span></th>
+                    <th scope="col" ><span>Nombre</span></th>
+                    <th scope="col" ><span>Descripcion</span></th>
+                    <th scope="col" ><span>Fecha Creacion</span></th>
+                    <th scope="col" ><span>Fecha Apertura</span></th>
+                    <th scope="col" ><span>Fecha Cierre</span></th>
+                    <th scope="col" ><span>Apertura Mandante</span></th>
+                    <th scope="col" ><span>Apertura Contratista</span></th>
+                    <th scope="col" ><span>Escritura Mandante</span></th>
+                    <th scope="col" ><span>Escritura Contratista</span></th>
+                    <th scope="col" ><span>Cierre Mandante</span></th>
+                    <th scope="col" ><span>Cierre Contratista</span></th>
+                    <th scope="col" ><span>Lectura Mandante</span></th>
+                    <th scope="col" ><span>Lectura Contratista</span></th>
+                    <th scope="col" ><span>Contrato</span></th>
+                    <th scope="col" ><span>Tipo Libro</span></th>
+                    <th scope="col" ><span>Tipo Firma</span></th>
+                    <th scope="col" ><span>Estado Libro</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let libro of libros ;trackBy: trackId">
+                    <td><a [routerLink]="['/libro', libro.id, 'view']">{{ libro.id }}</a></td>
+                    <td>{{ libro.codigo }}</td>
+                    <td>{{ libro.nombre }}</td>
+                    <td>{{ libro.descripcion }}</td>
+                    <td>{{ libro.fechaCreacion | date:'medium' }}</td>
+                    <td>{{ libro.fechaApertura | date:'medium' }}</td>
+                    <td>{{ libro.fechaCierre | date:'medium' }}</td>
+                    <td>{{ libro.aperturaMandante }}</td>
+                    <td>{{ libro.aperturaContratista }}</td>
+                    <td>{{ libro.escrituraMandante }}</td>
+                    <td>{{ libro.escrituraContratista }}</td>
+                    <td>{{ libro.cierreMandante }}</td>
+                    <td>{{ libro.cierreContratista }}</td>
+                    <td>{{ libro.lecturaMandante }}</td>
+                    <td>{{ libro.lecturaContratista }}</td>
+                    <td>
+                        <div *ngIf="libro.contrato">
+                            <a [routerLink]="['/contrato', libro.contrato?.id, 'view']" >{{ libro.contrato?.codigo }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="libro.tipoLibro">
+                            <a [routerLink]="['/tipo-libro', libro.tipoLibro?.id, 'view']" >{{ libro.tipoLibro?.descripcion }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="libro.tipoFirma">
+                            <a [routerLink]="['/tipo-firma', libro.tipoFirma?.id, 'view']" >{{ libro.tipoFirma?.nombre }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="libro.estadoLibro">
+                            <a [routerLink]="['/estado-libro', libro.estadoLibro?.id, 'view']" >{{ libro.estadoLibro?.nombre }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/libro', libro.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/libro', libro.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(libro)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

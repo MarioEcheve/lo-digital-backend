@@ -1,0 +1,106 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="libro">
+            <h2><span>Libro</span> {{ libro.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Codigo</span></dt>
+                <dd>
+                    <span>{{ libro.codigo }}</span>
+                </dd>
+                <dt><span>Nombre</span></dt>
+                <dd>
+                    <span>{{ libro.nombre }}</span>
+                </dd>
+                <dt><span>Descripcion</span></dt>
+                <dd>
+                    <span>{{ libro.descripcion }}</span>
+                </dd>
+                <dt><span>Fecha Creacion</span></dt>
+                <dd>
+                    <span>{{ libro.fechaCreacion }}</span>
+                </dd>
+                <dt><span>Fecha Apertura</span></dt>
+                <dd>
+                    <span>{{ libro.fechaApertura }}</span>
+                </dd>
+                <dt><span>Fecha Cierre</span></dt>
+                <dd>
+                    <span>{{ libro.fechaCierre }}</span>
+                </dd>
+                <dt><span>Apertura Mandante</span></dt>
+                <dd>
+                    <span>{{ libro.aperturaMandante }}</span>
+                </dd>
+                <dt><span>Apertura Contratista</span></dt>
+                <dd>
+                    <span>{{ libro.aperturaContratista }}</span>
+                </dd>
+                <dt><span>Escritura Mandante</span></dt>
+                <dd>
+                    <span>{{ libro.escrituraMandante }}</span>
+                </dd>
+                <dt><span>Escritura Contratista</span></dt>
+                <dd>
+                    <span>{{ libro.escrituraContratista }}</span>
+                </dd>
+                <dt><span>Cierre Mandante</span></dt>
+                <dd>
+                    <span>{{ libro.cierreMandante }}</span>
+                </dd>
+                <dt><span>Cierre Contratista</span></dt>
+                <dd>
+                    <span>{{ libro.cierreContratista }}</span>
+                </dd>
+                <dt><span>Lectura Mandante</span></dt>
+                <dd>
+                    <span>{{ libro.lecturaMandante }}</span>
+                </dd>
+                <dt><span>Lectura Contratista</span></dt>
+                <dd>
+                    <span>{{ libro.lecturaContratista }}</span>
+                </dd>
+                <dt><span>Contrato</span></dt>
+                <dd>
+                    <div *ngIf="libro.contrato">
+                        <a [routerLink]="['/contrato', libro.contrato?.id, 'view']">{{ libro.contrato?.codigo }}</a>
+                    </div>
+                </dd>
+                <dt><span>Tipo Libro</span></dt>
+                <dd>
+                    <div *ngIf="libro.tipoLibro">
+                        <a [routerLink]="['/tipo-libro', libro.tipoLibro?.id, 'view']">{{ libro.tipoLibro?.descripcion }}</a>
+                    </div>
+                </dd>
+                <dt><span>Tipo Firma</span></dt>
+                <dd>
+                    <div *ngIf="libro.tipoFirma">
+                        <a [routerLink]="['/tipo-firma', libro.tipoFirma?.id, 'view']">{{ libro.tipoFirma?.nombre }}</a>
+                    </div>
+                </dd>
+                <dt><span>Estado Libro</span></dt>
+                <dd>
+                    <div *ngIf="libro.estadoLibro">
+                        <a [routerLink]="['/estado-libro', libro.estadoLibro?.id, 'view']">{{ libro.estadoLibro?.nombre }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/libro', libro.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

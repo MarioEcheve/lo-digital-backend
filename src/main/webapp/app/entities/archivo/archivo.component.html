@@ -1,0 +1,74 @@
+<div>
+    <h2 id="page-heading">
+        <span>Archivos</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-archivo" [routerLink]="['/archivo/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Archivo
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="archivos?.length === 0">
+        <span>No archivos found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="archivos?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Archivo</span></th>
+                    <th scope="col" ><span>Descripcion</span></th>
+                    <th scope="col" ><span>Size</span></th>
+                    <th scope="col" ><span>Folio</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let archivo of archivos ;trackBy: trackId">
+                    <td><a [routerLink]="['/archivo', archivo.id, 'view']">{{ archivo.id }}</a></td>
+                    <td>
+                        <a *ngIf="archivo.archivo" (click)="openFile(archivo.archivoContentType, archivo.archivo)">open</a>
+                        <span *ngIf="archivo.archivo">{{ archivo.archivoContentType }}, {{ byteSize(archivo.archivo) }}</span>
+                    </td>
+                    <td>{{ archivo.descripcion }}</td>
+                    <td>{{ archivo.size }}</td>
+                    <td>
+                        <div *ngIf="archivo.folio">
+                            <a [routerLink]="['/folio', archivo.folio?.id, 'view']" >{{ archivo.folio?.numeroFolio }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/archivo', archivo.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/archivo', archivo.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(archivo)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

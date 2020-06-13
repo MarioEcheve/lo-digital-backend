@@ -1,0 +1,55 @@
+{
+    "name": "GesAlerta",
+    "fields": [
+        {
+            "fieldName": "nota",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "fechaAlerta",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "fechaCreacion",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fechaModificacion",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "folio",
+            "otherEntityRelationshipName": "gesAlerta",
+            "relationshipName": "folio",
+            "otherEntityField": "numeroFolio"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "usuarioLibro",
+            "otherEntityRelationshipName": "gesAlerta",
+            "relationshipName": "usuarioLibro",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200603184500",
+    "entityTableName": "ges_alerta",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

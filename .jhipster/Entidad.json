@@ -1,0 +1,85 @@
+{
+    "name": "Entidad",
+    "fields": [
+        {
+            "fieldName": "rut",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMaxlength": "15"
+        },
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "direccion",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "fechaCreacion",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fechaModificacion",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "dependencia",
+            "otherEntityRelationshipName": "entidad",
+            "relationshipName": "dependencia"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "region",
+            "otherEntityRelationshipName": "entidad",
+            "relationshipName": "region",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tipoEntidad",
+            "otherEntityRelationshipName": "entidad",
+            "relationshipName": "tipoEntidad",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "actividadRubro",
+            "otherEntityRelationshipName": "entidad",
+            "relationshipName": "actividadRubro",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "comuna",
+            "otherEntityRelationshipName": "entidad",
+            "relationshipName": "comuna",
+            "otherEntityField": "nombre"
+        }
+    ],
+    "changelogDate": "20200603182300",
+    "entityTableName": "entidad",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

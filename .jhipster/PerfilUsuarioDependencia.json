@@ -1,0 +1,27 @@
+{
+    "name": "PerfilUsuarioDependencia",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "usuarioDependencia",
+            "otherEntityRelationshipName": "perfilUsuarioDependencia",
+            "relationshipName": "usuarioDependencia"
+        }
+    ],
+    "changelogDate": "20200603182800",
+    "entityTableName": "perfil_usuario_dependencia",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

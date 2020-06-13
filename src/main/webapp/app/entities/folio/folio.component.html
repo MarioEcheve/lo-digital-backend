@@ -1,0 +1,115 @@
+<div>
+    <h2 id="page-heading">
+        <span>Folios</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-folio" [routerLink]="['/folio/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Folio
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="folios?.length === 0">
+        <span>No folios found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="folios?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Id Usuario Creador</span></th>
+                    <th scope="col" ><span>Id Usuario Firma</span></th>
+                    <th scope="col" ><span>Id Usuario Lectura</span></th>
+                    <th scope="col" ><span>Numero Folio</span></th>
+                    <th scope="col" ><span>Requiere Respuesta</span></th>
+                    <th scope="col" ><span>Fecha Requerida</span></th>
+                    <th scope="col" ><span>Estado Lectura</span></th>
+                    <th scope="col" ><span>Estado Folio</span></th>
+                    <th scope="col" ><span>Entidad Creacion</span></th>
+                    <th scope="col" ><span>Fecha Creacion</span></th>
+                    <th scope="col" ><span>Fecha Modificacion</span></th>
+                    <th scope="col" ><span>Fecha Firma</span></th>
+                    <th scope="col" ><span>Fecha Lectura</span></th>
+                    <th scope="col" ><span>Asunto</span></th>
+                    <th scope="col" ><span>Pdf Firmado</span></th>
+                    <th scope="col" ><span>Pdf Lectura</span></th>
+                    <th scope="col" ><span>Libro</span></th>
+                    <th scope="col" ><span>Tipo Folio</span></th>
+                    <th scope="col" ><span>Estado Respuesta</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let folio of folios ;trackBy: trackId">
+                    <td><a [routerLink]="['/folio', folio.id, 'view']">{{ folio.id }}</a></td>
+                    <td>{{ folio.idUsuarioCreador }}</td>
+                    <td>{{ folio.idUsuarioFirma }}</td>
+                    <td>{{ folio.idUsuarioLectura }}</td>
+                    <td>{{ folio.numeroFolio }}</td>
+                    <td>{{ folio.requiereRespuesta }}</td>
+                    <td>{{ folio.fechaRequerida | date:'medium' }}</td>
+                    <td>{{ folio.estadoLectura }}</td>
+                    <td>{{ folio.estadoFolio }}</td>
+                    <td>{{ folio.entidadCreacion }}</td>
+                    <td>{{ folio.fechaCreacion | date:'medium' }}</td>
+                    <td>{{ folio.fechaModificacion | date:'medium' }}</td>
+                    <td>{{ folio.fechaFirma | date:'medium' }}</td>
+                    <td>{{ folio.fechaLectura | date:'medium' }}</td>
+                    <td>{{ folio.asunto }}</td>
+                    <td>
+                        <a *ngIf="folio.pdfFirmado" (click)="openFile(folio.pdfFirmadoContentType, folio.pdfFirmado)">open</a>
+                        <span *ngIf="folio.pdfFirmado">{{ folio.pdfFirmadoContentType }}, {{ byteSize(folio.pdfFirmado) }}</span>
+                    </td>
+                    <td>
+                        <a *ngIf="folio.pdfLectura" (click)="openFile(folio.pdfLecturaContentType, folio.pdfLectura)">open</a>
+                        <span *ngIf="folio.pdfLectura">{{ folio.pdfLecturaContentType }}, {{ byteSize(folio.pdfLectura) }}</span>
+                    </td>
+                    <td>
+                        <div *ngIf="folio.libro">
+                            <a [routerLink]="['/libro', folio.libro?.id, 'view']" >{{ folio.libro?.codigo }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="folio.tipoFolio">
+                            <a [routerLink]="['/tipo-folio', folio.tipoFolio?.id, 'view']" >{{ folio.tipoFolio?.nombre }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="folio.estadoRespuesta">
+                            <a [routerLink]="['/estado-respuesta', folio.estadoRespuesta?.id, 'view']" >{{ folio.estadoRespuesta?.nombre }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/folio', folio.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/folio', folio.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(folio)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

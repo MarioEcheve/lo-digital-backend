@@ -1,0 +1,72 @@
+{
+    "name": "UsuarioLibro",
+    "fields": [
+        {
+            "fieldName": "estado",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "cargoFuncion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fechaCreacion",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fechaModificacion",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "gesAlerta",
+            "otherEntityRelationshipName": "usuarioLibro",
+            "relationshipName": "gesAlerta"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "gesNota",
+            "otherEntityRelationshipName": "usuarioLibro",
+            "relationshipName": "gesNota"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "gesFavorito",
+            "otherEntityRelationshipName": "usuarioLibro",
+            "relationshipName": "gesFavorito"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "libro",
+            "otherEntityRelationshipName": "usuarioLibro",
+            "relationshipName": "libro",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "usuarioDependencia",
+            "otherEntityRelationshipName": "usuarioLibro",
+            "relationshipName": "usuarioDependencia",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "usuarioLibroPerfil",
+            "otherEntityRelationshipName": "usuarioLibro",
+            "relationshipName": "perfilUsuarioLibro",
+            "otherEntityField": "nombre"
+        }
+    ],
+    "changelogDate": "20200603184300",
+    "entityTableName": "usuario_libro",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

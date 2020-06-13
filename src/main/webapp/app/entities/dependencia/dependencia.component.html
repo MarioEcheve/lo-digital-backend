@@ -1,0 +1,87 @@
+<div>
+    <h2 id="page-heading">
+        <span>Dependencias</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-dependencia" [routerLink]="['/dependencia/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Dependencia
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="dependencias?.length === 0">
+        <span>No dependencias found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="dependencias?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Nombre</span></th>
+                    <th scope="col" ><span>Direccion</span></th>
+                    <th scope="col" ><span>Descripcion</span></th>
+                    <th scope="col" ><span>Fecha Creacion</span></th>
+                    <th scope="col" ><span>Fecha Modificacion</span></th>
+                    <th scope="col" ><span>Entidad</span></th>
+                    <th scope="col" ><span>Region</span></th>
+                    <th scope="col" ><span>Comuna</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dependencia of dependencias ;trackBy: trackId">
+                    <td><a [routerLink]="['/dependencia', dependencia.id, 'view']">{{ dependencia.id }}</a></td>
+                    <td>{{ dependencia.nombre }}</td>
+                    <td>{{ dependencia.direccion }}</td>
+                    <td>{{ dependencia.descripcion }}</td>
+                    <td>{{ dependencia.fechaCreacion | date:'medium' }}</td>
+                    <td>{{ dependencia.fechaModificacion | date:'medium' }}</td>
+                    <td>
+                        <div *ngIf="dependencia.entidad">
+                            <a [routerLink]="['/entidad', dependencia.entidad?.id, 'view']" >{{ dependencia.entidad?.nombre }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="dependencia.region">
+                            <a [routerLink]="['/region', dependencia.region?.id, 'view']" >{{ dependencia.region?.nombre }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="dependencia.comuna">
+                            <a [routerLink]="['/comuna', dependencia.comuna?.id, 'view']" >{{ dependencia.comuna?.nombre }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/dependencia', dependencia.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/dependencia', dependencia.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(dependencia)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

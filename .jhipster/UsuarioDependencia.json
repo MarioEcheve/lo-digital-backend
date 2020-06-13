@@ -1,0 +1,56 @@
+{
+    "name": "UsuarioDependencia",
+    "fields": [
+        {
+            "fieldName": "fechaCreacion",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fechaModificacion",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "usuarioLibro",
+            "otherEntityRelationshipName": "usuarioDependencia",
+            "relationshipName": "usuarioLibro"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "dependencia",
+            "otherEntityRelationshipName": "usuarioDependencia",
+            "relationshipName": "dependencia",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "usuario",
+            "otherEntityRelationshipName": "usuarioDependencia",
+            "relationshipName": "usuario",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "perfilUsuarioDependencia",
+            "otherEntityRelationshipName": "usuarioDependencia",
+            "relationshipName": "perfilUsuarioDependencia",
+            "otherEntityField": "nombre"
+        }
+    ],
+    "changelogDate": "20200603182700",
+    "entityTableName": "usuario_dependencia",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

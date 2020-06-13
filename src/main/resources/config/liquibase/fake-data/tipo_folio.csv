@@ -1,0 +1,11 @@
+id;nombre;visible_maestro;visible_auxliar;visible_mandante;visible_contratista
+1;Car scalable Virgin ;true;true;true;true
+2;CFP Franc;false;true;false;false
+3;deposit virtual;true;false;false;true
+4;Congo open-source pi;true;true;false;true
+5;Liaison;false;true;false;false
+6;Awesome Response;false;false;true;true
+7;action-items Sports;false;true;true;true
+8;primary;false;false;true;false
+9;Grocery connect Shar;true;true;false;true
+10;Highway Liaison;false;false;false;false

@@ -1,0 +1,27 @@
+{
+    "name": "TipoMonto",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "contrato",
+            "otherEntityRelationshipName": "tipoMonto",
+            "relationshipName": "contrato"
+        }
+    ],
+    "changelogDate": "20200603183300",
+    "entityTableName": "tipo_monto",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

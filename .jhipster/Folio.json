@@ -1,0 +1,133 @@
+{
+    "name": "Folio",
+    "fields": [
+        {
+            "fieldName": "idUsuarioCreador",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "idUsuarioFirma",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "idUsuarioLectura",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "numeroFolio",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "requiereRespuesta",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "fechaRequerida",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "estadoLectura",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "estadoFolio",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "entidadCreacion",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "fechaCreacion",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fechaModificacion",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fechaFirma",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fechaLectura",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "asunto",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMaxlength": "80"
+        },
+        {
+            "fieldName": "pdfFirmado",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "pdfLectura",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "archivo",
+            "otherEntityRelationshipName": "folio",
+            "relationshipName": "archivo"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "gesAlerta",
+            "otherEntityRelationshipName": "folio",
+            "relationshipName": "gesAlerta"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "gesNota",
+            "otherEntityRelationshipName": "folio",
+            "relationshipName": "gesNota"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "gesFavorito",
+            "otherEntityRelationshipName": "folio",
+            "relationshipName": "gesFavorito"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "libro",
+            "otherEntityRelationshipName": "folio",
+            "relationshipName": "libro",
+            "otherEntityField": "codigo"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tipoFolio",
+            "otherEntityRelationshipName": "folio",
+            "relationshipName": "tipoFolio",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "estadoRespuesta",
+            "otherEntityRelationshipName": "folio",
+            "relationshipName": "estadoRespuesta",
+            "otherEntityField": "nombre"
+        }
+    ],
+    "changelogDate": "20200603183900",
+    "entityTableName": "folio",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,27 @@
+{
+    "name": "TipoFirma",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "libro",
+            "otherEntityRelationshipName": "tipoFirma",
+            "relationshipName": "libro"
+        }
+    ],
+    "changelogDate": "20200603183800",
+    "entityTableName": "tipo_firma",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

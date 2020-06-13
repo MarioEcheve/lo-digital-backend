@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="usuarioLibro">
+            <h2><span>Usuario Libro</span> {{ usuarioLibro.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Estado</span></dt>
+                <dd>
+                    <span>{{ usuarioLibro.estado }}</span>
+                </dd>
+                <dt><span>Cargo Funcion</span></dt>
+                <dd>
+                    <span>{{ usuarioLibro.cargoFuncion }}</span>
+                </dd>
+                <dt><span>Fecha Creacion</span></dt>
+                <dd>
+                    <span>{{ usuarioLibro.fechaCreacion }}</span>
+                </dd>
+                <dt><span>Fecha Modificacion</span></dt>
+                <dd>
+                    <span>{{ usuarioLibro.fechaModificacion }}</span>
+                </dd>
+                <dt><span>Libro</span></dt>
+                <dd>
+                    <div *ngIf="usuarioLibro.libro">
+                        <a [routerLink]="['/libro', usuarioLibro.libro?.id, 'view']">{{ usuarioLibro.libro?.nombre }}</a>
+                    </div>
+                </dd>
+                <dt><span>Usuario Dependencia</span></dt>
+                <dd>
+                    <div *ngIf="usuarioLibro.usuarioDependencia">
+                        <a [routerLink]="['/usuario-dependencia', usuarioLibro.usuarioDependencia?.id, 'view']">{{ usuarioLibro.usuarioDependencia?.nombre }}</a>
+                    </div>
+                </dd>
+                <dt><span>Perfil Usuario Libro</span></dt>
+                <dd>
+                    <div *ngIf="usuarioLibro.perfilUsuarioLibro">
+                        <a [routerLink]="['/usuario-libro-perfil', usuarioLibro.perfilUsuarioLibro?.id, 'view']">{{ usuarioLibro.perfilUsuarioLibro?.nombre }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/usuario-libro', usuarioLibro.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+{
+    "name": "Dependencia",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "direccion",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "110"
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "150"
+        },
+        {
+            "fieldName": "fechaCreacion",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fechaModificacion",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "usuarioDependencia",
+            "otherEntityRelationshipName": "dependencia",
+            "relationshipName": "usuarioDependencia"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "contrato",
+            "otherEntityRelationshipName": "dependenciaMandante",
+            "relationshipName": "contrato"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "entidad",
+            "otherEntityRelationshipName": "dependencia",
+            "relationshipName": "entidad",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "region",
+            "otherEntityRelationshipName": "dependencia",
+            "relationshipName": "region",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "comuna",
+            "otherEntityRelationshipName": "dependencia",
+            "relationshipName": "comuna",
+            "otherEntityField": "nombre"
+        }
+    ],
+    "changelogDate": "20200603182600",
+    "entityTableName": "dependencia",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

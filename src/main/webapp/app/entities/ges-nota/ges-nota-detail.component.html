@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="gesNota">
+            <h2><span>Ges Nota</span> {{ gesNota.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nota</span></dt>
+                <dd>
+                    <span>{{ gesNota.nota }}</span>
+                </dd>
+                <dt><span>Fecha Creacion</span></dt>
+                <dd>
+                    <span>{{ gesNota.fechaCreacion }}</span>
+                </dd>
+                <dt><span>Fecha Modificacion</span></dt>
+                <dd>
+                    <span>{{ gesNota.fechaModificacion }}</span>
+                </dd>
+                <dt><span>Folio</span></dt>
+                <dd>
+                    <div *ngIf="gesNota.folio">
+                        <a [routerLink]="['/folio', gesNota.folio?.id, 'view']">{{ gesNota.folio?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>Usuario Libro</span></dt>
+                <dd>
+                    <div *ngIf="gesNota.usuarioLibro">
+                        <a [routerLink]="['/usuario-libro', gesNota.usuarioLibro?.id, 'view']">{{ gesNota.usuarioLibro?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ges-nota', gesNota.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

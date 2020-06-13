@@ -1,0 +1,27 @@
+{
+    "name": "UsuarioLibroPerfil",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "usuarioLibro",
+            "otherEntityRelationshipName": "perfilUsuarioLibro",
+            "relationshipName": "usuarioLibro"
+        }
+    ],
+    "changelogDate": "20200603185100",
+    "entityTableName": "usuario_libro_perfil",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

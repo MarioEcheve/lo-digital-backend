@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Contrato.
+    -->
+    <changeSet id="20200603183000-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="dependencia_mandante_id"
+                                 baseTableName="contrato"
+                                 constraintName="fk_contrato_dependencia_mandante_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dependencia"/>
+
+        <addForeignKeyConstraint baseColumnNames="region_id"
+                                 baseTableName="contrato"
+                                 constraintName="fk_contrato_region_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="region"/>
+
+        <addForeignKeyConstraint baseColumnNames="tipo_contrato_id"
+                                 baseTableName="contrato"
+                                 constraintName="fk_contrato_tipo_contrato_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipo_contrato"/>
+
+        <addForeignKeyConstraint baseColumnNames="modalidad_id"
+                                 baseTableName="contrato"
+                                 constraintName="fk_contrato_modalidad_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="modalidad"/>
+
+        <addForeignKeyConstraint baseColumnNames="comuna_id"
+                                 baseTableName="contrato"
+                                 constraintName="fk_contrato_comuna_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="comuna"/>
+
+        <addForeignKeyConstraint baseColumnNames="tipo_moneda_id"
+                                 baseTableName="contrato"
+                                 constraintName="fk_contrato_tipo_moneda_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipo_moneda"/>
+
+        <addForeignKeyConstraint baseColumnNames="tipo_monto_id"
+                                 baseTableName="contrato"
+                                 constraintName="fk_contrato_tipo_monto_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipo_monto"/>
+
+        <addForeignKeyConstraint baseColumnNames="estado_servicio_id"
+                                 baseTableName="contrato"
+                                 constraintName="fk_contrato_estado_servicio_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="estado_servicio"/>
+
+    </changeSet>
+</databaseChangeLog>
