@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new UsuarioLibro(0, false, 'AAAAAAA', currentDate, currentDate);
+      elemDefault = new UsuarioLibro(0, 'AAAAAAA', false, 'AAAAAAA', currentDate, currentDate);
     });
 
     describe('Service methods', () => {
@@ -72,6 +72,7 @@ describe('Service Tests', () => {
       it('should update a UsuarioLibro', () => {
         const returnedFromService = Object.assign(
           {
+            nombre: 'BBBBBB',
             estado: true,
             cargoFuncion: 'BBBBBB',
             fechaCreacion: currentDate.format(DATE_TIME_FORMAT),
@@ -98,6 +99,7 @@ describe('Service Tests', () => {
       it('should return a list of UsuarioLibro', () => {
         const returnedFromService = Object.assign(
           {
+            nombre: 'BBBBBB',
             estado: true,
             cargoFuncion: 'BBBBBB',
             fechaCreacion: currentDate.format(DATE_TIME_FORMAT),

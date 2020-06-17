@@ -80,14 +80,7 @@
             "fieldType": "Instant"
         }
     ],
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "usuarioDependencia",
-            "otherEntityRelationshipName": "usuario",
-            "relationshipName": "usuarioDependencia"
-        }
-    ],
+    "relationships": [],
     "changelogDate": "20200603185000",
     "entityTableName": "usuario",
     "dto": "no",

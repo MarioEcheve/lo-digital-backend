@@ -49,7 +49,7 @@ public class Dependencia implements Serializable {
     private Set<Contrato> contratoes = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties("dependencias")
+    @JsonIgnoreProperties(value ="dependencias" , allowSetters = true)
     private Entidad entidad;
 
     @ManyToOne

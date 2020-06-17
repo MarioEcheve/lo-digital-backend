@@ -1,5 +1,6 @@
 package backend.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -34,6 +35,10 @@ public class Comuna implements Serializable {
 
     @OneToMany(mappedBy = "comuna")
     private Set<Dependencia> dependencias = new HashSet<>();
+
+    @ManyToOne
+    @JsonIgnoreProperties("comunas")
+    private Region region;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -130,6 +135,19 @@ public class Comuna implements Serializable {
 
     public void setDependencias(Set<Dependencia> dependencias) {
         this.dependencias = dependencias;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public Comuna region(Region region) {
+        this.region = region;
+        return this;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

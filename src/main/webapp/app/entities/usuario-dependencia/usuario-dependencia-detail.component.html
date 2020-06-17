@@ -8,6 +8,10 @@
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
+                <dt><span>Nombre</span></dt>
+                <dd>
+                    <span>{{ usuarioDependencia.nombre }}</span>
+                </dd>
                 <dt><span>Fecha Creacion</span></dt>
                 <dd>
                     <span>{{ usuarioDependencia.fechaCreacion }}</span>
@@ -20,16 +24,14 @@
                 <dd>
                     <span>{{ usuarioDependencia.estado }}</span>
                 </dd>
+                <dt><span>Usuario</span></dt>
+                <dd>
+                    {{ usuarioDependencia.usuario?.login }}
+                </dd>
                 <dt><span>Dependencia</span></dt>
                 <dd>
                     <div *ngIf="usuarioDependencia.dependencia">
                         <a [routerLink]="['/dependencia', usuarioDependencia.dependencia?.id, 'view']">{{ usuarioDependencia.dependencia?.nombre }}</a>
-                    </div>
-                </dd>
-                <dt><span>Usuario</span></dt>
-                <dd>
-                    <div *ngIf="usuarioDependencia.usuario">
-                        <a [routerLink]="['/usuario', usuarioDependencia.usuario?.id, 'view']">{{ usuarioDependencia.usuario?.nombre }}</a>
                     </div>
                 </dd>
                 <dt><span>Perfil Usuario Dependencia</span></dt>

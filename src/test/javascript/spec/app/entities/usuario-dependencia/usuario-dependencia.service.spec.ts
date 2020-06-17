@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new UsuarioDependencia(0, currentDate, currentDate, false);
+      elemDefault = new UsuarioDependencia(0, 'AAAAAAA', currentDate, currentDate, false);
     });
 
     describe('Service methods', () => {
@@ -72,6 +72,7 @@ describe('Service Tests', () => {
       it('should update a UsuarioDependencia', () => {
         const returnedFromService = Object.assign(
           {
+            nombre: 'BBBBBB',
             fechaCreacion: currentDate.format(DATE_TIME_FORMAT),
             fechaModificacion: currentDate.format(DATE_TIME_FORMAT),
             estado: true
@@ -97,6 +98,7 @@ describe('Service Tests', () => {
       it('should return a list of UsuarioDependencia', () => {
         const returnedFromService = Object.assign(
           {
+            nombre: 'BBBBBB',
             fechaCreacion: currentDate.format(DATE_TIME_FORMAT),
             fechaModificacion: currentDate.format(DATE_TIME_FORMAT),
             estado: true

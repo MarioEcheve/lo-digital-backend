@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 
 import { IComuna, Comuna } from 'app/shared/model/comuna.model';
 import { ComunaService } from './comuna.service';
+import { IRegion } from 'app/shared/model/region.model';
+import { RegionService } from 'app/entities/region/region.service';
 
 @Component({
   selector: 'jhi-comuna-update',
@@ -14,24 +16,34 @@ import { ComunaService } from './comuna.service';
 })
 export class ComunaUpdateComponent implements OnInit {
   isSaving = false;
+  regions: IRegion[] = [];
 
   editForm = this.fb.group({
     id: [],
-    nombre: [null, [Validators.required]]
+    nombre: [null, [Validators.required]],
+    region: []
   });
 
-  constructor(protected comunaService: ComunaService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected comunaService: ComunaService,
+    protected regionService: RegionService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ comuna }) => {
       this.updateForm(comuna);
+
+      this.regionService.query().subscribe((res: HttpResponse<IRegion[]>) => (this.regions = res.body || []));
     });
   }
 
   updateForm(comuna: IComuna): void {
     this.editForm.patchValue({
       id: comuna.id,
-      nombre: comuna.nombre
+      nombre: comuna.nombre,
+      region: comuna.region
     });
   }
 
@@ -53,7 +65,8 @@ export class ComunaUpdateComponent implements OnInit {
     return {
       ...new Comuna(),
       id: this.editForm.get(['id'])!.value,
-      nombre: this.editForm.get(['nombre'])!.value
+      nombre: this.editForm.get(['nombre'])!.value,
+      region: this.editForm.get(['region'])!.value
     };
   }
 
@@ -71,5 +84,9 @@ export class ComunaUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IRegion): any {
+    return item.id;
   }
 }

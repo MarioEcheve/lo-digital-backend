@@ -2,6 +2,10 @@
     "name": "UsuarioLibro",
     "fields": [
         {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "estado",
             "fieldType": "Boolean"
         },

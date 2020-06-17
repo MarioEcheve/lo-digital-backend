@@ -27,6 +27,13 @@
             "otherEntityName": "dependencia",
             "otherEntityRelationshipName": "comuna",
             "relationshipName": "dependencia"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "region",
+            "otherEntityRelationshipName": "comuna",
+            "relationshipName": "region",
+            "otherEntityField": "nombre"
         }
     ],
     "changelogDate": "20200603184900",

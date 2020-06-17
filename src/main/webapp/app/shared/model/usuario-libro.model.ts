@@ -8,6 +8,7 @@ import { IUsuarioLibroPerfil } from 'app/shared/model/usuario-libro-perfil.model
 
 export interface IUsuarioLibro {
   id?: number;
+  nombre?: string;
   estado?: boolean;
   cargoFuncion?: string;
   fechaCreacion?: Moment;
@@ -23,6 +24,7 @@ export interface IUsuarioLibro {
 export class UsuarioLibro implements IUsuarioLibro {
   constructor(
     public id?: number,
+    public nombre?: string,
     public estado?: boolean,
     public cargoFuncion?: string,
     public fechaCreacion?: Moment,

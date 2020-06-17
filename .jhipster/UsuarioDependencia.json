@@ -2,6 +2,10 @@
     "name": "UsuarioDependencia",
     "fields": [
         {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "fechaCreacion",
             "fieldType": "Instant"
         },
@@ -23,16 +27,16 @@
         },
         {
             "relationshipType": "many-to-one",
-            "otherEntityName": "dependencia",
+            "otherEntityName": "user",
             "otherEntityRelationshipName": "usuarioDependencia",
-            "relationshipName": "dependencia",
-            "otherEntityField": "nombre"
+            "relationshipName": "usuario",
+            "otherEntityField": "login"
         },
         {
             "relationshipType": "many-to-one",
-            "otherEntityName": "usuario",
+            "otherEntityName": "dependencia",
             "otherEntityRelationshipName": "usuarioDependencia",
-            "relationshipName": "usuario",
+            "relationshipName": "dependencia",
             "otherEntityField": "nombre"
         },
         {

@@ -23,6 +23,9 @@ public class UsuarioDependencia implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
+    @Column(name = "nombre")
+    private String nombre;
+
     @Column(name = "fecha_creacion")
     private Instant fechaCreacion;
 
@@ -36,15 +39,15 @@ public class UsuarioDependencia implements Serializable {
     private Set<UsuarioLibro> usuarioLibros = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties("usuarioDependencias")
+    @JsonIgnoreProperties(value="usuarioDependencias",allowSetters = true)
+    private User usuario;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value="usuarioDependencias",allowSetters = true)
     private Dependencia dependencia;
 
     @ManyToOne
-    @JsonIgnoreProperties("usuarioDependencias")
-    private Usuario usuario;
-
-    @ManyToOne
-    @JsonIgnoreProperties("usuarioDependencias")
+    @JsonIgnoreProperties(value = "usuarioDependencias",allowSetters = true)
     private PerfilUsuarioDependencia perfilUsuarioDependencia;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -54,6 +57,19 @@ public class UsuarioDependencia implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public UsuarioDependencia nombre(String nombre) {
+        this.nombre = nombre;
+        return this;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public Instant getFechaCreacion() {
@@ -120,6 +136,19 @@ public class UsuarioDependencia implements Serializable {
         this.usuarioLibros = usuarioLibros;
     }
 
+    public User getUsuario() {
+        return usuario;
+    }
+
+    public UsuarioDependencia usuario(User user) {
+        this.usuario = user;
+        return this;
+    }
+
+    public void setUsuario(User user) {
+        this.usuario = user;
+    }
+
     public Dependencia getDependencia() {
         return dependencia;
     }
@@ -131,19 +160,6 @@ public class UsuarioDependencia implements Serializable {
 
     public void setDependencia(Dependencia dependencia) {
         this.dependencia = dependencia;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public UsuarioDependencia usuario(Usuario usuario) {
-        this.usuario = usuario;
-        return this;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public PerfilUsuarioDependencia getPerfilUsuarioDependencia() {
@@ -180,6 +196,7 @@ public class UsuarioDependencia implements Serializable {
     public String toString() {
         return "UsuarioDependencia{" +
             "id=" + getId() +
+            ", nombre='" + getNombre() + "'" +
             ", fechaCreacion='" + getFechaCreacion() + "'" +
             ", fechaModificacion='" + getFechaModificacion() + "'" +
             ", estado='" + isEstado() + "'" +

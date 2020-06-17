@@ -1,5 +1,4 @@
 import { Moment } from 'moment';
-import { IUsuarioDependencia } from 'app/shared/model/usuario-dependencia.model';
 
 export interface IUsuario {
   id?: number;
@@ -14,7 +13,6 @@ export interface IUsuario {
   telefonoSecundario?: string;
   fechaCreacion?: Moment;
   fechaModificacion?: Moment;
-  usuarioDependencias?: IUsuarioDependencia[];
 }
 
 export class Usuario implements IUsuario {
@@ -30,7 +28,6 @@ export class Usuario implements IUsuario {
     public telefonoPrincipal?: string,
     public telefonoSecundario?: string,
     public fechaCreacion?: Moment,
-    public fechaModificacion?: Moment,
-    public usuarioDependencias?: IUsuarioDependencia[]
+    public fechaModificacion?: Moment
   ) {}
 }

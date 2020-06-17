@@ -24,6 +24,7 @@
                 <tr>
                     <th scope="col" ><span>ID</span></th>
                     <th scope="col" ><span>Nombre</span></th>
+                    <th scope="col" ><span>Region</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -31,6 +32,11 @@
                 <tr *ngFor="let comuna of comunas ;trackBy: trackId">
                     <td><a [routerLink]="['/comuna', comuna.id, 'view']">{{ comuna.id }}</a></td>
                     <td>{{ comuna.nombre }}</td>
+                    <td>
+                        <div *ngIf="comuna.region">
+                            <a [routerLink]="['/region', comuna.region?.id, 'view']" >{{ comuna.region?.nombre }}</a>
+                        </div>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

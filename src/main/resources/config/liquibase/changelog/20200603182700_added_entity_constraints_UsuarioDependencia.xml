@@ -8,17 +8,17 @@
     -->
     <changeSet id="20200603182700-2" author="jhipster">
         
+        <addForeignKeyConstraint baseColumnNames="usuario_id"
+                                 baseTableName="usuario_dependencia"
+                                 constraintName="fk_usuario_dependencia_usuario_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
         <addForeignKeyConstraint baseColumnNames="dependencia_id"
                                  baseTableName="usuario_dependencia"
                                  constraintName="fk_usuario_dependencia_dependencia_id"
                                  referencedColumnNames="id"
                                  referencedTableName="dependencia"/>
-
-        <addForeignKeyConstraint baseColumnNames="usuario_id"
-                                 baseTableName="usuario_dependencia"
-                                 constraintName="fk_usuario_dependencia_usuario_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="usuario"/>
 
         <addForeignKeyConstraint baseColumnNames="perfil_usuario_dependencia_id"
                                  baseTableName="usuario_dependencia"

@@ -35,6 +35,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = BackendApp.class)
 public class UsuarioLibroResourceIT {
 
+    private static final String DEFAULT_NOMBRE = "AAAAAAAAAA";
+    private static final String UPDATED_NOMBRE = "BBBBBBBBBB";
+
     private static final Boolean DEFAULT_ESTADO = false;
     private static final Boolean UPDATED_ESTADO = true;
 
@@ -89,6 +92,7 @@ public class UsuarioLibroResourceIT {
      */
     public static UsuarioLibro createEntity(EntityManager em) {
         UsuarioLibro usuarioLibro = new UsuarioLibro()
+            .nombre(DEFAULT_NOMBRE)
             .estado(DEFAULT_ESTADO)
             .cargoFuncion(DEFAULT_CARGO_FUNCION)
             .fechaCreacion(DEFAULT_FECHA_CREACION)
@@ -103,6 +107,7 @@ public class UsuarioLibroResourceIT {
      */
     public static UsuarioLibro createUpdatedEntity(EntityManager em) {
         UsuarioLibro usuarioLibro = new UsuarioLibro()
+            .nombre(UPDATED_NOMBRE)
             .estado(UPDATED_ESTADO)
             .cargoFuncion(UPDATED_CARGO_FUNCION)
             .fechaCreacion(UPDATED_FECHA_CREACION)
@@ -130,6 +135,7 @@ public class UsuarioLibroResourceIT {
         List<UsuarioLibro> usuarioLibroList = usuarioLibroRepository.findAll();
         assertThat(usuarioLibroList).hasSize(databaseSizeBeforeCreate + 1);
         UsuarioLibro testUsuarioLibro = usuarioLibroList.get(usuarioLibroList.size() - 1);
+        assertThat(testUsuarioLibro.getNombre()).isEqualTo(DEFAULT_NOMBRE);
         assertThat(testUsuarioLibro.isEstado()).isEqualTo(DEFAULT_ESTADO);
         assertThat(testUsuarioLibro.getCargoFuncion()).isEqualTo(DEFAULT_CARGO_FUNCION);
         assertThat(testUsuarioLibro.getFechaCreacion()).isEqualTo(DEFAULT_FECHA_CREACION);
@@ -167,6 +173,7 @@ public class UsuarioLibroResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(usuarioLibro.getId().intValue())))
+            .andExpect(jsonPath("$.[*].nombre").value(hasItem(DEFAULT_NOMBRE)))
             .andExpect(jsonPath("$.[*].estado").value(hasItem(DEFAULT_ESTADO.booleanValue())))
             .andExpect(jsonPath("$.[*].cargoFuncion").value(hasItem(DEFAULT_CARGO_FUNCION)))
             .andExpect(jsonPath("$.[*].fechaCreacion").value(hasItem(DEFAULT_FECHA_CREACION.toString())))
@@ -184,6 +191,7 @@ public class UsuarioLibroResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(usuarioLibro.getId().intValue()))
+            .andExpect(jsonPath("$.nombre").value(DEFAULT_NOMBRE))
             .andExpect(jsonPath("$.estado").value(DEFAULT_ESTADO.booleanValue()))
             .andExpect(jsonPath("$.cargoFuncion").value(DEFAULT_CARGO_FUNCION))
             .andExpect(jsonPath("$.fechaCreacion").value(DEFAULT_FECHA_CREACION.toString()))
@@ -211,6 +219,7 @@ public class UsuarioLibroResourceIT {
         // Disconnect from session so that the updates on updatedUsuarioLibro are not directly saved in db
         em.detach(updatedUsuarioLibro);
         updatedUsuarioLibro
+            .nombre(UPDATED_NOMBRE)
             .estado(UPDATED_ESTADO)
             .cargoFuncion(UPDATED_CARGO_FUNCION)
             .fechaCreacion(UPDATED_FECHA_CREACION)
@@ -225,6 +234,7 @@ public class UsuarioLibroResourceIT {
         List<UsuarioLibro> usuarioLibroList = usuarioLibroRepository.findAll();
         assertThat(usuarioLibroList).hasSize(databaseSizeBeforeUpdate);
         UsuarioLibro testUsuarioLibro = usuarioLibroList.get(usuarioLibroList.size() - 1);
+        assertThat(testUsuarioLibro.getNombre()).isEqualTo(UPDATED_NOMBRE);
         assertThat(testUsuarioLibro.isEstado()).isEqualTo(UPDATED_ESTADO);
         assertThat(testUsuarioLibro.getCargoFuncion()).isEqualTo(UPDATED_CARGO_FUNCION);
         assertThat(testUsuarioLibro.getFechaCreacion()).isEqualTo(UPDATED_FECHA_CREACION);

@@ -9,14 +9,14 @@ import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
 import { IUsuarioDependencia, UsuarioDependencia } from 'app/shared/model/usuario-dependencia.model';
 import { UsuarioDependenciaService } from './usuario-dependencia.service';
+import { IUser } from 'app/core/user/user.model';
+import { UserService } from 'app/core/user/user.service';
 import { IDependencia } from 'app/shared/model/dependencia.model';
 import { DependenciaService } from 'app/entities/dependencia/dependencia.service';
-import { IUsuario } from 'app/shared/model/usuario.model';
-import { UsuarioService } from 'app/entities/usuario/usuario.service';
 import { IPerfilUsuarioDependencia } from 'app/shared/model/perfil-usuario-dependencia.model';
 import { PerfilUsuarioDependenciaService } from 'app/entities/perfil-usuario-dependencia/perfil-usuario-dependencia.service';
 
-type SelectableEntity = IDependencia | IUsuario | IPerfilUsuarioDependencia;
+type SelectableEntity = IUser | IDependencia | IPerfilUsuarioDependencia;
 
 @Component({
   selector: 'jhi-usuario-dependencia-update',
@@ -24,24 +24,25 @@ type SelectableEntity = IDependencia | IUsuario | IPerfilUsuarioDependencia;
 })
 export class UsuarioDependenciaUpdateComponent implements OnInit {
   isSaving = false;
+  users: IUser[] = [];
   dependencias: IDependencia[] = [];
-  usuarios: IUsuario[] = [];
   perfilusuariodependencias: IPerfilUsuarioDependencia[] = [];
 
   editForm = this.fb.group({
     id: [],
+    nombre: [],
     fechaCreacion: [],
     fechaModificacion: [],
     estado: [],
-    dependencia: [],
     usuario: [],
+    dependencia: [],
     perfilUsuarioDependencia: []
   });
 
   constructor(
     protected usuarioDependenciaService: UsuarioDependenciaService,
+    protected userService: UserService,
     protected dependenciaService: DependenciaService,
-    protected usuarioService: UsuarioService,
     protected perfilUsuarioDependenciaService: PerfilUsuarioDependenciaService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -57,9 +58,9 @@ export class UsuarioDependenciaUpdateComponent implements OnInit {
 
       this.updateForm(usuarioDependencia);
 
-      this.dependenciaService.query().subscribe((res: HttpResponse<IDependencia[]>) => (this.dependencias = res.body || []));
+      this.userService.query().subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body || []));
 
-      this.usuarioService.query().subscribe((res: HttpResponse<IUsuario[]>) => (this.usuarios = res.body || []));
+      this.dependenciaService.query().subscribe((res: HttpResponse<IDependencia[]>) => (this.dependencias = res.body || []));
 
       this.perfilUsuarioDependenciaService
         .query()
@@ -70,11 +71,12 @@ export class UsuarioDependenciaUpdateComponent implements OnInit {
   updateForm(usuarioDependencia: IUsuarioDependencia): void {
     this.editForm.patchValue({
       id: usuarioDependencia.id,
+      nombre: usuarioDependencia.nombre,
       fechaCreacion: usuarioDependencia.fechaCreacion ? usuarioDependencia.fechaCreacion.format(DATE_TIME_FORMAT) : null,
       fechaModificacion: usuarioDependencia.fechaModificacion ? usuarioDependencia.fechaModificacion.format(DATE_TIME_FORMAT) : null,
       estado: usuarioDependencia.estado,
-      dependencia: usuarioDependencia.dependencia,
       usuario: usuarioDependencia.usuario,
+      dependencia: usuarioDependencia.dependencia,
       perfilUsuarioDependencia: usuarioDependencia.perfilUsuarioDependencia
     });
   }
@@ -97,6 +99,7 @@ export class UsuarioDependenciaUpdateComponent implements OnInit {
     return {
       ...new UsuarioDependencia(),
       id: this.editForm.get(['id'])!.value,
+      nombre: this.editForm.get(['nombre'])!.value,
       fechaCreacion: this.editForm.get(['fechaCreacion'])!.value
         ? moment(this.editForm.get(['fechaCreacion'])!.value, DATE_TIME_FORMAT)
         : undefined,
@@ -104,8 +107,8 @@ export class UsuarioDependenciaUpdateComponent implements OnInit {
         ? moment(this.editForm.get(['fechaModificacion'])!.value, DATE_TIME_FORMAT)
         : undefined,
       estado: this.editForm.get(['estado'])!.value,
-      dependencia: this.editForm.get(['dependencia'])!.value,
       usuario: this.editForm.get(['usuario'])!.value,
+      dependencia: this.editForm.get(['dependencia'])!.value,
       perfilUsuarioDependencia: this.editForm.get(['perfilUsuarioDependencia'])!.value
     };
   }

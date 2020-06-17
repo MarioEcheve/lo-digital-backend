@@ -23,6 +23,7 @@
             <thead>
                 <tr>
                     <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Nombre</span></th>
                     <th scope="col" ><span>Estado</span></th>
                     <th scope="col" ><span>Cargo Funcion</span></th>
                     <th scope="col" ><span>Fecha Creacion</span></th>
@@ -36,6 +37,7 @@
             <tbody>
                 <tr *ngFor="let usuarioLibro of usuarioLibros ;trackBy: trackId">
                     <td><a [routerLink]="['/usuario-libro', usuarioLibro.id, 'view']">{{ usuarioLibro.id }}</a></td>
+                    <td>{{ usuarioLibro.nombre }}</td>
                     <td>{{ usuarioLibro.estado }}</td>
                     <td>{{ usuarioLibro.cargoFuncion }}</td>
                     <td>{{ usuarioLibro.fechaCreacion | date:'medium' }}</td>

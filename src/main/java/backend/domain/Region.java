@@ -35,6 +35,9 @@ public class Region implements Serializable {
     @OneToMany(mappedBy = "region")
     private Set<Contrato> contratoes = new HashSet<>();
 
+    @OneToMany(mappedBy = "region")
+    private Set<Comuna> comunas = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -130,6 +133,31 @@ public class Region implements Serializable {
 
     public void setContratoes(Set<Contrato> contratoes) {
         this.contratoes = contratoes;
+    }
+
+    public Set<Comuna> getComunas() {
+        return comunas;
+    }
+
+    public Region comunas(Set<Comuna> comunas) {
+        this.comunas = comunas;
+        return this;
+    }
+
+    public Region addComuna(Comuna comuna) {
+        this.comunas.add(comuna);
+        comuna.setRegion(this);
+        return this;
+    }
+
+    public Region removeComuna(Comuna comuna) {
+        this.comunas.remove(comuna);
+        comuna.setRegion(null);
+        return this;
+    }
+
+    public void setComunas(Set<Comuna> comunas) {
+        this.comunas = comunas;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

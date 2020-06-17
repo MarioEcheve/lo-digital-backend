@@ -35,6 +35,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = BackendApp.class)
 public class UsuarioDependenciaResourceIT {
 
+    private static final String DEFAULT_NOMBRE = "AAAAAAAAAA";
+    private static final String UPDATED_NOMBRE = "BBBBBBBBBB";
+
     private static final Instant DEFAULT_FECHA_CREACION = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_FECHA_CREACION = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
@@ -86,6 +89,7 @@ public class UsuarioDependenciaResourceIT {
      */
     public static UsuarioDependencia createEntity(EntityManager em) {
         UsuarioDependencia usuarioDependencia = new UsuarioDependencia()
+            .nombre(DEFAULT_NOMBRE)
             .fechaCreacion(DEFAULT_FECHA_CREACION)
             .fechaModificacion(DEFAULT_FECHA_MODIFICACION)
             .estado(DEFAULT_ESTADO);
@@ -99,6 +103,7 @@ public class UsuarioDependenciaResourceIT {
      */
     public static UsuarioDependencia createUpdatedEntity(EntityManager em) {
         UsuarioDependencia usuarioDependencia = new UsuarioDependencia()
+            .nombre(UPDATED_NOMBRE)
             .fechaCreacion(UPDATED_FECHA_CREACION)
             .fechaModificacion(UPDATED_FECHA_MODIFICACION)
             .estado(UPDATED_ESTADO);
@@ -125,6 +130,7 @@ public class UsuarioDependenciaResourceIT {
         List<UsuarioDependencia> usuarioDependenciaList = usuarioDependenciaRepository.findAll();
         assertThat(usuarioDependenciaList).hasSize(databaseSizeBeforeCreate + 1);
         UsuarioDependencia testUsuarioDependencia = usuarioDependenciaList.get(usuarioDependenciaList.size() - 1);
+        assertThat(testUsuarioDependencia.getNombre()).isEqualTo(DEFAULT_NOMBRE);
         assertThat(testUsuarioDependencia.getFechaCreacion()).isEqualTo(DEFAULT_FECHA_CREACION);
         assertThat(testUsuarioDependencia.getFechaModificacion()).isEqualTo(DEFAULT_FECHA_MODIFICACION);
         assertThat(testUsuarioDependencia.isEstado()).isEqualTo(DEFAULT_ESTADO);
@@ -161,6 +167,7 @@ public class UsuarioDependenciaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(usuarioDependencia.getId().intValue())))
+            .andExpect(jsonPath("$.[*].nombre").value(hasItem(DEFAULT_NOMBRE)))
             .andExpect(jsonPath("$.[*].fechaCreacion").value(hasItem(DEFAULT_FECHA_CREACION.toString())))
             .andExpect(jsonPath("$.[*].fechaModificacion").value(hasItem(DEFAULT_FECHA_MODIFICACION.toString())))
             .andExpect(jsonPath("$.[*].estado").value(hasItem(DEFAULT_ESTADO.booleanValue())));
@@ -177,6 +184,7 @@ public class UsuarioDependenciaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(usuarioDependencia.getId().intValue()))
+            .andExpect(jsonPath("$.nombre").value(DEFAULT_NOMBRE))
             .andExpect(jsonPath("$.fechaCreacion").value(DEFAULT_FECHA_CREACION.toString()))
             .andExpect(jsonPath("$.fechaModificacion").value(DEFAULT_FECHA_MODIFICACION.toString()))
             .andExpect(jsonPath("$.estado").value(DEFAULT_ESTADO.booleanValue()));
@@ -203,6 +211,7 @@ public class UsuarioDependenciaResourceIT {
         // Disconnect from session so that the updates on updatedUsuarioDependencia are not directly saved in db
         em.detach(updatedUsuarioDependencia);
         updatedUsuarioDependencia
+            .nombre(UPDATED_NOMBRE)
             .fechaCreacion(UPDATED_FECHA_CREACION)
             .fechaModificacion(UPDATED_FECHA_MODIFICACION)
             .estado(UPDATED_ESTADO);
@@ -216,6 +225,7 @@ public class UsuarioDependenciaResourceIT {
         List<UsuarioDependencia> usuarioDependenciaList = usuarioDependenciaRepository.findAll();
         assertThat(usuarioDependenciaList).hasSize(databaseSizeBeforeUpdate);
         UsuarioDependencia testUsuarioDependencia = usuarioDependenciaList.get(usuarioDependenciaList.size() - 1);
+        assertThat(testUsuarioDependencia.getNombre()).isEqualTo(UPDATED_NOMBRE);
         assertThat(testUsuarioDependencia.getFechaCreacion()).isEqualTo(UPDATED_FECHA_CREACION);
         assertThat(testUsuarioDependencia.getFechaModificacion()).isEqualTo(UPDATED_FECHA_MODIFICACION);
         assertThat(testUsuarioDependencia.isEstado()).isEqualTo(UPDATED_ESTADO);

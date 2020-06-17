@@ -23,11 +23,12 @@
             <thead>
                 <tr>
                     <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Nombre</span></th>
                     <th scope="col" ><span>Fecha Creacion</span></th>
                     <th scope="col" ><span>Fecha Modificacion</span></th>
                     <th scope="col" ><span>Estado</span></th>
-                    <th scope="col" ><span>Dependencia</span></th>
                     <th scope="col" ><span>Usuario</span></th>
+                    <th scope="col" ><span>Dependencia</span></th>
                     <th scope="col" ><span>Perfil Usuario Dependencia</span></th>
                     <th scope="col"></th>
                 </tr>
@@ -35,17 +36,16 @@
             <tbody>
                 <tr *ngFor="let usuarioDependencia of usuarioDependencias ;trackBy: trackId">
                     <td><a [routerLink]="['/usuario-dependencia', usuarioDependencia.id, 'view']">{{ usuarioDependencia.id }}</a></td>
+                    <td>{{ usuarioDependencia.nombre }}</td>
                     <td>{{ usuarioDependencia.fechaCreacion | date:'medium' }}</td>
                     <td>{{ usuarioDependencia.fechaModificacion | date:'medium' }}</td>
                     <td>{{ usuarioDependencia.estado }}</td>
                     <td>
-                        <div *ngIf="usuarioDependencia.dependencia">
-                            <a [routerLink]="['/dependencia', usuarioDependencia.dependencia?.id, 'view']" >{{ usuarioDependencia.dependencia?.nombre }}</a>
-                        </div>
+                        {{ usuarioDependencia.usuario?.login }}
                     </td>
                     <td>
-                        <div *ngIf="usuarioDependencia.usuario">
-                            <a [routerLink]="['/usuario', usuarioDependencia.usuario?.id, 'view']" >{{ usuarioDependencia.usuario?.nombre }}</a>
+                        <div *ngIf="usuarioDependencia.dependencia">
+                            <a [routerLink]="['/dependencia', usuarioDependencia.dependencia?.id, 'view']" >{{ usuarioDependencia.dependencia?.nombre }}</a>
                         </div>
                     </td>
                     <td>

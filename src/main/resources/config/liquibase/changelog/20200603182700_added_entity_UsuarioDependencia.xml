@@ -15,6 +15,9 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="nombre" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="fecha_creacion" type="datetime">
                 <constraints nullable="true" />
             </column>
@@ -24,10 +27,10 @@
             <column name="estado" type="boolean">
                 <constraints nullable="true" />
             </column>
-            <column name="dependencia_id" type="bigint">
+            <column name="usuario_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="usuario_id" type="bigint">
+            <column name="dependencia_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <column name="perfil_usuario_dependencia_id" type="bigint">
@@ -58,6 +61,7 @@
                   separator=";"
                   tableName="usuario_dependencia">
             <column name="id" type="numeric"/>
+            <column name="nombre" type="string"/>
             <column name="fecha_creacion" type="datetime"/>
             <column name="fecha_modificacion" type="datetime"/>
             <column name="estado" type="boolean"/>

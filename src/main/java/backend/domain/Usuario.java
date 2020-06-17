@@ -6,8 +6,6 @@ import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A Usuario.
@@ -64,9 +62,6 @@ public class Usuario implements Serializable {
 
     @Column(name = "fecha_modificacion")
     private Instant fechaModificacion;
-
-    @OneToMany(mappedBy = "usuario")
-    private Set<UsuarioDependencia> usuarioDependencias = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -218,31 +213,6 @@ public class Usuario implements Serializable {
 
     public void setFechaModificacion(Instant fechaModificacion) {
         this.fechaModificacion = fechaModificacion;
-    }
-
-    public Set<UsuarioDependencia> getUsuarioDependencias() {
-        return usuarioDependencias;
-    }
-
-    public Usuario usuarioDependencias(Set<UsuarioDependencia> usuarioDependencias) {
-        this.usuarioDependencias = usuarioDependencias;
-        return this;
-    }
-
-    public Usuario addUsuarioDependencia(UsuarioDependencia usuarioDependencia) {
-        this.usuarioDependencias.add(usuarioDependencia);
-        usuarioDependencia.setUsuario(this);
-        return this;
-    }
-
-    public Usuario removeUsuarioDependencia(UsuarioDependencia usuarioDependencia) {
-        this.usuarioDependencias.remove(usuarioDependencia);
-        usuarioDependencia.setUsuario(null);
-        return this;
-    }
-
-    public void setUsuarioDependencias(Set<UsuarioDependencia> usuarioDependencias) {
-        this.usuarioDependencias = usuarioDependencias;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

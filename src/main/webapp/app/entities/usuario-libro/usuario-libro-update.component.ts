@@ -30,6 +30,7 @@ export class UsuarioLibroUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
+    nombre: [],
     estado: [],
     cargoFuncion: [],
     fechaCreacion: [],
@@ -73,6 +74,7 @@ export class UsuarioLibroUpdateComponent implements OnInit {
   updateForm(usuarioLibro: IUsuarioLibro): void {
     this.editForm.patchValue({
       id: usuarioLibro.id,
+      nombre: usuarioLibro.nombre,
       estado: usuarioLibro.estado,
       cargoFuncion: usuarioLibro.cargoFuncion,
       fechaCreacion: usuarioLibro.fechaCreacion ? usuarioLibro.fechaCreacion.format(DATE_TIME_FORMAT) : null,
@@ -101,6 +103,7 @@ export class UsuarioLibroUpdateComponent implements OnInit {
     return {
       ...new UsuarioLibro(),
       id: this.editForm.get(['id'])!.value,
+      nombre: this.editForm.get(['nombre'])!.value,
       estado: this.editForm.get(['estado'])!.value,
       cargoFuncion: this.editForm.get(['cargoFuncion'])!.value,
       fechaCreacion: this.editForm.get(['fechaCreacion'])!.value

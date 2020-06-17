@@ -12,6 +12,12 @@
                 <dd>
                     <span>{{ comuna.nombre }}</span>
                 </dd>
+                <dt><span>Region</span></dt>
+                <dd>
+                    <div *ngIf="comuna.region">
+                        <a [routerLink]="['/region', comuna.region?.id, 'view']">{{ comuna.region?.nombre }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

@@ -18,6 +18,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
+import backend.domain.Comuna;
 
 /**
  * REST controller for managing {@link backend.domain.Comuna}.
@@ -115,5 +116,16 @@ public class ComunaResource {
         log.debug("REST request to delete Comuna : {}", id);
         comunaRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString())).build();
+    }
+     /**
+     * {@code DELETE  /comunas/:id} : delete the "id" comuna.
+     *
+     * @param id the id of the region to find a list of comunas.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+     @GetMapping("/buscaComunaPorRegion/{id}")
+    public List<Comuna> buscaComunaPorRegion(@PathVariable Long id) {
+        log.debug("REST request to get comunas  por region : {}", id);
+        return comunaRepository.buscaComunaPorRegion(id);
     }
 }

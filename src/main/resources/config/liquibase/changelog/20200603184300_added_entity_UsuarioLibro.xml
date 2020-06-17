@@ -15,6 +15,9 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="nombre" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="estado" type="boolean">
                 <constraints nullable="true" />
             </column>
@@ -61,6 +64,7 @@
                   separator=";"
                   tableName="usuario_libro">
             <column name="id" type="numeric"/>
+            <column name="nombre" type="string"/>
             <column name="estado" type="boolean"/>
             <column name="cargo_funcion" type="string"/>
             <column name="fecha_creacion" type="datetime"/>

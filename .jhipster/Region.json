@@ -27,6 +27,12 @@
             "otherEntityName": "contrato",
             "otherEntityRelationshipName": "region",
             "relationshipName": "contrato"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "comuna",
+            "otherEntityRelationshipName": "region",
+            "relationshipName": "comuna"
         }
     ],
     "changelogDate": "20200603184800",
