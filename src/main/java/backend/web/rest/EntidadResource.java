@@ -116,4 +116,16 @@ public class EntidadResource {
         entidadRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString())).build();
     }
+    /**
+     * {@code GET  /buscaComunaPorRegion/:id} : get all the entidads.
+     *
+     * @param id the id of the entidad to get.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+     @GetMapping("/buscaEntidadPorUsuario/{idUsuario}")
+    public List<Entidad> buscaEntidadPorUsuario(@PathVariable Long idUsuario) {
+        log.debug("REST request to get entidades  por usuario : {}", idUsuario);
+        return entidadRepository.buscaEntidadPorUsuario(idUsuario);
+    }
 }
+
