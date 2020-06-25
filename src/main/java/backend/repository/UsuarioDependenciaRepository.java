@@ -16,5 +16,4 @@ public interface UsuarioDependenciaRepository extends JpaRepository<UsuarioDepen
 
     @Query("select usuarioDependencia from UsuarioDependencia usuarioDependencia where usuarioDependencia.usuario.login = ?#{principal.username}")
     List<UsuarioDependencia> findByUsuarioIsCurrentUser();
-
 }

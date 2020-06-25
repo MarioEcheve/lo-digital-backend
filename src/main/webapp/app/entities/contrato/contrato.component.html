@@ -41,6 +41,10 @@
                     <th scope="col" ><span>Telefono Contacto</span></th>
                     <th scope="col" ><span>Email Contacto</span></th>
                     <th scope="col" ><span>Id Dependencia Contratista</span></th>
+                    <th scope="col" ><span>Crea Libro Admin Man</span></th>
+                    <th scope="col" ><span>Crea Libro Admin Con</span></th>
+                    <th scope="col" ><span>Actualizar Contrato Admin Man</span></th>
+                    <th scope="col" ><span>Actualizar Contrato Admin Con</span></th>
                     <th scope="col" ><span>Dependencia Mandante</span></th>
                     <th scope="col" ><span>Region</span></th>
                     <th scope="col" ><span>Tipo Contrato</span></th>
@@ -73,6 +77,10 @@
                     <td>{{ contrato.telefonoContacto }}</td>
                     <td>{{ contrato.emailContacto }}</td>
                     <td>{{ contrato.idDependenciaContratista }}</td>
+                    <td>{{ contrato.creaLibroAdminMan }}</td>
+                    <td>{{ contrato.creaLibroAdminCon }}</td>
+                    <td>{{ contrato.actualizarContratoAdminMan }}</td>
+                    <td>{{ contrato.actualizarContratoAdminCon }}</td>
                     <td>
                         <div *ngIf="contrato.dependenciaMandante">
                             <a [routerLink]="['/dependencia', contrato.dependenciaMandante?.id, 'view']" >{{ contrato.dependenciaMandante?.nombre }}</a>

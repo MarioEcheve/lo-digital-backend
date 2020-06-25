@@ -31,6 +31,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
+import java.util.List;
 
 /**
  * REST controller for managing users.
@@ -185,5 +186,11 @@ public class UserResource {
         log.debug("REST request to delete User: {}", login);
         userService.deleteUser(login);
         return ResponseEntity.noContent().headers(HeaderUtil.createAlert(applicationName,  "A user is deleted with identifier " + login, login)).build();
+    }
+
+    @GetMapping("/BuscarUsuarioPorLogin/{valor}")
+    public List<User> BuscarUsuarioPorLogin(@PathVariable String valor) {
+        log.debug("REST request to get usuarios  por login : {}", valor);
+        return userRepository.BuscarUsuarioPorLogin(valor);
     }
 }

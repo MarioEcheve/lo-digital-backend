@@ -119,6 +119,22 @@
         {
             "fieldName": "idDependenciaContratista",
             "fieldType": "Integer"
+        },
+        {
+            "fieldName": "creaLibroAdminMan",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "creaLibroAdminCon",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "actualizarContratoAdminMan",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "actualizarContratoAdminCon",
+            "fieldType": "Boolean"
         }
     ],
     "relationships": [

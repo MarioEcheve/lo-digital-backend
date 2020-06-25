@@ -92,11 +92,23 @@ public class Contrato implements Serializable {
     @Column(name = "id_dependencia_contratista")
     private Integer idDependenciaContratista;
 
+    @Column(name = "crea_libro_admin_man")
+    private Boolean creaLibroAdminMan;
+
+    @Column(name = "crea_libro_admin_con")
+    private Boolean creaLibroAdminCon;
+
+    @Column(name = "actualizar_contrato_admin_man")
+    private Boolean actualizarContratoAdminMan;
+
+    @Column(name = "actualizar_contrato_admin_con")
+    private Boolean actualizarContratoAdminCon;
+
     @OneToMany(mappedBy = "contrato")
     private Set<Libro> libros = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties("contratoes")
+    @JsonIgnoreProperties(value = "contratoes", allowSetters = true)
     private Dependencia dependenciaMandante;
 
     @ManyToOne
@@ -370,6 +382,58 @@ public class Contrato implements Serializable {
         this.idDependenciaContratista = idDependenciaContratista;
     }
 
+    public Boolean isCreaLibroAdminMan() {
+        return creaLibroAdminMan;
+    }
+
+    public Contrato creaLibroAdminMan(Boolean creaLibroAdminMan) {
+        this.creaLibroAdminMan = creaLibroAdminMan;
+        return this;
+    }
+
+    public void setCreaLibroAdminMan(Boolean creaLibroAdminMan) {
+        this.creaLibroAdminMan = creaLibroAdminMan;
+    }
+
+    public Boolean isCreaLibroAdminCon() {
+        return creaLibroAdminCon;
+    }
+
+    public Contrato creaLibroAdminCon(Boolean creaLibroAdminCon) {
+        this.creaLibroAdminCon = creaLibroAdminCon;
+        return this;
+    }
+
+    public void setCreaLibroAdminCon(Boolean creaLibroAdminCon) {
+        this.creaLibroAdminCon = creaLibroAdminCon;
+    }
+
+    public Boolean isActualizarContratoAdminMan() {
+        return actualizarContratoAdminMan;
+    }
+
+    public Contrato actualizarContratoAdminMan(Boolean actualizarContratoAdminMan) {
+        this.actualizarContratoAdminMan = actualizarContratoAdminMan;
+        return this;
+    }
+
+    public void setActualizarContratoAdminMan(Boolean actualizarContratoAdminMan) {
+        this.actualizarContratoAdminMan = actualizarContratoAdminMan;
+    }
+
+    public Boolean isActualizarContratoAdminCon() {
+        return actualizarContratoAdminCon;
+    }
+
+    public Contrato actualizarContratoAdminCon(Boolean actualizarContratoAdminCon) {
+        this.actualizarContratoAdminCon = actualizarContratoAdminCon;
+        return this;
+    }
+
+    public void setActualizarContratoAdminCon(Boolean actualizarContratoAdminCon) {
+        this.actualizarContratoAdminCon = actualizarContratoAdminCon;
+    }
+
     public Set<Libro> getLibros() {
         return libros;
     }
@@ -538,6 +602,10 @@ public class Contrato implements Serializable {
             ", telefonoContacto='" + getTelefonoContacto() + "'" +
             ", emailContacto='" + getEmailContacto() + "'" +
             ", idDependenciaContratista=" + getIdDependenciaContratista() +
+            ", creaLibroAdminMan='" + isCreaLibroAdminMan() + "'" +
+            ", creaLibroAdminCon='" + isCreaLibroAdminCon() + "'" +
+            ", actualizarContratoAdminMan='" + isActualizarContratoAdminMan() + "'" +
+            ", actualizarContratoAdminCon='" + isActualizarContratoAdminCon() + "'" +
             "}";
     }
 }

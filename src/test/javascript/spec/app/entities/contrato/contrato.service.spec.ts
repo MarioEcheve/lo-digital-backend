@@ -43,7 +43,11 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
-        0
+        0,
+        false,
+        false,
+        false,
+        false
       );
     });
 
@@ -118,7 +122,11 @@ describe('Service Tests', () => {
             nombreContacto: 'BBBBBB',
             telefonoContacto: 'BBBBBB',
             emailContacto: 'BBBBBB',
-            idDependenciaContratista: 1
+            idDependenciaContratista: 1,
+            creaLibroAdminMan: true,
+            creaLibroAdminCon: true,
+            actualizarContratoAdminMan: true,
+            actualizarContratoAdminCon: true
           },
           elemDefault
         );
@@ -161,7 +169,11 @@ describe('Service Tests', () => {
             nombreContacto: 'BBBBBB',
             telefonoContacto: 'BBBBBB',
             emailContacto: 'BBBBBB',
-            idDependenciaContratista: 1
+            idDependenciaContratista: 1,
+            creaLibroAdminMan: true,
+            creaLibroAdminCon: true,
+            actualizarContratoAdminMan: true,
+            actualizarContratoAdminCon: true
           },
           elemDefault
         );

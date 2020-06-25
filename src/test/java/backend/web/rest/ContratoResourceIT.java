@@ -89,6 +89,18 @@ public class ContratoResourceIT {
     private static final Integer DEFAULT_ID_DEPENDENCIA_CONTRATISTA = 1;
     private static final Integer UPDATED_ID_DEPENDENCIA_CONTRATISTA = 2;
 
+    private static final Boolean DEFAULT_CREA_LIBRO_ADMIN_MAN = false;
+    private static final Boolean UPDATED_CREA_LIBRO_ADMIN_MAN = true;
+
+    private static final Boolean DEFAULT_CREA_LIBRO_ADMIN_CON = false;
+    private static final Boolean UPDATED_CREA_LIBRO_ADMIN_CON = true;
+
+    private static final Boolean DEFAULT_ACTUALIZAR_CONTRATO_ADMIN_MAN = false;
+    private static final Boolean UPDATED_ACTUALIZAR_CONTRATO_ADMIN_MAN = true;
+
+    private static final Boolean DEFAULT_ACTUALIZAR_CONTRATO_ADMIN_CON = false;
+    private static final Boolean UPDATED_ACTUALIZAR_CONTRATO_ADMIN_CON = true;
+
     @Autowired
     private ContratoRepository contratoRepository;
 
@@ -148,7 +160,11 @@ public class ContratoResourceIT {
             .nombreContacto(DEFAULT_NOMBRE_CONTACTO)
             .telefonoContacto(DEFAULT_TELEFONO_CONTACTO)
             .emailContacto(DEFAULT_EMAIL_CONTACTO)
-            .idDependenciaContratista(DEFAULT_ID_DEPENDENCIA_CONTRATISTA);
+            .idDependenciaContratista(DEFAULT_ID_DEPENDENCIA_CONTRATISTA)
+            .creaLibroAdminMan(DEFAULT_CREA_LIBRO_ADMIN_MAN)
+            .creaLibroAdminCon(DEFAULT_CREA_LIBRO_ADMIN_CON)
+            .actualizarContratoAdminMan(DEFAULT_ACTUALIZAR_CONTRATO_ADMIN_MAN)
+            .actualizarContratoAdminCon(DEFAULT_ACTUALIZAR_CONTRATO_ADMIN_CON);
         return contrato;
     }
     /**
@@ -176,7 +192,11 @@ public class ContratoResourceIT {
             .nombreContacto(UPDATED_NOMBRE_CONTACTO)
             .telefonoContacto(UPDATED_TELEFONO_CONTACTO)
             .emailContacto(UPDATED_EMAIL_CONTACTO)
-            .idDependenciaContratista(UPDATED_ID_DEPENDENCIA_CONTRATISTA);
+            .idDependenciaContratista(UPDATED_ID_DEPENDENCIA_CONTRATISTA)
+            .creaLibroAdminMan(UPDATED_CREA_LIBRO_ADMIN_MAN)
+            .creaLibroAdminCon(UPDATED_CREA_LIBRO_ADMIN_CON)
+            .actualizarContratoAdminMan(UPDATED_ACTUALIZAR_CONTRATO_ADMIN_MAN)
+            .actualizarContratoAdminCon(UPDATED_ACTUALIZAR_CONTRATO_ADMIN_CON);
         return contrato;
     }
 
@@ -218,6 +238,10 @@ public class ContratoResourceIT {
         assertThat(testContrato.getTelefonoContacto()).isEqualTo(DEFAULT_TELEFONO_CONTACTO);
         assertThat(testContrato.getEmailContacto()).isEqualTo(DEFAULT_EMAIL_CONTACTO);
         assertThat(testContrato.getIdDependenciaContratista()).isEqualTo(DEFAULT_ID_DEPENDENCIA_CONTRATISTA);
+        assertThat(testContrato.isCreaLibroAdminMan()).isEqualTo(DEFAULT_CREA_LIBRO_ADMIN_MAN);
+        assertThat(testContrato.isCreaLibroAdminCon()).isEqualTo(DEFAULT_CREA_LIBRO_ADMIN_CON);
+        assertThat(testContrato.isActualizarContratoAdminMan()).isEqualTo(DEFAULT_ACTUALIZAR_CONTRATO_ADMIN_MAN);
+        assertThat(testContrato.isActualizarContratoAdminCon()).isEqualTo(DEFAULT_ACTUALIZAR_CONTRATO_ADMIN_CON);
     }
 
     @Test
@@ -322,7 +346,11 @@ public class ContratoResourceIT {
             .andExpect(jsonPath("$.[*].nombreContacto").value(hasItem(DEFAULT_NOMBRE_CONTACTO)))
             .andExpect(jsonPath("$.[*].telefonoContacto").value(hasItem(DEFAULT_TELEFONO_CONTACTO)))
             .andExpect(jsonPath("$.[*].emailContacto").value(hasItem(DEFAULT_EMAIL_CONTACTO)))
-            .andExpect(jsonPath("$.[*].idDependenciaContratista").value(hasItem(DEFAULT_ID_DEPENDENCIA_CONTRATISTA)));
+            .andExpect(jsonPath("$.[*].idDependenciaContratista").value(hasItem(DEFAULT_ID_DEPENDENCIA_CONTRATISTA)))
+            .andExpect(jsonPath("$.[*].creaLibroAdminMan").value(hasItem(DEFAULT_CREA_LIBRO_ADMIN_MAN.booleanValue())))
+            .andExpect(jsonPath("$.[*].creaLibroAdminCon").value(hasItem(DEFAULT_CREA_LIBRO_ADMIN_CON.booleanValue())))
+            .andExpect(jsonPath("$.[*].actualizarContratoAdminMan").value(hasItem(DEFAULT_ACTUALIZAR_CONTRATO_ADMIN_MAN.booleanValue())))
+            .andExpect(jsonPath("$.[*].actualizarContratoAdminCon").value(hasItem(DEFAULT_ACTUALIZAR_CONTRATO_ADMIN_CON.booleanValue())));
     }
     
     @Test
@@ -353,7 +381,11 @@ public class ContratoResourceIT {
             .andExpect(jsonPath("$.nombreContacto").value(DEFAULT_NOMBRE_CONTACTO))
             .andExpect(jsonPath("$.telefonoContacto").value(DEFAULT_TELEFONO_CONTACTO))
             .andExpect(jsonPath("$.emailContacto").value(DEFAULT_EMAIL_CONTACTO))
-            .andExpect(jsonPath("$.idDependenciaContratista").value(DEFAULT_ID_DEPENDENCIA_CONTRATISTA));
+            .andExpect(jsonPath("$.idDependenciaContratista").value(DEFAULT_ID_DEPENDENCIA_CONTRATISTA))
+            .andExpect(jsonPath("$.creaLibroAdminMan").value(DEFAULT_CREA_LIBRO_ADMIN_MAN.booleanValue()))
+            .andExpect(jsonPath("$.creaLibroAdminCon").value(DEFAULT_CREA_LIBRO_ADMIN_CON.booleanValue()))
+            .andExpect(jsonPath("$.actualizarContratoAdminMan").value(DEFAULT_ACTUALIZAR_CONTRATO_ADMIN_MAN.booleanValue()))
+            .andExpect(jsonPath("$.actualizarContratoAdminCon").value(DEFAULT_ACTUALIZAR_CONTRATO_ADMIN_CON.booleanValue()));
     }
 
     @Test
@@ -394,7 +426,11 @@ public class ContratoResourceIT {
             .nombreContacto(UPDATED_NOMBRE_CONTACTO)
             .telefonoContacto(UPDATED_TELEFONO_CONTACTO)
             .emailContacto(UPDATED_EMAIL_CONTACTO)
-            .idDependenciaContratista(UPDATED_ID_DEPENDENCIA_CONTRATISTA);
+            .idDependenciaContratista(UPDATED_ID_DEPENDENCIA_CONTRATISTA)
+            .creaLibroAdminMan(UPDATED_CREA_LIBRO_ADMIN_MAN)
+            .creaLibroAdminCon(UPDATED_CREA_LIBRO_ADMIN_CON)
+            .actualizarContratoAdminMan(UPDATED_ACTUALIZAR_CONTRATO_ADMIN_MAN)
+            .actualizarContratoAdminCon(UPDATED_ACTUALIZAR_CONTRATO_ADMIN_CON);
 
         restContratoMockMvc.perform(put("/api/contratoes")
             .contentType(TestUtil.APPLICATION_JSON)
@@ -423,6 +459,10 @@ public class ContratoResourceIT {
         assertThat(testContrato.getTelefonoContacto()).isEqualTo(UPDATED_TELEFONO_CONTACTO);
         assertThat(testContrato.getEmailContacto()).isEqualTo(UPDATED_EMAIL_CONTACTO);
         assertThat(testContrato.getIdDependenciaContratista()).isEqualTo(UPDATED_ID_DEPENDENCIA_CONTRATISTA);
+        assertThat(testContrato.isCreaLibroAdminMan()).isEqualTo(UPDATED_CREA_LIBRO_ADMIN_MAN);
+        assertThat(testContrato.isCreaLibroAdminCon()).isEqualTo(UPDATED_CREA_LIBRO_ADMIN_CON);
+        assertThat(testContrato.isActualizarContratoAdminMan()).isEqualTo(UPDATED_ACTUALIZAR_CONTRATO_ADMIN_MAN);
+        assertThat(testContrato.isActualizarContratoAdminCon()).isEqualTo(UPDATED_ACTUALIZAR_CONTRATO_ADMIN_CON);
     }
 
     @Test

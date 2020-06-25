@@ -116,4 +116,17 @@ public class LibroResource {
         libroRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString())).build();
     }
+
+    /**
+     * {@code GET  /buscaDependenciaPorEntidad/:idEntidad} : get the "ids" of entidades.
+     *
+     * @param id the id of the entidad to find a list of dependencias.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+     @GetMapping("/buscarlibroPorContrato/{idContrato}")
+    public List<Libro> buscarlibroPorContrato(@PathVariable Long idContrato) {
+        log.debug("REST request to get libros  por contrato : {}", idContrato);
+        return libroRepository.buscarlibroPorContrato(idContrato);
+    }
+
 }

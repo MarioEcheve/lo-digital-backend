@@ -76,7 +76,7 @@ public class Libro implements Serializable {
     private Set<UsuarioLibro> usuarioLibros = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties("libros")
+    @JsonIgnoreProperties(value="libros", allowSetters=true)
     private Contrato contrato;
 
     @ManyToOne

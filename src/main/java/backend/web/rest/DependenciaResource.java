@@ -19,6 +19,9 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 /**
  * REST controller for managing {@link backend.domain.Dependencia}.
  */
@@ -115,5 +118,29 @@ public class DependenciaResource {
         log.debug("REST request to delete Dependencia : {}", id);
         dependenciaRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString())).build();
+    }
+      /**
+     * {@code GET  /dependencias/:idEntidad} : get the "ids" of entidades.
+     *
+     * @param id the id of the entidad to find a list of dependencias.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+     @GetMapping("/buscaDependenciaPorEntidad/{idEntidad}")
+    public List<Dependencia> buscaDependenciaPorEntidad(@PathVariable Long idEntidad) {
+        log.debug("REST request to get comunas  por region : {}", idEntidad);
+        return dependenciaRepository.buscaDependenciaPorEntidad(idEntidad);
+    }
+
+     /**
+     * {@code GET  /buscaUsuariosDependencia/:idDependencia} : get the "ids" of usuarios.
+     *
+     * @param id the id of the dependencia to find a list of usuarios.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+     @GetMapping("/buscaUsuariosDependencia/{idDependencia}")
+    public String buscaUsuariosDependencia(@PathVariable Long idDependencia) throws JsonProcessingException{
+        log.debug("REST request to get usuarios  por region : {}", idDependencia);
+        String json = new ObjectMapper().writeValueAsString(dependenciaRepository.buscaUsuariosDependencia(idDependencia));
+        return json;
     }
 }

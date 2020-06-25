@@ -10,9 +10,12 @@ import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import org.springframework.data.jpa.repository.*;
+import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 import java.time.Instant;
+import org.springframework.data.repository.query.Param;
 
 /**
  * Spring Data JPA repository for the {@link User} entity.
@@ -46,4 +49,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findOneWithAuthoritiesByEmailIgnoreCase(String email);
 
     Page<User> findAllByLoginNot(Pageable pageable, String login);
+
+    @Query("select a from User a "
+        +"where a.login LIKE :valor")
+    List<User> BuscarUsuarioPorLogin(@Param("valor") String valor);
+    
 }
