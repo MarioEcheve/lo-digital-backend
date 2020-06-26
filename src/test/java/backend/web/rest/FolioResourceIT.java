@@ -78,6 +78,9 @@ public class FolioResourceIT {
     private static final String DEFAULT_ASUNTO = "AAAAAAAAAA";
     private static final String UPDATED_ASUNTO = "BBBBBBBBBB";
 
+    private static final String DEFAULT_ANOTACION = "AAAAAAAAAA";
+    private static final String UPDATED_ANOTACION = "BBBBBBBBBB";
+
     private static final byte[] DEFAULT_PDF_FIRMADO = TestUtil.createByteArray(1, "0");
     private static final byte[] UPDATED_PDF_FIRMADO = TestUtil.createByteArray(1, "1");
     private static final String DEFAULT_PDF_FIRMADO_CONTENT_TYPE = "image/jpg";
@@ -144,6 +147,7 @@ public class FolioResourceIT {
             .fechaFirma(DEFAULT_FECHA_FIRMA)
             .fechaLectura(DEFAULT_FECHA_LECTURA)
             .asunto(DEFAULT_ASUNTO)
+            .anotacion(DEFAULT_ANOTACION)
             .pdfFirmado(DEFAULT_PDF_FIRMADO)
             .pdfFirmadoContentType(DEFAULT_PDF_FIRMADO_CONTENT_TYPE)
             .pdfLectura(DEFAULT_PDF_LECTURA)
@@ -172,6 +176,7 @@ public class FolioResourceIT {
             .fechaFirma(UPDATED_FECHA_FIRMA)
             .fechaLectura(UPDATED_FECHA_LECTURA)
             .asunto(UPDATED_ASUNTO)
+            .anotacion(UPDATED_ANOTACION)
             .pdfFirmado(UPDATED_PDF_FIRMADO)
             .pdfFirmadoContentType(UPDATED_PDF_FIRMADO_CONTENT_TYPE)
             .pdfLectura(UPDATED_PDF_LECTURA)
@@ -213,6 +218,7 @@ public class FolioResourceIT {
         assertThat(testFolio.getFechaFirma()).isEqualTo(DEFAULT_FECHA_FIRMA);
         assertThat(testFolio.getFechaLectura()).isEqualTo(DEFAULT_FECHA_LECTURA);
         assertThat(testFolio.getAsunto()).isEqualTo(DEFAULT_ASUNTO);
+        assertThat(testFolio.getAnotacion()).isEqualTo(DEFAULT_ANOTACION);
         assertThat(testFolio.getPdfFirmado()).isEqualTo(DEFAULT_PDF_FIRMADO);
         assertThat(testFolio.getPdfFirmadoContentType()).isEqualTo(DEFAULT_PDF_FIRMADO_CONTENT_TYPE);
         assertThat(testFolio.getPdfLectura()).isEqualTo(DEFAULT_PDF_LECTURA);
@@ -282,6 +288,7 @@ public class FolioResourceIT {
             .andExpect(jsonPath("$.[*].fechaFirma").value(hasItem(DEFAULT_FECHA_FIRMA.toString())))
             .andExpect(jsonPath("$.[*].fechaLectura").value(hasItem(DEFAULT_FECHA_LECTURA.toString())))
             .andExpect(jsonPath("$.[*].asunto").value(hasItem(DEFAULT_ASUNTO)))
+            .andExpect(jsonPath("$.[*].anotacion").value(hasItem(DEFAULT_ANOTACION)))
             .andExpect(jsonPath("$.[*].pdfFirmadoContentType").value(hasItem(DEFAULT_PDF_FIRMADO_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].pdfFirmado").value(hasItem(Base64Utils.encodeToString(DEFAULT_PDF_FIRMADO))))
             .andExpect(jsonPath("$.[*].pdfLecturaContentType").value(hasItem(DEFAULT_PDF_LECTURA_CONTENT_TYPE)))
@@ -313,6 +320,7 @@ public class FolioResourceIT {
             .andExpect(jsonPath("$.fechaFirma").value(DEFAULT_FECHA_FIRMA.toString()))
             .andExpect(jsonPath("$.fechaLectura").value(DEFAULT_FECHA_LECTURA.toString()))
             .andExpect(jsonPath("$.asunto").value(DEFAULT_ASUNTO))
+            .andExpect(jsonPath("$.anotacion").value(DEFAULT_ANOTACION))
             .andExpect(jsonPath("$.pdfFirmadoContentType").value(DEFAULT_PDF_FIRMADO_CONTENT_TYPE))
             .andExpect(jsonPath("$.pdfFirmado").value(Base64Utils.encodeToString(DEFAULT_PDF_FIRMADO)))
             .andExpect(jsonPath("$.pdfLecturaContentType").value(DEFAULT_PDF_LECTURA_CONTENT_TYPE))
@@ -354,6 +362,7 @@ public class FolioResourceIT {
             .fechaFirma(UPDATED_FECHA_FIRMA)
             .fechaLectura(UPDATED_FECHA_LECTURA)
             .asunto(UPDATED_ASUNTO)
+            .anotacion(UPDATED_ANOTACION)
             .pdfFirmado(UPDATED_PDF_FIRMADO)
             .pdfFirmadoContentType(UPDATED_PDF_FIRMADO_CONTENT_TYPE)
             .pdfLectura(UPDATED_PDF_LECTURA)
@@ -382,6 +391,7 @@ public class FolioResourceIT {
         assertThat(testFolio.getFechaFirma()).isEqualTo(UPDATED_FECHA_FIRMA);
         assertThat(testFolio.getFechaLectura()).isEqualTo(UPDATED_FECHA_LECTURA);
         assertThat(testFolio.getAsunto()).isEqualTo(UPDATED_ASUNTO);
+        assertThat(testFolio.getAnotacion()).isEqualTo(UPDATED_ANOTACION);
         assertThat(testFolio.getPdfFirmado()).isEqualTo(UPDATED_PDF_FIRMADO);
         assertThat(testFolio.getPdfFirmadoContentType()).isEqualTo(UPDATED_PDF_FIRMADO_CONTENT_TYPE);
         assertThat(testFolio.getPdfLectura()).isEqualTo(UPDATED_PDF_LECTURA);

@@ -26,7 +26,9 @@ export interface IContrato {
   fechaTermino?: Moment;
   observaciones?: string;
   nombreContacto?: string;
+  cargo?: string;
   telefonoContacto?: string;
+  telefonoContactoSecundario?: string;
   emailContacto?: string;
   idDependenciaContratista?: number;
   creaLibroAdminMan?: boolean;
@@ -62,7 +64,9 @@ export class Contrato implements IContrato {
     public fechaTermino?: Moment,
     public observaciones?: string,
     public nombreContacto?: string,
+    public cargo?: string,
     public telefonoContacto?: string,
+    public telefonoContactoSecundario?: string,
     public emailContacto?: string,
     public idDependenciaContratista?: number,
     public creaLibroAdminMan?: boolean,

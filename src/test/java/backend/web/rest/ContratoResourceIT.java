@@ -80,8 +80,14 @@ public class ContratoResourceIT {
     private static final String DEFAULT_NOMBRE_CONTACTO = "AAAAAAAAAA";
     private static final String UPDATED_NOMBRE_CONTACTO = "BBBBBBBBBB";
 
+    private static final String DEFAULT_CARGO = "AAAAAAAAAA";
+    private static final String UPDATED_CARGO = "BBBBBBBBBB";
+
     private static final String DEFAULT_TELEFONO_CONTACTO = "AAAAAAAAAA";
     private static final String UPDATED_TELEFONO_CONTACTO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TELEFONO_CONTACTO_SECUNDARIO = "AAAAAAAAAA";
+    private static final String UPDATED_TELEFONO_CONTACTO_SECUNDARIO = "BBBBBBBBBB";
 
     private static final String DEFAULT_EMAIL_CONTACTO = "AAAAAAAAAA";
     private static final String UPDATED_EMAIL_CONTACTO = "BBBBBBBBBB";
@@ -158,7 +164,9 @@ public class ContratoResourceIT {
             .fechaTermino(DEFAULT_FECHA_TERMINO)
             .observaciones(DEFAULT_OBSERVACIONES)
             .nombreContacto(DEFAULT_NOMBRE_CONTACTO)
+            .cargo(DEFAULT_CARGO)
             .telefonoContacto(DEFAULT_TELEFONO_CONTACTO)
+            .telefonoContactoSecundario(DEFAULT_TELEFONO_CONTACTO_SECUNDARIO)
             .emailContacto(DEFAULT_EMAIL_CONTACTO)
             .idDependenciaContratista(DEFAULT_ID_DEPENDENCIA_CONTRATISTA)
             .creaLibroAdminMan(DEFAULT_CREA_LIBRO_ADMIN_MAN)
@@ -190,7 +198,9 @@ public class ContratoResourceIT {
             .fechaTermino(UPDATED_FECHA_TERMINO)
             .observaciones(UPDATED_OBSERVACIONES)
             .nombreContacto(UPDATED_NOMBRE_CONTACTO)
+            .cargo(UPDATED_CARGO)
             .telefonoContacto(UPDATED_TELEFONO_CONTACTO)
+            .telefonoContactoSecundario(UPDATED_TELEFONO_CONTACTO_SECUNDARIO)
             .emailContacto(UPDATED_EMAIL_CONTACTO)
             .idDependenciaContratista(UPDATED_ID_DEPENDENCIA_CONTRATISTA)
             .creaLibroAdminMan(UPDATED_CREA_LIBRO_ADMIN_MAN)
@@ -235,7 +245,9 @@ public class ContratoResourceIT {
         assertThat(testContrato.getFechaTermino()).isEqualTo(DEFAULT_FECHA_TERMINO);
         assertThat(testContrato.getObservaciones()).isEqualTo(DEFAULT_OBSERVACIONES);
         assertThat(testContrato.getNombreContacto()).isEqualTo(DEFAULT_NOMBRE_CONTACTO);
+        assertThat(testContrato.getCargo()).isEqualTo(DEFAULT_CARGO);
         assertThat(testContrato.getTelefonoContacto()).isEqualTo(DEFAULT_TELEFONO_CONTACTO);
+        assertThat(testContrato.getTelefonoContactoSecundario()).isEqualTo(DEFAULT_TELEFONO_CONTACTO_SECUNDARIO);
         assertThat(testContrato.getEmailContacto()).isEqualTo(DEFAULT_EMAIL_CONTACTO);
         assertThat(testContrato.getIdDependenciaContratista()).isEqualTo(DEFAULT_ID_DEPENDENCIA_CONTRATISTA);
         assertThat(testContrato.isCreaLibroAdminMan()).isEqualTo(DEFAULT_CREA_LIBRO_ADMIN_MAN);
@@ -344,7 +356,9 @@ public class ContratoResourceIT {
             .andExpect(jsonPath("$.[*].fechaTermino").value(hasItem(DEFAULT_FECHA_TERMINO.toString())))
             .andExpect(jsonPath("$.[*].observaciones").value(hasItem(DEFAULT_OBSERVACIONES)))
             .andExpect(jsonPath("$.[*].nombreContacto").value(hasItem(DEFAULT_NOMBRE_CONTACTO)))
+            .andExpect(jsonPath("$.[*].cargo").value(hasItem(DEFAULT_CARGO)))
             .andExpect(jsonPath("$.[*].telefonoContacto").value(hasItem(DEFAULT_TELEFONO_CONTACTO)))
+            .andExpect(jsonPath("$.[*].telefonoContactoSecundario").value(hasItem(DEFAULT_TELEFONO_CONTACTO_SECUNDARIO)))
             .andExpect(jsonPath("$.[*].emailContacto").value(hasItem(DEFAULT_EMAIL_CONTACTO)))
             .andExpect(jsonPath("$.[*].idDependenciaContratista").value(hasItem(DEFAULT_ID_DEPENDENCIA_CONTRATISTA)))
             .andExpect(jsonPath("$.[*].creaLibroAdminMan").value(hasItem(DEFAULT_CREA_LIBRO_ADMIN_MAN.booleanValue())))
@@ -379,7 +393,9 @@ public class ContratoResourceIT {
             .andExpect(jsonPath("$.fechaTermino").value(DEFAULT_FECHA_TERMINO.toString()))
             .andExpect(jsonPath("$.observaciones").value(DEFAULT_OBSERVACIONES))
             .andExpect(jsonPath("$.nombreContacto").value(DEFAULT_NOMBRE_CONTACTO))
+            .andExpect(jsonPath("$.cargo").value(DEFAULT_CARGO))
             .andExpect(jsonPath("$.telefonoContacto").value(DEFAULT_TELEFONO_CONTACTO))
+            .andExpect(jsonPath("$.telefonoContactoSecundario").value(DEFAULT_TELEFONO_CONTACTO_SECUNDARIO))
             .andExpect(jsonPath("$.emailContacto").value(DEFAULT_EMAIL_CONTACTO))
             .andExpect(jsonPath("$.idDependenciaContratista").value(DEFAULT_ID_DEPENDENCIA_CONTRATISTA))
             .andExpect(jsonPath("$.creaLibroAdminMan").value(DEFAULT_CREA_LIBRO_ADMIN_MAN.booleanValue()))
@@ -424,7 +440,9 @@ public class ContratoResourceIT {
             .fechaTermino(UPDATED_FECHA_TERMINO)
             .observaciones(UPDATED_OBSERVACIONES)
             .nombreContacto(UPDATED_NOMBRE_CONTACTO)
+            .cargo(UPDATED_CARGO)
             .telefonoContacto(UPDATED_TELEFONO_CONTACTO)
+            .telefonoContactoSecundario(UPDATED_TELEFONO_CONTACTO_SECUNDARIO)
             .emailContacto(UPDATED_EMAIL_CONTACTO)
             .idDependenciaContratista(UPDATED_ID_DEPENDENCIA_CONTRATISTA)
             .creaLibroAdminMan(UPDATED_CREA_LIBRO_ADMIN_MAN)
@@ -456,7 +474,9 @@ public class ContratoResourceIT {
         assertThat(testContrato.getFechaTermino()).isEqualTo(UPDATED_FECHA_TERMINO);
         assertThat(testContrato.getObservaciones()).isEqualTo(UPDATED_OBSERVACIONES);
         assertThat(testContrato.getNombreContacto()).isEqualTo(UPDATED_NOMBRE_CONTACTO);
+        assertThat(testContrato.getCargo()).isEqualTo(UPDATED_CARGO);
         assertThat(testContrato.getTelefonoContacto()).isEqualTo(UPDATED_TELEFONO_CONTACTO);
+        assertThat(testContrato.getTelefonoContactoSecundario()).isEqualTo(UPDATED_TELEFONO_CONTACTO_SECUNDARIO);
         assertThat(testContrato.getEmailContacto()).isEqualTo(UPDATED_EMAIL_CONTACTO);
         assertThat(testContrato.getIdDependenciaContratista()).isEqualTo(UPDATED_ID_DEPENDENCIA_CONTRATISTA);
         assertThat(testContrato.isCreaLibroAdminMan()).isEqualTo(UPDATED_CREA_LIBRO_ADMIN_MAN);

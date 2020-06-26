@@ -101,7 +101,23 @@
             "fieldValidateRulesMaxlength": "50"
         },
         {
+            "fieldName": "cargo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
             "fieldName": "telefonoContacto",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "telefonoContactoSecundario",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"

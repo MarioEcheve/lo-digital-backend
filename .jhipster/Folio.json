@@ -63,6 +63,14 @@
             "fieldValidateRulesMaxlength": "80"
         },
         {
+            "fieldName": "anotacion",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "50000"
+        },
+        {
             "fieldName": "pdfFirmado",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "any"

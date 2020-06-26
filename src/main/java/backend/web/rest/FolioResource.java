@@ -116,4 +116,15 @@ public class FolioResource {
         folioRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString())).build();
     }
+    /**
+     * {@code GET  /buscarFolioPorLibro/:idLibro} : get the "idLibro" libro.
+     *
+     * @param id the id of the libro to get.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+     @GetMapping("/buscarFolioPorLibro/{idLibro}")
+    public List<Folio> buscarFolioPorLibro(@PathVariable Long idLibro) {
+        log.debug("REST request to get folios  por Libro : {}", idLibro);
+        return folioRepository.buscarFolioPorLibro(idLibro);
+    }
 }

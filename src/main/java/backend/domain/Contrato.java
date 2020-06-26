@@ -82,8 +82,16 @@ public class Contrato implements Serializable {
     private String nombreContacto;
 
     @Size(max = 50)
+    @Column(name = "cargo", length = 50)
+    private String cargo;
+
+    @Size(max = 50)
     @Column(name = "telefono_contacto", length = 50)
     private String telefonoContacto;
+
+    @Size(max = 50)
+    @Column(name = "telefono_contacto_secundario", length = 50)
+    private String telefonoContactoSecundario;
 
     @Size(max = 50)
     @Column(name = "email_contacto", length = 50)
@@ -108,23 +116,23 @@ public class Contrato implements Serializable {
     private Set<Libro> libros = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties(value = "contratoes", allowSetters = true)
+    @JsonIgnoreProperties(value = "contratoes", allowSetters=true)
     private Dependencia dependenciaMandante;
 
     @ManyToOne
-    @JsonIgnoreProperties("contratoes")
+    @JsonIgnoreProperties(value="contratoes",allowSetters=true)
     private Region region;
 
     @ManyToOne
-    @JsonIgnoreProperties("contratoes")
+    @JsonIgnoreProperties(value="contratoes",allowSetters=true)
     private TipoContrato tipoContrato;
 
     @ManyToOne
-    @JsonIgnoreProperties("contratoes")
+    @JsonIgnoreProperties(value="contratoes",allowSetters=true)
     private Modalidad modalidad;
 
     @ManyToOne
-    @JsonIgnoreProperties("contratoes")
+    @JsonIgnoreProperties(value="contratoes",allowSetters=true)
     private Comuna comuna;
 
     @ManyToOne
@@ -343,6 +351,19 @@ public class Contrato implements Serializable {
         this.nombreContacto = nombreContacto;
     }
 
+    public String getCargo() {
+        return cargo;
+    }
+
+    public Contrato cargo(String cargo) {
+        this.cargo = cargo;
+        return this;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
     public String getTelefonoContacto() {
         return telefonoContacto;
     }
@@ -354,6 +375,19 @@ public class Contrato implements Serializable {
 
     public void setTelefonoContacto(String telefonoContacto) {
         this.telefonoContacto = telefonoContacto;
+    }
+
+    public String getTelefonoContactoSecundario() {
+        return telefonoContactoSecundario;
+    }
+
+    public Contrato telefonoContactoSecundario(String telefonoContactoSecundario) {
+        this.telefonoContactoSecundario = telefonoContactoSecundario;
+        return this;
+    }
+
+    public void setTelefonoContactoSecundario(String telefonoContactoSecundario) {
+        this.telefonoContactoSecundario = telefonoContactoSecundario;
     }
 
     public String getEmailContacto() {
@@ -599,7 +633,9 @@ public class Contrato implements Serializable {
             ", fechaTermino='" + getFechaTermino() + "'" +
             ", observaciones='" + getObservaciones() + "'" +
             ", nombreContacto='" + getNombreContacto() + "'" +
+            ", cargo='" + getCargo() + "'" +
             ", telefonoContacto='" + getTelefonoContacto() + "'" +
+            ", telefonoContactoSecundario='" + getTelefonoContactoSecundario() + "'" +
             ", emailContacto='" + getEmailContacto() + "'" +
             ", idDependenciaContratista=" + getIdDependenciaContratista() +
             ", creaLibroAdminMan='" + isCreaLibroAdminMan() + "'" +

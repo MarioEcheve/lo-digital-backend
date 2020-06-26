@@ -37,6 +37,7 @@
                     <th scope="col" ><span>Fecha Firma</span></th>
                     <th scope="col" ><span>Fecha Lectura</span></th>
                     <th scope="col" ><span>Asunto</span></th>
+                    <th scope="col" ><span>Anotacion</span></th>
                     <th scope="col" ><span>Pdf Firmado</span></th>
                     <th scope="col" ><span>Pdf Lectura</span></th>
                     <th scope="col" ><span>Libro</span></th>
@@ -62,6 +63,7 @@
                     <td>{{ folio.fechaFirma | date:'medium' }}</td>
                     <td>{{ folio.fechaLectura | date:'medium' }}</td>
                     <td>{{ folio.asunto }}</td>
+                    <td>{{ folio.anotacion }}</td>
                     <td>
                         <a *ngIf="folio.pdfFirmado" (click)="openFile(folio.pdfFirmadoContentType, folio.pdfFirmado)">open</a>
                         <span *ngIf="folio.pdfFirmado">{{ folio.pdfFirmadoContentType }}, {{ byteSize(folio.pdfFirmado) }}</span>

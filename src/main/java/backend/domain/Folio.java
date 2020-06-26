@@ -68,6 +68,10 @@ public class Folio implements Serializable {
     @Column(name = "asunto", length = 80, nullable = false)
     private String asunto;
 
+    @Size(max = 50000)
+    @Column(name = "anotacion", length = 50000)
+    private String anotacion;
+
     @Lob
     @Column(name = "pdf_firmado")
     private byte[] pdfFirmado;
@@ -95,15 +99,15 @@ public class Folio implements Serializable {
     private Set<GesFavorito> gesFavoritos = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties("folios")
+    @JsonIgnoreProperties(value="folios",allowSetters=true)
     private Libro libro;
 
     @ManyToOne
-    @JsonIgnoreProperties("folios")
+    @JsonIgnoreProperties(value="folios",allowSetters=true)
     private TipoFolio tipoFolio;
 
     @ManyToOne
-    @JsonIgnoreProperties("folios")
+    @JsonIgnoreProperties(value="folios",allowSetters=true)
     private EstadoRespuesta estadoRespuesta;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -295,6 +299,19 @@ public class Folio implements Serializable {
 
     public void setAsunto(String asunto) {
         this.asunto = asunto;
+    }
+
+    public String getAnotacion() {
+        return anotacion;
+    }
+
+    public Folio anotacion(String anotacion) {
+        this.anotacion = anotacion;
+        return this;
+    }
+
+    public void setAnotacion(String anotacion) {
+        this.anotacion = anotacion;
     }
 
     public byte[] getPdfFirmado() {
@@ -523,6 +540,7 @@ public class Folio implements Serializable {
             ", fechaFirma='" + getFechaFirma() + "'" +
             ", fechaLectura='" + getFechaLectura() + "'" +
             ", asunto='" + getAsunto() + "'" +
+            ", anotacion='" + getAnotacion() + "'" +
             ", pdfFirmado='" + getPdfFirmado() + "'" +
             ", pdfFirmadoContentType='" + getPdfFirmadoContentType() + "'" +
             ", pdfLectura='" + getPdfLectura() + "'" +

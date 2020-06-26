@@ -40,6 +40,7 @@ describe('Service Tests', () => {
         currentDate,
         currentDate,
         'AAAAAAA',
+        'AAAAAAA',
         'image/png',
         'AAAAAAA',
         'image/png',
@@ -115,6 +116,7 @@ describe('Service Tests', () => {
             fechaFirma: currentDate.format(DATE_TIME_FORMAT),
             fechaLectura: currentDate.format(DATE_TIME_FORMAT),
             asunto: 'BBBBBB',
+            anotacion: 'BBBBBB',
             pdfFirmado: 'BBBBBB',
             pdfLectura: 'BBBBBB'
           },
@@ -156,6 +158,7 @@ describe('Service Tests', () => {
             fechaFirma: currentDate.format(DATE_TIME_FORMAT),
             fechaLectura: currentDate.format(DATE_TIME_FORMAT),
             asunto: 'BBBBBB',
+            anotacion: 'BBBBBB',
             pdfFirmado: 'BBBBBB',
             pdfLectura: 'BBBBBB'
           },

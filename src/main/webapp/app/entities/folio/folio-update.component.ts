@@ -46,6 +46,7 @@ export class FolioUpdateComponent implements OnInit {
     fechaFirma: [],
     fechaLectura: [],
     asunto: [null, [Validators.required, Validators.maxLength(80)]],
+    anotacion: [null, [Validators.maxLength(50000)]],
     pdfFirmado: [],
     pdfFirmadoContentType: [],
     pdfLectura: [],
@@ -104,6 +105,7 @@ export class FolioUpdateComponent implements OnInit {
       fechaFirma: folio.fechaFirma ? folio.fechaFirma.format(DATE_TIME_FORMAT) : null,
       fechaLectura: folio.fechaLectura ? folio.fechaLectura.format(DATE_TIME_FORMAT) : null,
       asunto: folio.asunto,
+      anotacion: folio.anotacion,
       pdfFirmado: folio.pdfFirmado,
       pdfFirmadoContentType: folio.pdfFirmadoContentType,
       pdfLectura: folio.pdfLectura,
@@ -170,6 +172,7 @@ export class FolioUpdateComponent implements OnInit {
         ? moment(this.editForm.get(['fechaLectura'])!.value, DATE_TIME_FORMAT)
         : undefined,
       asunto: this.editForm.get(['asunto'])!.value,
+      anotacion: this.editForm.get(['anotacion'])!.value,
       pdfFirmadoContentType: this.editForm.get(['pdfFirmadoContentType'])!.value,
       pdfFirmado: this.editForm.get(['pdfFirmado'])!.value,
       pdfLecturaContentType: this.editForm.get(['pdfLecturaContentType'])!.value,

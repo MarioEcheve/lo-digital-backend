@@ -60,7 +60,13 @@
             <column name="nombre_contacto" type="varchar(50)">
                 <constraints nullable="true" />
             </column>
+            <column name="cargo" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
             <column name="telefono_contacto" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="telefono_contacto_secundario" type="varchar(50)">
                 <constraints nullable="true" />
             </column>
             <column name="email_contacto" type="varchar(50)">
@@ -148,7 +154,9 @@
             <column name="fecha_termino" type="datetime"/>
             <column name="observaciones" type="string"/>
             <column name="nombre_contacto" type="string"/>
+            <column name="cargo" type="string"/>
             <column name="telefono_contacto" type="string"/>
+            <column name="telefono_contacto_secundario" type="string"/>
             <column name="email_contacto" type="string"/>
             <column name="id_dependencia_contratista" type="numeric"/>
             <column name="crea_libro_admin_man" type="boolean"/>

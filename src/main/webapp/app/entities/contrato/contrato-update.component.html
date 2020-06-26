@@ -173,12 +173,36 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label" for="field_cargo">Cargo</label>
+                    <input type="text" class="form-control" name="cargo" id="field_cargo"
+                           formControlName="cargo"/>
+                    <div *ngIf="editForm.get('cargo')!.invalid && (editForm.get('cargo')!.dirty || editForm.get('cargo')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cargo')?.errors?.maxlength">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="form-control-label" for="field_telefonoContacto">Telefono Contacto</label>
                     <input type="text" class="form-control" name="telefonoContacto" id="field_telefonoContacto"
                            formControlName="telefonoContacto"/>
                     <div *ngIf="editForm.get('telefonoContacto')!.invalid && (editForm.get('telefonoContacto')!.dirty || editForm.get('telefonoContacto')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('telefonoContacto')?.errors?.maxlength">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_telefonoContactoSecundario">Telefono Contacto Secundario</label>
+                    <input type="text" class="form-control" name="telefonoContactoSecundario" id="field_telefonoContactoSecundario"
+                           formControlName="telefonoContactoSecundario"/>
+                    <div *ngIf="editForm.get('telefonoContactoSecundario')!.invalid && (editForm.get('telefonoContactoSecundario')!.dirty || editForm.get('telefonoContactoSecundario')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('telefonoContactoSecundario')?.errors?.maxlength">
                         This field cannot be longer than 50 characters.
                         </small>
                     </div>

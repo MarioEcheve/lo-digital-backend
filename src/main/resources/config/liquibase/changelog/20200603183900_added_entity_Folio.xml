@@ -57,6 +57,9 @@
             <column name="asunto" type="varchar(80)">
                 <constraints nullable="false" />
             </column>
+            <column name="anotacion" type="varchar(50000)">
+                <constraints nullable="true" />
+            </column>
             <column name="pdf_firmado" type="longblob">
                 <constraints nullable="true" />
             </column>
@@ -120,6 +123,7 @@
             <column name="fecha_firma" type="datetime"/>
             <column name="fecha_lectura" type="datetime"/>
             <column name="asunto" type="string"/>
+            <column name="anotacion" type="string"/>
             <column name="pdf_firmado" type="blob"/>
             <column name="pdf_firmado_content_type" type="string"/>
             <column name="pdf_lectura" type="blob"/>
