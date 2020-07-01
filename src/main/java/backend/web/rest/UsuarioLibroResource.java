@@ -115,4 +115,16 @@ public class UsuarioLibroResource {
         usuarioLibroRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString())).build();
     }
+
+     /**
+     * {@code GET  /buscaDependenciaPorEntidad/:idEntidad} : get the "ids" of entidades.
+     *
+     * @param id the id of the entidad to find a list of dependencias.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+     @GetMapping("/ListaUsuariosLibrosFolio/{idLibro}/{idUsuario}")
+    public List<UsuarioLibro> ListaUsuariosLibrosFolio(@PathVariable Long idLibro,@PathVariable Long idUsuario) {
+        log.debug("REST request to get usuario libro  por libro y usuario : {}", idLibro,idUsuario);
+        return usuarioLibroRepository.ListaUsuariosLibrosFolio(idLibro,idUsuario);
+    }
 }

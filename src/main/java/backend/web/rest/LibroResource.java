@@ -18,7 +18,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
-
 /**
  * REST controller for managing {@link backend.domain.Libro}.
  */
@@ -128,5 +127,4 @@ public class LibroResource {
         log.debug("REST request to get libros  por contrato : {}", idContrato);
         return libroRepository.buscarlibroPorContrato(idContrato);
     }
-
 }

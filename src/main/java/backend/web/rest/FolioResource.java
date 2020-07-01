@@ -18,6 +18,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * REST controller for managing {@link backend.domain.Folio}.
@@ -126,5 +128,11 @@ public class FolioResource {
     public List<Folio> buscarFolioPorLibro(@PathVariable Long idLibro) {
         log.debug("REST request to get folios  por Libro : {}", idLibro);
         return folioRepository.buscarFolioPorLibro(idLibro);
+    }
+    @GetMapping("/correlativoFolio/{idLibro}")
+    public String correlativoFolio(@PathVariable Long idLibro) throws JsonProcessingException{
+        log.debug("REST request to get correlativo por libro : {}", idLibro);
+        String json = new ObjectMapper().writeValueAsString(folioRepository.correlativoFolio(idLibro));
+        return json;
     }
 }
