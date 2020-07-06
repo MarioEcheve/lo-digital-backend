@@ -20,7 +20,7 @@ public interface DependenciaRepository extends JpaRepository<Dependencia, Long> 
         +"where b.id = :idEntidad")
     List<Dependencia> buscaDependenciaPorEntidad(@Param("idEntidad") Long idEntidad);
 
-    @Query(value = "select ud.id as id_usuario_dependencia ,'' as rut, '' as cargo, usr.first_name nombre, pusr.nombre as perfil, ud.estado estado from dependencia d "+
+    @Query(value = "select ud.id as id_usuario_dependencia ,'' as rut, '' as cargo, usr.first_name nombre,usr.last_name apellidos, pusr.nombre as perfil, ud.estado estado from dependencia d "+
                 "inner join usuario_dependencia ud on ud.dependencia_id  = d.id "+
                 "inner join jhi_user usr on usr.id = ud.usuario_id "+ 
                 "left join perfil_usuario_dependencia pusr on pusr.id = ud.perfil_usuario_dependencia_id "+ 
