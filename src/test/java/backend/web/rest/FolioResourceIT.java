@@ -66,6 +66,15 @@ public class FolioResourceIT {
     private static final Instant DEFAULT_FECHA_CREACION = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_FECHA_CREACION = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
+    private static final Integer DEFAULT_IDLIBRO_RELACIONADO = 1;
+    private static final Integer UPDATED_IDLIBRO_RELACIONADO = 2;
+
+    private static final Integer DEFAULT_ID_FOLIO_RELACIONADO = 1;
+    private static final Integer UPDATED_ID_FOLIO_RELACIONADO = 2;
+
+    private static final Integer DEFAULT_ID_FOLIO_RESPUESTA = 1;
+    private static final Integer UPDATED_ID_FOLIO_RESPUESTA = 2;
+
     private static final Instant DEFAULT_FECHA_MODIFICACION = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_FECHA_MODIFICACION = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
@@ -143,6 +152,9 @@ public class FolioResourceIT {
             .estadoFolio(DEFAULT_ESTADO_FOLIO)
             .entidadCreacion(DEFAULT_ENTIDAD_CREACION)
             .fechaCreacion(DEFAULT_FECHA_CREACION)
+            .idlibroRelacionado(DEFAULT_IDLIBRO_RELACIONADO)
+            .idFolioRelacionado(DEFAULT_ID_FOLIO_RELACIONADO)
+            .idFolioRespuesta(DEFAULT_ID_FOLIO_RESPUESTA)
             .fechaModificacion(DEFAULT_FECHA_MODIFICACION)
             .fechaFirma(DEFAULT_FECHA_FIRMA)
             .fechaLectura(DEFAULT_FECHA_LECTURA)
@@ -172,6 +184,9 @@ public class FolioResourceIT {
             .estadoFolio(UPDATED_ESTADO_FOLIO)
             .entidadCreacion(UPDATED_ENTIDAD_CREACION)
             .fechaCreacion(UPDATED_FECHA_CREACION)
+            .idlibroRelacionado(UPDATED_IDLIBRO_RELACIONADO)
+            .idFolioRelacionado(UPDATED_ID_FOLIO_RELACIONADO)
+            .idFolioRespuesta(UPDATED_ID_FOLIO_RESPUESTA)
             .fechaModificacion(UPDATED_FECHA_MODIFICACION)
             .fechaFirma(UPDATED_FECHA_FIRMA)
             .fechaLectura(UPDATED_FECHA_LECTURA)
@@ -214,6 +229,9 @@ public class FolioResourceIT {
         assertThat(testFolio.isEstadoFolio()).isEqualTo(DEFAULT_ESTADO_FOLIO);
         assertThat(testFolio.isEntidadCreacion()).isEqualTo(DEFAULT_ENTIDAD_CREACION);
         assertThat(testFolio.getFechaCreacion()).isEqualTo(DEFAULT_FECHA_CREACION);
+        assertThat(testFolio.getIdlibroRelacionado()).isEqualTo(DEFAULT_IDLIBRO_RELACIONADO);
+        assertThat(testFolio.getIdFolioRelacionado()).isEqualTo(DEFAULT_ID_FOLIO_RELACIONADO);
+        assertThat(testFolio.getIdFolioRespuesta()).isEqualTo(DEFAULT_ID_FOLIO_RESPUESTA);
         assertThat(testFolio.getFechaModificacion()).isEqualTo(DEFAULT_FECHA_MODIFICACION);
         assertThat(testFolio.getFechaFirma()).isEqualTo(DEFAULT_FECHA_FIRMA);
         assertThat(testFolio.getFechaLectura()).isEqualTo(DEFAULT_FECHA_LECTURA);
@@ -284,6 +302,9 @@ public class FolioResourceIT {
             .andExpect(jsonPath("$.[*].estadoFolio").value(hasItem(DEFAULT_ESTADO_FOLIO.booleanValue())))
             .andExpect(jsonPath("$.[*].entidadCreacion").value(hasItem(DEFAULT_ENTIDAD_CREACION.booleanValue())))
             .andExpect(jsonPath("$.[*].fechaCreacion").value(hasItem(DEFAULT_FECHA_CREACION.toString())))
+            .andExpect(jsonPath("$.[*].idlibroRelacionado").value(hasItem(DEFAULT_IDLIBRO_RELACIONADO)))
+            .andExpect(jsonPath("$.[*].idFolioRelacionado").value(hasItem(DEFAULT_ID_FOLIO_RELACIONADO)))
+            .andExpect(jsonPath("$.[*].idFolioRespuesta").value(hasItem(DEFAULT_ID_FOLIO_RESPUESTA)))
             .andExpect(jsonPath("$.[*].fechaModificacion").value(hasItem(DEFAULT_FECHA_MODIFICACION.toString())))
             .andExpect(jsonPath("$.[*].fechaFirma").value(hasItem(DEFAULT_FECHA_FIRMA.toString())))
             .andExpect(jsonPath("$.[*].fechaLectura").value(hasItem(DEFAULT_FECHA_LECTURA.toString())))
@@ -316,6 +337,9 @@ public class FolioResourceIT {
             .andExpect(jsonPath("$.estadoFolio").value(DEFAULT_ESTADO_FOLIO.booleanValue()))
             .andExpect(jsonPath("$.entidadCreacion").value(DEFAULT_ENTIDAD_CREACION.booleanValue()))
             .andExpect(jsonPath("$.fechaCreacion").value(DEFAULT_FECHA_CREACION.toString()))
+            .andExpect(jsonPath("$.idlibroRelacionado").value(DEFAULT_IDLIBRO_RELACIONADO))
+            .andExpect(jsonPath("$.idFolioRelacionado").value(DEFAULT_ID_FOLIO_RELACIONADO))
+            .andExpect(jsonPath("$.idFolioRespuesta").value(DEFAULT_ID_FOLIO_RESPUESTA))
             .andExpect(jsonPath("$.fechaModificacion").value(DEFAULT_FECHA_MODIFICACION.toString()))
             .andExpect(jsonPath("$.fechaFirma").value(DEFAULT_FECHA_FIRMA.toString()))
             .andExpect(jsonPath("$.fechaLectura").value(DEFAULT_FECHA_LECTURA.toString()))
@@ -358,6 +382,9 @@ public class FolioResourceIT {
             .estadoFolio(UPDATED_ESTADO_FOLIO)
             .entidadCreacion(UPDATED_ENTIDAD_CREACION)
             .fechaCreacion(UPDATED_FECHA_CREACION)
+            .idlibroRelacionado(UPDATED_IDLIBRO_RELACIONADO)
+            .idFolioRelacionado(UPDATED_ID_FOLIO_RELACIONADO)
+            .idFolioRespuesta(UPDATED_ID_FOLIO_RESPUESTA)
             .fechaModificacion(UPDATED_FECHA_MODIFICACION)
             .fechaFirma(UPDATED_FECHA_FIRMA)
             .fechaLectura(UPDATED_FECHA_LECTURA)
@@ -387,6 +414,9 @@ public class FolioResourceIT {
         assertThat(testFolio.isEstadoFolio()).isEqualTo(UPDATED_ESTADO_FOLIO);
         assertThat(testFolio.isEntidadCreacion()).isEqualTo(UPDATED_ENTIDAD_CREACION);
         assertThat(testFolio.getFechaCreacion()).isEqualTo(UPDATED_FECHA_CREACION);
+        assertThat(testFolio.getIdlibroRelacionado()).isEqualTo(UPDATED_IDLIBRO_RELACIONADO);
+        assertThat(testFolio.getIdFolioRelacionado()).isEqualTo(UPDATED_ID_FOLIO_RELACIONADO);
+        assertThat(testFolio.getIdFolioRespuesta()).isEqualTo(UPDATED_ID_FOLIO_RESPUESTA);
         assertThat(testFolio.getFechaModificacion()).isEqualTo(UPDATED_FECHA_MODIFICACION);
         assertThat(testFolio.getFechaFirma()).isEqualTo(UPDATED_FECHA_FIRMA);
         assertThat(testFolio.getFechaLectura()).isEqualTo(UPDATED_FECHA_LECTURA);

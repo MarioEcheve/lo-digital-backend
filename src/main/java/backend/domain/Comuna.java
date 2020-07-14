@@ -31,9 +31,6 @@ public class Comuna implements Serializable {
     private Set<Contrato> contratoes = new HashSet<>();
 
     @OneToMany(mappedBy = "comuna")
-    private Set<Entidad> entidads = new HashSet<>();
-
-    @OneToMany(mappedBy = "comuna")
     private Set<Dependencia> dependencias = new HashSet<>();
 
     @ManyToOne
@@ -85,31 +82,6 @@ public class Comuna implements Serializable {
 
     public void setContratoes(Set<Contrato> contratoes) {
         this.contratoes = contratoes;
-    }
-
-    public Set<Entidad> getEntidads() {
-        return entidads;
-    }
-
-    public Comuna entidads(Set<Entidad> entidads) {
-        this.entidads = entidads;
-        return this;
-    }
-
-    public Comuna addEntidad(Entidad entidad) {
-        this.entidads.add(entidad);
-        entidad.setComuna(this);
-        return this;
-    }
-
-    public Comuna removeEntidad(Entidad entidad) {
-        this.entidads.remove(entidad);
-        entidad.setComuna(null);
-        return this;
-    }
-
-    public void setEntidads(Set<Entidad> entidads) {
-        this.entidads = entidads;
     }
 
     public Set<Dependencia> getDependencias() {

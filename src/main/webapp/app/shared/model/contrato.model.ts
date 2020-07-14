@@ -28,13 +28,13 @@ export interface IContrato {
   nombreContacto?: string;
   cargo?: string;
   telefonoContacto?: string;
-  telefonoContactoSecundario?: string;
-  emailContacto?: string;
-  idDependenciaContratista?: number;
   creaLibroAdminMan?: boolean;
   creaLibroAdminCon?: boolean;
   actualizarContratoAdminMan?: boolean;
   actualizarContratoAdminCon?: boolean;
+  telefonoContactoSecundario?: string;
+  emailContacto?: string;
+  idDependenciaContratista?: number;
   libros?: ILibro[];
   dependenciaMandante?: IDependencia;
   region?: IRegion;
@@ -66,13 +66,13 @@ export class Contrato implements IContrato {
     public nombreContacto?: string,
     public cargo?: string,
     public telefonoContacto?: string,
-    public telefonoContactoSecundario?: string,
-    public emailContacto?: string,
-    public idDependenciaContratista?: number,
     public creaLibroAdminMan?: boolean,
     public creaLibroAdminCon?: boolean,
     public actualizarContratoAdminMan?: boolean,
     public actualizarContratoAdminCon?: boolean,
+    public telefonoContactoSecundario?: string,
+    public emailContacto?: string,
+    public idDependenciaContratista?: number,
     public libros?: ILibro[],
     public dependenciaMandante?: IDependencia,
     public region?: IRegion,

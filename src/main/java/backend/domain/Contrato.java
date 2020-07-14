@@ -89,17 +89,6 @@ public class Contrato implements Serializable {
     @Column(name = "telefono_contacto", length = 50)
     private String telefonoContacto;
 
-    @Size(max = 50)
-    @Column(name = "telefono_contacto_secundario", length = 50)
-    private String telefonoContactoSecundario;
-
-    @Size(max = 50)
-    @Column(name = "email_contacto", length = 50)
-    private String emailContacto;
-
-    @Column(name = "id_dependencia_contratista")
-    private Integer idDependenciaContratista;
-
     @Column(name = "crea_libro_admin_man")
     private Boolean creaLibroAdminMan;
 
@@ -112,27 +101,38 @@ public class Contrato implements Serializable {
     @Column(name = "actualizar_contrato_admin_con")
     private Boolean actualizarContratoAdminCon;
 
+    @Size(max = 50)
+    @Column(name = "telefono_contacto_secundario", length = 50)
+    private String telefonoContactoSecundario;
+
+    @Size(max = 50)
+    @Column(name = "email_contacto", length = 50)
+    private String emailContacto;
+
+    @Column(name = "id_dependencia_contratista")
+    private Integer idDependenciaContratista;
+
     @OneToMany(mappedBy = "contrato")
     private Set<Libro> libros = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties(value = "contratoes", allowSetters=true)
+    @JsonIgnoreProperties("contratoes")
     private Dependencia dependenciaMandante;
 
     @ManyToOne
-    @JsonIgnoreProperties(value="contratoes",allowSetters=true)
+    @JsonIgnoreProperties("contratoes")
     private Region region;
 
     @ManyToOne
-    @JsonIgnoreProperties(value="contratoes",allowSetters=true)
+    @JsonIgnoreProperties("contratoes")
     private TipoContrato tipoContrato;
 
     @ManyToOne
-    @JsonIgnoreProperties(value="contratoes",allowSetters=true)
+    @JsonIgnoreProperties("contratoes")
     private Modalidad modalidad;
 
     @ManyToOne
-    @JsonIgnoreProperties(value="contratoes",allowSetters=true)
+    @JsonIgnoreProperties("contratoes")
     private Comuna comuna;
 
     @ManyToOne
@@ -377,45 +377,6 @@ public class Contrato implements Serializable {
         this.telefonoContacto = telefonoContacto;
     }
 
-    public String getTelefonoContactoSecundario() {
-        return telefonoContactoSecundario;
-    }
-
-    public Contrato telefonoContactoSecundario(String telefonoContactoSecundario) {
-        this.telefonoContactoSecundario = telefonoContactoSecundario;
-        return this;
-    }
-
-    public void setTelefonoContactoSecundario(String telefonoContactoSecundario) {
-        this.telefonoContactoSecundario = telefonoContactoSecundario;
-    }
-
-    public String getEmailContacto() {
-        return emailContacto;
-    }
-
-    public Contrato emailContacto(String emailContacto) {
-        this.emailContacto = emailContacto;
-        return this;
-    }
-
-    public void setEmailContacto(String emailContacto) {
-        this.emailContacto = emailContacto;
-    }
-
-    public Integer getIdDependenciaContratista() {
-        return idDependenciaContratista;
-    }
-
-    public Contrato idDependenciaContratista(Integer idDependenciaContratista) {
-        this.idDependenciaContratista = idDependenciaContratista;
-        return this;
-    }
-
-    public void setIdDependenciaContratista(Integer idDependenciaContratista) {
-        this.idDependenciaContratista = idDependenciaContratista;
-    }
-
     public Boolean isCreaLibroAdminMan() {
         return creaLibroAdminMan;
     }
@@ -466,6 +427,45 @@ public class Contrato implements Serializable {
 
     public void setActualizarContratoAdminCon(Boolean actualizarContratoAdminCon) {
         this.actualizarContratoAdminCon = actualizarContratoAdminCon;
+    }
+
+    public String getTelefonoContactoSecundario() {
+        return telefonoContactoSecundario;
+    }
+
+    public Contrato telefonoContactoSecundario(String telefonoContactoSecundario) {
+        this.telefonoContactoSecundario = telefonoContactoSecundario;
+        return this;
+    }
+
+    public void setTelefonoContactoSecundario(String telefonoContactoSecundario) {
+        this.telefonoContactoSecundario = telefonoContactoSecundario;
+    }
+
+    public String getEmailContacto() {
+        return emailContacto;
+    }
+
+    public Contrato emailContacto(String emailContacto) {
+        this.emailContacto = emailContacto;
+        return this;
+    }
+
+    public void setEmailContacto(String emailContacto) {
+        this.emailContacto = emailContacto;
+    }
+
+    public Integer getIdDependenciaContratista() {
+        return idDependenciaContratista;
+    }
+
+    public Contrato idDependenciaContratista(Integer idDependenciaContratista) {
+        this.idDependenciaContratista = idDependenciaContratista;
+        return this;
+    }
+
+    public void setIdDependenciaContratista(Integer idDependenciaContratista) {
+        this.idDependenciaContratista = idDependenciaContratista;
     }
 
     public Set<Libro> getLibros() {
@@ -635,13 +635,13 @@ public class Contrato implements Serializable {
             ", nombreContacto='" + getNombreContacto() + "'" +
             ", cargo='" + getCargo() + "'" +
             ", telefonoContacto='" + getTelefonoContacto() + "'" +
-            ", telefonoContactoSecundario='" + getTelefonoContactoSecundario() + "'" +
-            ", emailContacto='" + getEmailContacto() + "'" +
-            ", idDependenciaContratista=" + getIdDependenciaContratista() +
             ", creaLibroAdminMan='" + isCreaLibroAdminMan() + "'" +
             ", creaLibroAdminCon='" + isCreaLibroAdminCon() + "'" +
             ", actualizarContratoAdminMan='" + isActualizarContratoAdminMan() + "'" +
             ", actualizarContratoAdminCon='" + isActualizarContratoAdminCon() + "'" +
+            ", telefonoContactoSecundario='" + getTelefonoContactoSecundario() + "'" +
+            ", emailContacto='" + getEmailContacto() + "'" +
+            ", idDependenciaContratista=" + getIdDependenciaContratista() +
             "}";
     }
 }

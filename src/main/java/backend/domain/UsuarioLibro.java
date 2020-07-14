@@ -23,9 +23,6 @@ public class UsuarioLibro implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "nombre")
-    private String nombre;
-
     @Column(name = "estado")
     private Boolean estado;
 
@@ -48,15 +45,15 @@ public class UsuarioLibro implements Serializable {
     private Set<GesFavorito> gesFavoritos = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties(value="usuarioLibros",allowSetters = true )
+    @JsonIgnoreProperties(value = "usuarioLibros", allowSetters = true )
     private Libro libro;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = "usuarioLibros", allowSetters = true)
+    @JsonIgnoreProperties("usuarioLibros")
     private UsuarioDependencia usuarioDependencia;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = "usuarioLibros" , allowSetters = true)
+    @JsonIgnoreProperties("usuarioLibros")
     private UsuarioLibroPerfil perfilUsuarioLibro;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -66,19 +63,6 @@ public class UsuarioLibro implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public UsuarioLibro nombre(String nombre) {
-        this.nombre = nombre;
-        return this;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public Boolean isEstado() {
@@ -268,7 +252,6 @@ public class UsuarioLibro implements Serializable {
     public String toString() {
         return "UsuarioLibro{" +
             "id=" + getId() +
-            ", nombre='" + getNombre() + "'" +
             ", estado='" + isEstado() + "'" +
             ", cargoFuncion='" + getCargoFuncion() + "'" +
             ", fechaCreacion='" + getFechaCreacion() + "'" +

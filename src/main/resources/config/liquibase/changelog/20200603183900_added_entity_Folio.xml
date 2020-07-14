@@ -45,6 +45,15 @@
             <column name="fecha_creacion" type="datetime">
                 <constraints nullable="true" />
             </column>
+            <column name="idlibro_relacionado" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="id_folio_relacionado" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="id_folio_respuesta" type="integer">
+                <constraints nullable="true" />
+            </column>
             <column name="fecha_modificacion" type="datetime">
                 <constraints nullable="true" />
             </column>
@@ -57,7 +66,7 @@
             <column name="asunto" type="varchar(80)">
                 <constraints nullable="false" />
             </column>
-            <column name="anotacion" type="varchar(50000)">
+            <column name="anotacion" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="pdf_firmado" type="longblob">
@@ -119,6 +128,9 @@
             <column name="estado_folio" type="boolean"/>
             <column name="entidad_creacion" type="boolean"/>
             <column name="fecha_creacion" type="datetime"/>
+            <column name="idlibro_relacionado" type="numeric"/>
+            <column name="id_folio_relacionado" type="numeric"/>
+            <column name="id_folio_respuesta" type="numeric"/>
             <column name="fecha_modificacion" type="datetime"/>
             <column name="fecha_firma" type="datetime"/>
             <column name="fecha_lectura" type="datetime"/>

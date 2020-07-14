@@ -12,12 +12,6 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
-            "otherEntityName": "entidad",
-            "otherEntityRelationshipName": "region",
-            "relationshipName": "entidad"
-        },
-        {
-            "relationshipType": "one-to-many",
             "otherEntityName": "dependencia",
             "otherEntityRelationshipName": "region",
             "relationshipName": "dependencia"

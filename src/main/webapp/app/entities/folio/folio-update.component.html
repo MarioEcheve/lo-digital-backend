@@ -74,6 +74,24 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label" for="field_idlibroRelacionado">Idlibro Relacionado</label>
+                    <input type="number" class="form-control" name="idlibroRelacionado" id="field_idlibroRelacionado"
+                           formControlName="idlibroRelacionado"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_idFolioRelacionado">Id Folio Relacionado</label>
+                    <input type="number" class="form-control" name="idFolioRelacionado" id="field_idFolioRelacionado"
+                           formControlName="idFolioRelacionado"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_idFolioRespuesta">Id Folio Respuesta</label>
+                    <input type="number" class="form-control" name="idFolioRespuesta" id="field_idFolioRespuesta"
+                           formControlName="idFolioRespuesta"/>
+                </div>
+
+                <div class="form-group">
                     <label class="form-control-label" for="field_fechaModificacion">Fecha Modificacion</label>
                     <div class="d-flex">
                         <input id="field_fechaModificacion" type="datetime-local" class="form-control" name="fechaModificacion" formControlName="fechaModificacion" placeholder="YYYY-MM-DD HH:mm"/>
@@ -114,12 +132,6 @@
                     <label class="form-control-label" for="field_anotacion">Anotacion</label>
                     <input type="text" class="form-control" name="anotacion" id="field_anotacion"
                            formControlName="anotacion"/>
-                    <div *ngIf="editForm.get('anotacion')!.invalid && (editForm.get('anotacion')!.dirty || editForm.get('anotacion')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('anotacion')?.errors?.maxlength">
-                        This field cannot be longer than 50000 characters.
-                        </small>
-                    </div>
                 </div>
 
                 <div class="form-group">

@@ -42,11 +42,14 @@ export class FolioUpdateComponent implements OnInit {
     estadoFolio: [],
     entidadCreacion: [],
     fechaCreacion: [],
+    idlibroRelacionado: [],
+    idFolioRelacionado: [],
+    idFolioRespuesta: [],
     fechaModificacion: [],
     fechaFirma: [],
     fechaLectura: [],
     asunto: [null, [Validators.required, Validators.maxLength(80)]],
-    anotacion: [null, [Validators.maxLength(50000)]],
+    anotacion: [],
     pdfFirmado: [],
     pdfFirmadoContentType: [],
     pdfLectura: [],
@@ -101,6 +104,9 @@ export class FolioUpdateComponent implements OnInit {
       estadoFolio: folio.estadoFolio,
       entidadCreacion: folio.entidadCreacion,
       fechaCreacion: folio.fechaCreacion ? folio.fechaCreacion.format(DATE_TIME_FORMAT) : null,
+      idlibroRelacionado: folio.idlibroRelacionado,
+      idFolioRelacionado: folio.idFolioRelacionado,
+      idFolioRespuesta: folio.idFolioRespuesta,
       fechaModificacion: folio.fechaModificacion ? folio.fechaModificacion.format(DATE_TIME_FORMAT) : null,
       fechaFirma: folio.fechaFirma ? folio.fechaFirma.format(DATE_TIME_FORMAT) : null,
       fechaLectura: folio.fechaLectura ? folio.fechaLectura.format(DATE_TIME_FORMAT) : null,
@@ -164,6 +170,9 @@ export class FolioUpdateComponent implements OnInit {
       fechaCreacion: this.editForm.get(['fechaCreacion'])!.value
         ? moment(this.editForm.get(['fechaCreacion'])!.value, DATE_TIME_FORMAT)
         : undefined,
+      idlibroRelacionado: this.editForm.get(['idlibroRelacionado'])!.value,
+      idFolioRelacionado: this.editForm.get(['idFolioRelacionado'])!.value,
+      idFolioRespuesta: this.editForm.get(['idFolioRespuesta'])!.value,
       fechaModificacion: this.editForm.get(['fechaModificacion'])!.value
         ? moment(this.editForm.get(['fechaModificacion'])!.value, DATE_TIME_FORMAT)
         : undefined,

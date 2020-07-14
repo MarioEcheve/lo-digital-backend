@@ -19,6 +19,8 @@ export interface IFolio {
   estadoFolio?: boolean;
   entidadCreacion?: boolean;
   fechaCreacion?: Moment;
+  idlibroRelacionado?: number;
+  idFolioRelacionado?: number;
   fechaModificacion?: Moment;
   fechaFirma?: Moment;
   fechaLectura?: Moment;
@@ -50,6 +52,8 @@ export class Folio implements IFolio {
     public estadoFolio?: boolean,
     public entidadCreacion?: boolean,
     public fechaCreacion?: Moment,
+    public idlibroRelacionado?: number,
+    public idFolioRelacionado?: number,
     public fechaModificacion?: Moment,
     public fechaFirma?: Moment,
     public fechaLectura?: Moment,

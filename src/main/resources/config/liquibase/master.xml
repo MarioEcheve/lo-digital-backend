@@ -56,5 +56,6 @@
     <include file="config/liquibase/changelog/20200603184600_added_entity_constraints_GesNota.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200603184700_added_entity_constraints_GesFavorito.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200603184900_added_entity_constraints_Comuna.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200603185100_added_entity_constraints_UsuarioLibroPerfil.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

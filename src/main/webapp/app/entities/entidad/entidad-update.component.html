@@ -70,14 +70,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" for="field_region">Region</label>
-                    <select class="form-control" id="field_region" name="region" formControlName="region">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="regionOption.id === editForm.get('region')!.value?.id ? editForm.get('region')!.value : regionOption" *ngFor="let regionOption of regions; trackBy: trackById">{{ regionOption.nombre }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
                     <label class="form-control-label" for="field_tipoEntidad">Tipo Entidad</label>
                     <select class="form-control" id="field_tipoEntidad" name="tipoEntidad" formControlName="tipoEntidad">
                         <option [ngValue]="null"></option>
@@ -90,14 +82,6 @@
                     <select class="form-control" id="field_actividadRubro" name="actividadRubro" formControlName="actividadRubro">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="actividadRubroOption.id === editForm.get('actividadRubro')!.value?.id ? editForm.get('actividadRubro')!.value : actividadRubroOption" *ngFor="let actividadRubroOption of actividadrubros; trackBy: trackById">{{ actividadRubroOption.nombre }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" for="field_comuna">Comuna</label>
-                    <select class="form-control" id="field_comuna" name="comuna" formControlName="comuna">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="comunaOption.id === editForm.get('comuna')!.value?.id ? editForm.get('comuna')!.value : comunaOption" *ngFor="let comunaOption of comunas; trackBy: trackById">{{ comunaOption.nombre }}</option>
                     </select>
                 </div>
             </div>

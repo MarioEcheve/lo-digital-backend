@@ -18,12 +18,6 @@
         },
         {
             "relationshipType": "one-to-many",
-            "otherEntityName": "entidad",
-            "otherEntityRelationshipName": "comuna",
-            "relationshipName": "entidad"
-        },
-        {
-            "relationshipType": "one-to-many",
             "otherEntityName": "dependencia",
             "otherEntityRelationshipName": "comuna",
             "relationshipName": "dependencia"
