@@ -21,6 +21,7 @@ export interface IFolio {
   fechaCreacion?: Moment;
   idlibroRelacionado?: number;
   idFolioRelacionado?: number;
+  idFolioRespuesta?: number;
   fechaModificacion?: Moment;
   fechaFirma?: Moment;
   fechaLectura?: Moment;
@@ -54,6 +55,7 @@ export class Folio implements IFolio {
     public fechaCreacion?: Moment,
     public idlibroRelacionado?: number,
     public idFolioRelacionado?: number,
+    public idFolioRespuesta?: number,
     public fechaModificacion?: Moment,
     public fechaFirma?: Moment,
     public fechaLectura?: Moment,
