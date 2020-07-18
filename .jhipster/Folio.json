@@ -42,6 +42,18 @@
             "fieldType": "Instant"
         },
         {
+            "fieldName": "idlibroRelacionado",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "idFolioRelacionado",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "idFolioRespuesta",
+            "fieldType": "Integer"
+        },
+        {
             "fieldName": "fechaModificacion",
             "fieldType": "Instant"
         },
@@ -64,11 +76,7 @@
         },
         {
             "fieldName": "anotacion",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": "50000"
+            "fieldType": "String"
         },
         {
             "fieldName": "pdfFirmado",

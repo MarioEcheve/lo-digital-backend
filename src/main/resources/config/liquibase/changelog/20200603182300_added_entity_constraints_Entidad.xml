@@ -8,12 +8,6 @@
     -->
     <changeSet id="20200603182300-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="region_id"
-                                 baseTableName="entidad"
-                                 constraintName="fk_entidad_region_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="region"/>
-
         <addForeignKeyConstraint baseColumnNames="tipo_entidad_id"
                                  baseTableName="entidad"
                                  constraintName="fk_entidad_tipo_entidad_id"
@@ -25,12 +19,6 @@
                                  constraintName="fk_entidad_actividad_rubro_id"
                                  referencedColumnNames="id"
                                  referencedTableName="actividad_rubro"/>
-
-        <addForeignKeyConstraint baseColumnNames="comuna_id"
-                                 baseTableName="entidad"
-                                 constraintName="fk_entidad_comuna_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="comuna"/>
 
     </changeSet>
 </databaseChangeLog>

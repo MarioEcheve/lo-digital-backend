@@ -49,19 +49,11 @@ public class Entidad implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("entidads")
-    private Region region;
-
-    @ManyToOne
-    @JsonIgnoreProperties("entidads")
     private TipoEntidad tipoEntidad;
 
     @ManyToOne
     @JsonIgnoreProperties("entidads")
     private ActividadRubro actividadRubro;
-
-    @ManyToOne
-    @JsonIgnoreProperties("entidads")
-    private Comuna comuna;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -162,19 +154,6 @@ public class Entidad implements Serializable {
         this.dependencias = dependencias;
     }
 
-    public Region getRegion() {
-        return region;
-    }
-
-    public Entidad region(Region region) {
-        this.region = region;
-        return this;
-    }
-
-    public void setRegion(Region region) {
-        this.region = region;
-    }
-
     public TipoEntidad getTipoEntidad() {
         return tipoEntidad;
     }
@@ -199,19 +178,6 @@ public class Entidad implements Serializable {
 
     public void setActividadRubro(ActividadRubro actividadRubro) {
         this.actividadRubro = actividadRubro;
-    }
-
-    public Comuna getComuna() {
-        return comuna;
-    }
-
-    public Entidad comuna(Comuna comuna) {
-        this.comuna = comuna;
-        return this;
-    }
-
-    public void setComuna(Comuna comuna) {
-        this.comuna = comuna;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

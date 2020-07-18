@@ -27,9 +27,6 @@ public class Region implements Serializable {
     private String nombre;
 
     @OneToMany(mappedBy = "region")
-    private Set<Entidad> entidads = new HashSet<>();
-
-    @OneToMany(mappedBy = "region")
     private Set<Dependencia> dependencias = new HashSet<>();
 
     @OneToMany(mappedBy = "region")
@@ -58,31 +55,6 @@ public class Region implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public Set<Entidad> getEntidads() {
-        return entidads;
-    }
-
-    public Region entidads(Set<Entidad> entidads) {
-        this.entidads = entidads;
-        return this;
-    }
-
-    public Region addEntidad(Entidad entidad) {
-        this.entidads.add(entidad);
-        entidad.setRegion(this);
-        return this;
-    }
-
-    public Region removeEntidad(Entidad entidad) {
-        this.entidads.remove(entidad);
-        entidad.setRegion(null);
-        return this;
-    }
-
-    public void setEntidads(Set<Entidad> entidads) {
-        this.entidads = entidads;
     }
 
     public Set<Dependencia> getDependencias() {

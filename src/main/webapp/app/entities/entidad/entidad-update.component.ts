@@ -9,16 +9,12 @@ import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
 import { IEntidad, Entidad } from 'app/shared/model/entidad.model';
 import { EntidadService } from './entidad.service';
-import { IRegion } from 'app/shared/model/region.model';
-import { RegionService } from 'app/entities/region/region.service';
 import { ITipoEntidad } from 'app/shared/model/tipo-entidad.model';
 import { TipoEntidadService } from 'app/entities/tipo-entidad/tipo-entidad.service';
 import { IActividadRubro } from 'app/shared/model/actividad-rubro.model';
 import { ActividadRubroService } from 'app/entities/actividad-rubro/actividad-rubro.service';
-import { IComuna } from 'app/shared/model/comuna.model';
-import { ComunaService } from 'app/entities/comuna/comuna.service';
 
-type SelectableEntity = IRegion | ITipoEntidad | IActividadRubro | IComuna;
+type SelectableEntity = ITipoEntidad | IActividadRubro;
 
 @Component({
   selector: 'jhi-entidad-update',
@@ -26,10 +22,8 @@ type SelectableEntity = IRegion | ITipoEntidad | IActividadRubro | IComuna;
 })
 export class EntidadUpdateComponent implements OnInit {
   isSaving = false;
-  regions: IRegion[] = [];
   tipoentidads: ITipoEntidad[] = [];
   actividadrubros: IActividadRubro[] = [];
-  comunas: IComuna[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -38,18 +32,14 @@ export class EntidadUpdateComponent implements OnInit {
     direccion: [null, [Validators.maxLength(100)]],
     fechaCreacion: [],
     fechaModificacion: [],
-    region: [],
     tipoEntidad: [],
-    actividadRubro: [],
-    comuna: []
+    actividadRubro: []
   });
 
   constructor(
     protected entidadService: EntidadService,
-    protected regionService: RegionService,
     protected tipoEntidadService: TipoEntidadService,
     protected actividadRubroService: ActividadRubroService,
-    protected comunaService: ComunaService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -64,13 +54,9 @@ export class EntidadUpdateComponent implements OnInit {
 
       this.updateForm(entidad);
 
-      this.regionService.query().subscribe((res: HttpResponse<IRegion[]>) => (this.regions = res.body || []));
-
       this.tipoEntidadService.query().subscribe((res: HttpResponse<ITipoEntidad[]>) => (this.tipoentidads = res.body || []));
 
       this.actividadRubroService.query().subscribe((res: HttpResponse<IActividadRubro[]>) => (this.actividadrubros = res.body || []));
-
-      this.comunaService.query().subscribe((res: HttpResponse<IComuna[]>) => (this.comunas = res.body || []));
     });
   }
 
@@ -82,10 +68,8 @@ export class EntidadUpdateComponent implements OnInit {
       direccion: entidad.direccion,
       fechaCreacion: entidad.fechaCreacion ? entidad.fechaCreacion.format(DATE_TIME_FORMAT) : null,
       fechaModificacion: entidad.fechaModificacion ? entidad.fechaModificacion.format(DATE_TIME_FORMAT) : null,
-      region: entidad.region,
       tipoEntidad: entidad.tipoEntidad,
-      actividadRubro: entidad.actividadRubro,
-      comuna: entidad.comuna
+      actividadRubro: entidad.actividadRubro
     });
   }
 
@@ -116,10 +100,8 @@ export class EntidadUpdateComponent implements OnInit {
       fechaModificacion: this.editForm.get(['fechaModificacion'])!.value
         ? moment(this.editForm.get(['fechaModificacion'])!.value, DATE_TIME_FORMAT)
         : undefined,
-      region: this.editForm.get(['region'])!.value,
       tipoEntidad: this.editForm.get(['tipoEntidad'])!.value,
-      actividadRubro: this.editForm.get(['actividadRubro'])!.value,
-      comuna: this.editForm.get(['comuna'])!.value
+      actividadRubro: this.editForm.get(['actividadRubro'])!.value
     };
   }
 

@@ -30,16 +30,10 @@
             <column name="fecha_modificacion" type="datetime">
                 <constraints nullable="true" />
             </column>
-            <column name="region_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
             <column name="tipo_entidad_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <column name="actividad_rubro_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-            <column name="comuna_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->

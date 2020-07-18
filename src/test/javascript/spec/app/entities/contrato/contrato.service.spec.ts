@@ -43,13 +43,13 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
+        false,
+        false,
+        false,
+        false,
         'AAAAAAA',
         'AAAAAAA',
-        0,
-        false,
-        false,
-        false,
-        false
+        0
       );
     });
 
@@ -124,13 +124,13 @@ describe('Service Tests', () => {
             nombreContacto: 'BBBBBB',
             cargo: 'BBBBBB',
             telefonoContacto: 'BBBBBB',
-            telefonoContactoSecundario: 'BBBBBB',
-            emailContacto: 'BBBBBB',
-            idDependenciaContratista: 1,
             creaLibroAdminMan: true,
             creaLibroAdminCon: true,
             actualizarContratoAdminMan: true,
-            actualizarContratoAdminCon: true
+            actualizarContratoAdminCon: true,
+            telefonoContactoSecundario: 'BBBBBB',
+            emailContacto: 'BBBBBB',
+            idDependenciaContratista: 1
           },
           elemDefault
         );
@@ -173,13 +173,13 @@ describe('Service Tests', () => {
             nombreContacto: 'BBBBBB',
             cargo: 'BBBBBB',
             telefonoContacto: 'BBBBBB',
-            telefonoContactoSecundario: 'BBBBBB',
-            emailContacto: 'BBBBBB',
-            idDependenciaContratista: 1,
             creaLibroAdminMan: true,
             creaLibroAdminCon: true,
             actualizarContratoAdminMan: true,
-            actualizarContratoAdminCon: true
+            actualizarContratoAdminCon: true,
+            telefonoContactoSecundario: 'BBBBBB',
+            emailContacto: 'BBBBBB',
+            idDependenciaContratista: 1
           },
           elemDefault
         );

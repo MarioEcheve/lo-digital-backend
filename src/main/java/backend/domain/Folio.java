@@ -54,6 +54,15 @@ public class Folio implements Serializable {
     @Column(name = "fecha_creacion")
     private Instant fechaCreacion;
 
+    @Column(name = "idlibro_relacionado")
+    private Integer idlibroRelacionado;
+
+    @Column(name = "id_folio_relacionado")
+    private Integer idFolioRelacionado;
+
+    @Column(name = "id_folio_respuesta")
+    private Integer idFolioRespuesta;
+
     @Column(name = "fecha_modificacion")
     private Instant fechaModificacion;
 
@@ -68,8 +77,7 @@ public class Folio implements Serializable {
     @Column(name = "asunto", length = 80, nullable = false)
     private String asunto;
 
-    @Size(max = 50000)
-    @Column(name = "anotacion", length = 50000)
+    @Column(name = "anotacion")
     private String anotacion;
 
     @Lob
@@ -99,15 +107,15 @@ public class Folio implements Serializable {
     private Set<GesFavorito> gesFavoritos = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties(value="folios",allowSetters=true)
+    @JsonIgnoreProperties("folios")
     private Libro libro;
 
     @ManyToOne
-    @JsonIgnoreProperties(value="folios",allowSetters=true)
+    @JsonIgnoreProperties("folios")
     private TipoFolio tipoFolio;
 
     @ManyToOne
-    @JsonIgnoreProperties(value="folios",allowSetters=true)
+    @JsonIgnoreProperties("folios")
     private EstadoRespuesta estadoRespuesta;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -247,6 +255,45 @@ public class Folio implements Serializable {
 
     public void setFechaCreacion(Instant fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
+    }
+
+    public Integer getIdlibroRelacionado() {
+        return idlibroRelacionado;
+    }
+
+    public Folio idlibroRelacionado(Integer idlibroRelacionado) {
+        this.idlibroRelacionado = idlibroRelacionado;
+        return this;
+    }
+
+    public void setIdlibroRelacionado(Integer idlibroRelacionado) {
+        this.idlibroRelacionado = idlibroRelacionado;
+    }
+
+    public Integer getIdFolioRelacionado() {
+        return idFolioRelacionado;
+    }
+
+    public Folio idFolioRelacionado(Integer idFolioRelacionado) {
+        this.idFolioRelacionado = idFolioRelacionado;
+        return this;
+    }
+
+    public void setIdFolioRelacionado(Integer idFolioRelacionado) {
+        this.idFolioRelacionado = idFolioRelacionado;
+    }
+
+    public Integer getIdFolioRespuesta() {
+        return idFolioRespuesta;
+    }
+
+    public Folio idFolioRespuesta(Integer idFolioRespuesta) {
+        this.idFolioRespuesta = idFolioRespuesta;
+        return this;
+    }
+
+    public void setIdFolioRespuesta(Integer idFolioRespuesta) {
+        this.idFolioRespuesta = idFolioRespuesta;
     }
 
     public Instant getFechaModificacion() {
@@ -536,6 +583,9 @@ public class Folio implements Serializable {
             ", estadoFolio='" + isEstadoFolio() + "'" +
             ", entidadCreacion='" + isEntidadCreacion() + "'" +
             ", fechaCreacion='" + getFechaCreacion() + "'" +
+            ", idlibroRelacionado=" + getIdlibroRelacionado() +
+            ", idFolioRelacionado=" + getIdFolioRelacionado() +
+            ", idFolioRespuesta=" + getIdFolioRespuesta() +
             ", fechaModificacion='" + getFechaModificacion() + "'" +
             ", fechaFirma='" + getFechaFirma() + "'" +
             ", fechaLectura='" + getFechaLectura() + "'" +

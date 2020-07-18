@@ -45,13 +45,6 @@
         },
         {
             "relationshipType": "many-to-one",
-            "otherEntityName": "region",
-            "otherEntityRelationshipName": "entidad",
-            "relationshipName": "region",
-            "otherEntityField": "nombre"
-        },
-        {
-            "relationshipType": "many-to-one",
             "otherEntityName": "tipoEntidad",
             "otherEntityRelationshipName": "entidad",
             "relationshipName": "tipoEntidad",
@@ -62,13 +55,6 @@
             "otherEntityName": "actividadRubro",
             "otherEntityRelationshipName": "entidad",
             "relationshipName": "actividadRubro",
-            "otherEntityField": "nombre"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "comuna",
-            "otherEntityRelationshipName": "entidad",
-            "relationshipName": "comuna",
             "otherEntityField": "nombre"
         }
     ],
