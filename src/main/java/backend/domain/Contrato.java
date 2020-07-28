@@ -116,35 +116,35 @@ public class Contrato implements Serializable {
     private Set<Libro> libros = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties("contratoes")
+    @JsonIgnoreProperties(value ="contratoes", allowSetters = true )
     private Dependencia dependenciaMandante;
 
     @ManyToOne
-    @JsonIgnoreProperties("contratoes")
+    @JsonIgnoreProperties(value ="contratoes", allowSetters = true)
     private Region region;
 
     @ManyToOne
-    @JsonIgnoreProperties("contratoes")
+    @JsonIgnoreProperties(value = "contratoes", allowSetters = true)
     private TipoContrato tipoContrato;
 
     @ManyToOne
-    @JsonIgnoreProperties("contratoes")
+    @JsonIgnoreProperties(value = "contratoes", allowSetters = true)
     private Modalidad modalidad;
 
     @ManyToOne
-    @JsonIgnoreProperties("contratoes")
+    @JsonIgnoreProperties(value = "contratoes", allowSetters = true)
     private Comuna comuna;
 
     @ManyToOne
-    @JsonIgnoreProperties("contratoes")
+    @JsonIgnoreProperties(value = "contratoes", allowSetters = true)
     private TipoMoneda tipoMoneda;
 
     @ManyToOne
-    @JsonIgnoreProperties("contratoes")
+    @JsonIgnoreProperties(value = "contratoes", allowSetters = true)
     private TipoMonto tipoMonto;
 
     @ManyToOne
-    @JsonIgnoreProperties("contratoes")
+    @JsonIgnoreProperties(value="contratoes", allowSetters = true)
     private EstadoServicio estadoServicio;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

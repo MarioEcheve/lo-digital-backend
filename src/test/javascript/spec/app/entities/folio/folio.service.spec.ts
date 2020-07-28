@@ -47,7 +47,8 @@ describe('Service Tests', () => {
         'image/png',
         'AAAAAAA',
         'image/png',
-        'AAAAAAA'
+        'AAAAAAA',
+        0
       );
     });
 
@@ -124,7 +125,8 @@ describe('Service Tests', () => {
             asunto: 'BBBBBB',
             anotacion: 'BBBBBB',
             pdfFirmado: 'BBBBBB',
-            pdfLectura: 'BBBBBB'
+            pdfLectura: 'BBBBBB',
+            idReceptor: 1
           },
           elemDefault
         );
@@ -169,7 +171,8 @@ describe('Service Tests', () => {
             asunto: 'BBBBBB',
             anotacion: 'BBBBBB',
             pdfFirmado: 'BBBBBB',
-            pdfLectura: 'BBBBBB'
+            pdfLectura: 'BBBBBB',
+            idReceptor: 1
           },
           elemDefault
         );

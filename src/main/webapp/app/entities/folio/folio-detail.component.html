@@ -94,6 +94,16 @@
                         {{ folio.pdfLecturaContentType }}, {{ byteSize(folio.pdfLectura) }}
                     </div>
                 </dd>
+                <dt><span>Id Receptor</span></dt>
+                <dd>
+                    <span>{{ folio.idReceptor }}</span>
+                </dd>
+                <dt><span>Folio Referencia</span></dt>
+                <dd>
+                    <span *ngFor="let folioReferencia of folio.folioReferencias; let last = last">
+                        <a [routerLink]="['/folio-referencia', folioReferencia?.id, 'view']">{{ folioReferencia.asunto }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
                 <dt><span>Libro</span></dt>
                 <dd>
                     <div *ngIf="folio.libro">

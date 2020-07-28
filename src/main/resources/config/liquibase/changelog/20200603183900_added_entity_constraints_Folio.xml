@@ -8,6 +8,18 @@
     -->
     <changeSet id="20200603183900-2" author="jhipster">
         
+        <addForeignKeyConstraint baseColumnNames="folio_id"
+                                 baseTableName="folio_folio_referencia"
+                                 constraintName="fk_folio_folio_referencia_folio_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="folio"/>
+
+        <addForeignKeyConstraint baseColumnNames="folio_referencia_id"
+                                 baseTableName="folio_folio_referencia"
+                                 constraintName="fk_folio_folio_referencia_folio_referencia_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="folio_referencia"/>
+        
         <addForeignKeyConstraint baseColumnNames="libro_id"
                                  baseTableName="folio"
                                  constraintName="fk_folio_libro_id"

@@ -3,6 +3,7 @@ import { IArchivo } from 'app/shared/model/archivo.model';
 import { IGesAlerta } from 'app/shared/model/ges-alerta.model';
 import { IGesNota } from 'app/shared/model/ges-nota.model';
 import { IGesFavorito } from 'app/shared/model/ges-favorito.model';
+import { IFolioReferencia } from 'app/shared/model/folio-referencia.model';
 import { ILibro } from 'app/shared/model/libro.model';
 import { ITipoFolio } from 'app/shared/model/tipo-folio.model';
 import { IEstadoRespuesta } from 'app/shared/model/estado-respuesta.model';
@@ -31,10 +32,12 @@ export interface IFolio {
   pdfFirmado?: any;
   pdfLecturaContentType?: string;
   pdfLectura?: any;
+  idReceptor?: number;
   archivos?: IArchivo[];
   gesAlertas?: IGesAlerta[];
   gesNotas?: IGesNota[];
   gesFavoritos?: IGesFavorito[];
+  folioReferencias?: IFolioReferencia[];
   libro?: ILibro;
   tipoFolio?: ITipoFolio;
   estadoRespuesta?: IEstadoRespuesta;
@@ -65,10 +68,12 @@ export class Folio implements IFolio {
     public pdfFirmado?: any,
     public pdfLecturaContentType?: string,
     public pdfLectura?: any,
+    public idReceptor?: number,
     public archivos?: IArchivo[],
     public gesAlertas?: IGesAlerta[],
     public gesNotas?: IGesNota[],
     public gesFavoritos?: IGesFavorito[],
+    public folioReferencias?: IFolioReferencia[],
     public libro?: ILibro,
     public tipoFolio?: ITipoFolio,
     public estadoRespuesta?: IEstadoRespuesta

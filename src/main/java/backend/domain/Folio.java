@@ -94,6 +94,9 @@ public class Folio implements Serializable {
     @Column(name = "pdf_lectura_content_type")
     private String pdfLecturaContentType;
 
+    @Column(name = "id_receptor")
+    private Integer idReceptor;
+
     @OneToMany(mappedBy = "folio")
     private Set<Archivo> archivos = new HashSet<>();
 
@@ -105,6 +108,12 @@ public class Folio implements Serializable {
 
     @OneToMany(mappedBy = "folio")
     private Set<GesFavorito> gesFavoritos = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "folio_folio_referencia",
+               joinColumns = @JoinColumn(name = "folio_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "folio_referencia_id", referencedColumnName = "id"))
+    private Set<FolioReferencia> folioReferencias = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties("folios")
@@ -413,6 +422,19 @@ public class Folio implements Serializable {
         this.pdfLecturaContentType = pdfLecturaContentType;
     }
 
+    public Integer getIdReceptor() {
+        return idReceptor;
+    }
+
+    public Folio idReceptor(Integer idReceptor) {
+        this.idReceptor = idReceptor;
+        return this;
+    }
+
+    public void setIdReceptor(Integer idReceptor) {
+        this.idReceptor = idReceptor;
+    }
+
     public Set<Archivo> getArchivos() {
         return archivos;
     }
@@ -513,6 +535,31 @@ public class Folio implements Serializable {
         this.gesFavoritos = gesFavoritos;
     }
 
+    public Set<FolioReferencia> getFolioReferencias() {
+        return folioReferencias;
+    }
+
+    public Folio folioReferencias(Set<FolioReferencia> folioReferencias) {
+        this.folioReferencias = folioReferencias;
+        return this;
+    }
+
+    public Folio addFolioReferencia(FolioReferencia folioReferencia) {
+        this.folioReferencias.add(folioReferencia);
+        folioReferencia.getFolios().add(this);
+        return this;
+    }
+
+    public Folio removeFolioReferencia(FolioReferencia folioReferencia) {
+        this.folioReferencias.remove(folioReferencia);
+        folioReferencia.getFolios().remove(this);
+        return this;
+    }
+
+    public void setFolioReferencias(Set<FolioReferencia> folioReferencias) {
+        this.folioReferencias = folioReferencias;
+    }
+
     public Libro getLibro() {
         return libro;
     }
@@ -595,6 +642,7 @@ public class Folio implements Serializable {
             ", pdfFirmadoContentType='" + getPdfFirmadoContentType() + "'" +
             ", pdfLectura='" + getPdfLectura() + "'" +
             ", pdfLecturaContentType='" + getPdfLecturaContentType() + "'" +
+            ", idReceptor=" + getIdReceptor() +
             "}";
     }
 }

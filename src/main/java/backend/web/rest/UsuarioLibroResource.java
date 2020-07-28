@@ -127,4 +127,16 @@ public class UsuarioLibroResource {
         log.debug("REST request to get usuario libro  por libro y usuario : {}", idLibro,idUsuario);
         return usuarioLibroRepository.ListaUsuariosLibrosFolio(idLibro,idUsuario);
     }
+
+     /**
+     * {@code GET  /ListaUsuariosLibros/:idlibro} : get the "ids" of usuarios libros .
+     *
+     * @param id the id of the libro to find a list of usuarios.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+    @GetMapping("/ListaUsuariosLibros/{idLibro}/{idUsuario}")
+    public List<UsuarioLibro> ListaUsuariosLibros(@PathVariable Long idLibro,@PathVariable Long idUsuario) {
+        log.debug("REST request to get usuarios por libros  : {}", idLibro,idUsuario);
+        return usuarioLibroRepository.ListaUsuariosLibros(idLibro,idUsuario);
+    }
 }

@@ -1,0 +1,37 @@
+{
+    "name": "FolioReferencia",
+    "fields": [
+        {
+            "fieldName": "asunto",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idFolioOrigen",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "idFolioReferencia",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "folio",
+            "otherEntityRelationshipName": "folioReferencia",
+            "relationshipName": "folio",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200724054000",
+    "entityTableName": "folio_referencia",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
