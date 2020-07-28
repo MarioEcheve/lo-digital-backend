@@ -121,6 +121,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'usuario-libro-perfil',
         loadChildren: () => import('./usuario-libro-perfil/usuario-libro-perfil.module').then(m => m.BackendUsuarioLibroPerfilModule)
+      },
+      {
+        path: 'folio-referencia',
+        loadChildren: () => import('./folio-referencia/folio-referencia.module').then(m => m.BackendFolioReferenciaModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

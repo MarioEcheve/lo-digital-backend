@@ -7,9 +7,12 @@ import backend.web.rest.errors.ExceptionTranslator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -22,11 +25,13 @@ import org.springframework.validation.Validator;
 import javax.persistence.EntityManager;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 
 import static backend.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -100,8 +105,14 @@ public class FolioResourceIT {
     private static final String DEFAULT_PDF_LECTURA_CONTENT_TYPE = "image/jpg";
     private static final String UPDATED_PDF_LECTURA_CONTENT_TYPE = "image/png";
 
+    private static final Integer DEFAULT_ID_RECEPTOR = 1;
+    private static final Integer UPDATED_ID_RECEPTOR = 2;
+
     @Autowired
     private FolioRepository folioRepository;
+
+    @Mock
+    private FolioRepository folioRepositoryMock;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -163,7 +174,8 @@ public class FolioResourceIT {
             .pdfFirmado(DEFAULT_PDF_FIRMADO)
             .pdfFirmadoContentType(DEFAULT_PDF_FIRMADO_CONTENT_TYPE)
             .pdfLectura(DEFAULT_PDF_LECTURA)
-            .pdfLecturaContentType(DEFAULT_PDF_LECTURA_CONTENT_TYPE);
+            .pdfLecturaContentType(DEFAULT_PDF_LECTURA_CONTENT_TYPE)
+            .idReceptor(DEFAULT_ID_RECEPTOR);
         return folio;
     }
     /**
@@ -195,7 +207,8 @@ public class FolioResourceIT {
             .pdfFirmado(UPDATED_PDF_FIRMADO)
             .pdfFirmadoContentType(UPDATED_PDF_FIRMADO_CONTENT_TYPE)
             .pdfLectura(UPDATED_PDF_LECTURA)
-            .pdfLecturaContentType(UPDATED_PDF_LECTURA_CONTENT_TYPE);
+            .pdfLecturaContentType(UPDATED_PDF_LECTURA_CONTENT_TYPE)
+            .idReceptor(UPDATED_ID_RECEPTOR);
         return folio;
     }
 
@@ -241,6 +254,7 @@ public class FolioResourceIT {
         assertThat(testFolio.getPdfFirmadoContentType()).isEqualTo(DEFAULT_PDF_FIRMADO_CONTENT_TYPE);
         assertThat(testFolio.getPdfLectura()).isEqualTo(DEFAULT_PDF_LECTURA);
         assertThat(testFolio.getPdfLecturaContentType()).isEqualTo(DEFAULT_PDF_LECTURA_CONTENT_TYPE);
+        assertThat(testFolio.getIdReceptor()).isEqualTo(DEFAULT_ID_RECEPTOR);
     }
 
     @Test
@@ -313,9 +327,43 @@ public class FolioResourceIT {
             .andExpect(jsonPath("$.[*].pdfFirmadoContentType").value(hasItem(DEFAULT_PDF_FIRMADO_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].pdfFirmado").value(hasItem(Base64Utils.encodeToString(DEFAULT_PDF_FIRMADO))))
             .andExpect(jsonPath("$.[*].pdfLecturaContentType").value(hasItem(DEFAULT_PDF_LECTURA_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].pdfLectura").value(hasItem(Base64Utils.encodeToString(DEFAULT_PDF_LECTURA))));
+            .andExpect(jsonPath("$.[*].pdfLectura").value(hasItem(Base64Utils.encodeToString(DEFAULT_PDF_LECTURA))))
+            .andExpect(jsonPath("$.[*].idReceptor").value(hasItem(DEFAULT_ID_RECEPTOR)));
     }
     
+    @SuppressWarnings({"unchecked"})
+    public void getAllFoliosWithEagerRelationshipsIsEnabled() throws Exception {
+        FolioResource folioResource = new FolioResource(folioRepositoryMock);
+        when(folioRepositoryMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        MockMvc restFolioMockMvc = MockMvcBuilders.standaloneSetup(folioResource)
+            .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
+            .setConversionService(createFormattingConversionService())
+            .setMessageConverters(jacksonMessageConverter).build();
+
+        restFolioMockMvc.perform(get("/api/folios?eagerload=true"))
+        .andExpect(status().isOk());
+
+        verify(folioRepositoryMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
+    @SuppressWarnings({"unchecked"})
+    public void getAllFoliosWithEagerRelationshipsIsNotEnabled() throws Exception {
+        FolioResource folioResource = new FolioResource(folioRepositoryMock);
+            when(folioRepositoryMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+            MockMvc restFolioMockMvc = MockMvcBuilders.standaloneSetup(folioResource)
+            .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
+            .setConversionService(createFormattingConversionService())
+            .setMessageConverters(jacksonMessageConverter).build();
+
+        restFolioMockMvc.perform(get("/api/folios?eagerload=true"))
+        .andExpect(status().isOk());
+
+            verify(folioRepositoryMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
     @Test
     @Transactional
     public void getFolio() throws Exception {
@@ -348,7 +396,8 @@ public class FolioResourceIT {
             .andExpect(jsonPath("$.pdfFirmadoContentType").value(DEFAULT_PDF_FIRMADO_CONTENT_TYPE))
             .andExpect(jsonPath("$.pdfFirmado").value(Base64Utils.encodeToString(DEFAULT_PDF_FIRMADO)))
             .andExpect(jsonPath("$.pdfLecturaContentType").value(DEFAULT_PDF_LECTURA_CONTENT_TYPE))
-            .andExpect(jsonPath("$.pdfLectura").value(Base64Utils.encodeToString(DEFAULT_PDF_LECTURA)));
+            .andExpect(jsonPath("$.pdfLectura").value(Base64Utils.encodeToString(DEFAULT_PDF_LECTURA)))
+            .andExpect(jsonPath("$.idReceptor").value(DEFAULT_ID_RECEPTOR));
     }
 
     @Test
@@ -393,7 +442,8 @@ public class FolioResourceIT {
             .pdfFirmado(UPDATED_PDF_FIRMADO)
             .pdfFirmadoContentType(UPDATED_PDF_FIRMADO_CONTENT_TYPE)
             .pdfLectura(UPDATED_PDF_LECTURA)
-            .pdfLecturaContentType(UPDATED_PDF_LECTURA_CONTENT_TYPE);
+            .pdfLecturaContentType(UPDATED_PDF_LECTURA_CONTENT_TYPE)
+            .idReceptor(UPDATED_ID_RECEPTOR);
 
         restFolioMockMvc.perform(put("/api/folios")
             .contentType(TestUtil.APPLICATION_JSON)
@@ -426,6 +476,7 @@ public class FolioResourceIT {
         assertThat(testFolio.getPdfFirmadoContentType()).isEqualTo(UPDATED_PDF_FIRMADO_CONTENT_TYPE);
         assertThat(testFolio.getPdfLectura()).isEqualTo(UPDATED_PDF_LECTURA);
         assertThat(testFolio.getPdfLecturaContentType()).isEqualTo(UPDATED_PDF_LECTURA_CONTENT_TYPE);
+        assertThat(testFolio.getIdReceptor()).isEqualTo(UPDATED_ID_RECEPTOR);
     }
 
     @Test

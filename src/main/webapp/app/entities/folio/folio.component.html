@@ -43,6 +43,8 @@
                     <th scope="col" ><span>Anotacion</span></th>
                     <th scope="col" ><span>Pdf Firmado</span></th>
                     <th scope="col" ><span>Pdf Lectura</span></th>
+                    <th scope="col" ><span>Id Receptor</span></th>
+                    <th scope="col" ><span>Folio Referencia</span></th>
                     <th scope="col" ><span>Libro</span></th>
                     <th scope="col" ><span>Tipo Folio</span></th>
                     <th scope="col" ><span>Estado Respuesta</span></th>
@@ -77,6 +79,12 @@
                     <td>
                         <a *ngIf="folio.pdfLectura" (click)="openFile(folio.pdfLecturaContentType, folio.pdfLectura)">open</a>
                         <span *ngIf="folio.pdfLectura">{{ folio.pdfLecturaContentType }}, {{ byteSize(folio.pdfLectura) }}</span>
+                    </td>
+                    <td>{{ folio.idReceptor }}</td>
+                    <td>
+                        <span *ngFor="let folioReferencia of folio.folioReferencias; let last = last">
+                            <a class="form-control-static" [routerLink]="['/folio-referencia', folioReferencia?.id, 'view']">{{ folioReferencia.asunto }}</a>{{ last ? '' : ', ' }}
+                        </span>
                     </td>
                     <td>
                         <div *ngIf="folio.libro">

@@ -11,6 +11,8 @@ import { JhiDataUtils, JhiFileLoadError, JhiEventManager, JhiEventWithContent } 
 import { IFolio, Folio } from 'app/shared/model/folio.model';
 import { FolioService } from './folio.service';
 import { AlertError } from 'app/shared/alert/alert-error.model';
+import { IFolioReferencia } from 'app/shared/model/folio-referencia.model';
+import { FolioReferenciaService } from 'app/entities/folio-referencia/folio-referencia.service';
 import { ILibro } from 'app/shared/model/libro.model';
 import { LibroService } from 'app/entities/libro/libro.service';
 import { ITipoFolio } from 'app/shared/model/tipo-folio.model';
@@ -18,7 +20,7 @@ import { TipoFolioService } from 'app/entities/tipo-folio/tipo-folio.service';
 import { IEstadoRespuesta } from 'app/shared/model/estado-respuesta.model';
 import { EstadoRespuestaService } from 'app/entities/estado-respuesta/estado-respuesta.service';
 
-type SelectableEntity = ILibro | ITipoFolio | IEstadoRespuesta;
+type SelectableEntity = IFolioReferencia | ILibro | ITipoFolio | IEstadoRespuesta;
 
 @Component({
   selector: 'jhi-folio-update',
@@ -26,6 +28,7 @@ type SelectableEntity = ILibro | ITipoFolio | IEstadoRespuesta;
 })
 export class FolioUpdateComponent implements OnInit {
   isSaving = false;
+  folioreferencias: IFolioReferencia[] = [];
   libros: ILibro[] = [];
   tipofolios: ITipoFolio[] = [];
   estadorespuestas: IEstadoRespuesta[] = [];
@@ -54,6 +57,8 @@ export class FolioUpdateComponent implements OnInit {
     pdfFirmadoContentType: [],
     pdfLectura: [],
     pdfLecturaContentType: [],
+    idReceptor: [],
+    folioReferencias: [],
     libro: [],
     tipoFolio: [],
     estadoRespuesta: []
@@ -63,6 +68,7 @@ export class FolioUpdateComponent implements OnInit {
     protected dataUtils: JhiDataUtils,
     protected eventManager: JhiEventManager,
     protected folioService: FolioService,
+    protected folioReferenciaService: FolioReferenciaService,
     protected libroService: LibroService,
     protected tipoFolioService: TipoFolioService,
     protected estadoRespuestaService: EstadoRespuestaService,
@@ -82,6 +88,8 @@ export class FolioUpdateComponent implements OnInit {
       }
 
       this.updateForm(folio);
+
+      this.folioReferenciaService.query().subscribe((res: HttpResponse<IFolioReferencia[]>) => (this.folioreferencias = res.body || []));
 
       this.libroService.query().subscribe((res: HttpResponse<ILibro[]>) => (this.libros = res.body || []));
 
@@ -116,6 +124,8 @@ export class FolioUpdateComponent implements OnInit {
       pdfFirmadoContentType: folio.pdfFirmadoContentType,
       pdfLectura: folio.pdfLectura,
       pdfLecturaContentType: folio.pdfLecturaContentType,
+      idReceptor: folio.idReceptor,
+      folioReferencias: folio.folioReferencias,
       libro: folio.libro,
       tipoFolio: folio.tipoFolio,
       estadoRespuesta: folio.estadoRespuesta
@@ -186,6 +196,8 @@ export class FolioUpdateComponent implements OnInit {
       pdfFirmado: this.editForm.get(['pdfFirmado'])!.value,
       pdfLecturaContentType: this.editForm.get(['pdfLecturaContentType'])!.value,
       pdfLectura: this.editForm.get(['pdfLectura'])!.value,
+      idReceptor: this.editForm.get(['idReceptor'])!.value,
+      folioReferencias: this.editForm.get(['folioReferencias'])!.value,
       libro: this.editForm.get(['libro'])!.value,
       tipoFolio: this.editForm.get(['tipoFolio'])!.value,
       estadoRespuesta: this.editForm.get(['estadoRespuesta'])!.value
@@ -210,5 +222,16 @@ export class FolioUpdateComponent implements OnInit {
 
   trackById(index: number, item: SelectableEntity): any {
     return item.id;
+  }
+
+  getSelected(selectedVals: IFolioReferencia[], option: IFolioReferencia): IFolioReferencia {
+    if (selectedVals) {
+      for (let i = 0; i < selectedVals.length; i++) {
+        if (option.id === selectedVals[i].id) {
+          return selectedVals[i];
+        }
+      }
+    }
+    return option;
   }
 }

@@ -87,6 +87,10 @@
             "fieldName": "pdfLectura",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "idReceptor",
+            "fieldType": "Integer"
         }
     ],
     "relationships": [
@@ -113,6 +117,14 @@
             "otherEntityName": "gesFavorito",
             "otherEntityRelationshipName": "folio",
             "relationshipName": "gesFavorito"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "folioReferencia",
+            "otherEntityRelationshipName": "folio",
+            "relationshipName": "folioReferencia",
+            "otherEntityField": "asunto",
+            "ownerSide": true
         },
         {
             "relationshipType": "many-to-one",

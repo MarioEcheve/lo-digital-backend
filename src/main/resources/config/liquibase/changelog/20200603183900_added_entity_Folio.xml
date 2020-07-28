@@ -81,6 +81,9 @@
             <column name="pdf_lectura_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="id_receptor" type="integer">
+                <constraints nullable="true" />
+            </column>
             <column name="libro_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -101,6 +104,17 @@
 
     <changeSet id="20200603183900-1-relations" author="jhipster">
 
+        <createTable tableName="folio_folio_referencia">
+            <column name="folio_referencia_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="folio_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="folio_id, folio_referencia_id" tableName="folio_folio_referencia"/>
+        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 
@@ -140,6 +154,7 @@
             <column name="pdf_firmado_content_type" type="string"/>
             <column name="pdf_lectura" type="blob"/>
             <column name="pdf_lectura_content_type" type="string"/>
+            <column name="id_receptor" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

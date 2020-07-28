@@ -43,6 +43,7 @@
     <include file="config/liquibase/changelog/20200603184900_added_entity_Comuna.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200603185000_added_entity_Usuario.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200603185100_added_entity_UsuarioLibroPerfil.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200724054000_added_entity_FolioReferencia.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20200603182300_added_entity_constraints_Entidad.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200603182600_added_entity_constraints_Dependencia.xml" relativeToChangelogFile="false"/>

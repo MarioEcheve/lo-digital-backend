@@ -135,4 +135,12 @@ public class FolioResource {
         String json = new ObjectMapper().writeValueAsString(folioRepository.correlativoFolio(idLibro));
         return json;
     }
+
+    @GetMapping("/folioReferencias/{id}")
+    public ResponseEntity<Folio> getFolioReferencias(@PathVariable Long id) {
+        log.debug("REST request to get Folio Referencias : {}", id);
+        Optional<Folio> folio = folioRepository.findOneWithEagerRelationships(id);
+        return ResponseUtil.wrapOrNotFound(folio);
+    }
+
 }
