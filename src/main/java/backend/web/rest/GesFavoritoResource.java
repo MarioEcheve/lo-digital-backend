@@ -116,4 +116,16 @@ public class GesFavoritoResource {
         gesFavoritoRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString())).build();
     }
+    @GetMapping("/BuscarFavoritoByFolio/{idFolio}")
+    public List<GesFavorito> BuscarFavoritoByFolio(@PathVariable Long idFolio) {
+        log.debug("REST request to get GesFavorito por Folio : {}", idFolio);
+        return gesFavoritoRepository.BuscarFavoritoByFolio(idFolio);
+    }
+
+    @GetMapping("/BuscarFavoritoByUsuario/{idUsuario}")
+    public List<GesFavorito> BuscarFavoritoByUsuario(@PathVariable Long idUsuario) {
+        log.debug("REST request to get GesFavorito por Usuario : {}", idUsuario);
+        return gesFavoritoRepository.BuscarFavoritoByUsuario(idUsuario);
+    }
+    
 }
