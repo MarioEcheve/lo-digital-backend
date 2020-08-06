@@ -37,11 +37,11 @@ public class GesFavorito implements Serializable {
     private Boolean favorito;
 
     @ManyToOne
-    @JsonIgnoreProperties("gesFavoritos")
+    @JsonIgnoreProperties(value="gesFavoritos", allowSetters=true)
     private Folio folio;
 
     @ManyToOne
-    @JsonIgnoreProperties("gesFavoritos")
+    @JsonIgnoreProperties(value="gesFavoritos", allowSetters=true)
     private UsuarioLibro usuarioLibro;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

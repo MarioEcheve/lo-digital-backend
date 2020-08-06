@@ -17,4 +17,11 @@ public interface LibroRepository extends JpaRepository<Libro, Long> {
         +"inner join a.contrato b "
         +"where b.id = :idContrato")
     List<Libro> buscarlibroPorContrato(@Param("idContrato") Long idContrato);
+
+    @Query("select a from Libro a "
+        +"inner join a.usuarioLibros b "
+        +"inner join b.usuarioDependencia c "
+        +"inner join c.usuario d "
+        +"where d.id = :idUsuario")
+    List<Libro> getMisLibros(@Param("idUsuario") Long idUsuario);
 }

@@ -142,5 +142,30 @@ public class FolioResource {
         Optional<Folio> folio = folioRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(folio);
     }
+    @GetMapping("/filtroFolioPersonalizado/{idLibro}/{emisor}/{receptor}/{asunto}")
+    public String filtroFolioPersonalizado(
+                    @PathVariable Long idLibro,
+                    @PathVariable(required = false) String emisor,
+                    @PathVariable(required = false) String receptor,
+                    @PathVariable(required = false) String asunto) throws JsonProcessingException{
+        if( emisor.equals("null")){
+            emisor = new String("");
+            log.debug("entro al emisor");
+        }
+        if( receptor.equals("null")){
+            receptor = new String("");
+            log.debug("entro al receptor");
+        }
+        if( asunto.equals("null")){
+            asunto = new String("");
+            log.debug("entro al asunto");
+        }
+        String json = new ObjectMapper().writeValueAsString(folioRepository.filtroFolioPersonalizado(idLibro,
+                                                                                                    emisor,
+                                                                                                    receptor,
+                                                                                                    asunto));
+        return json;
+    }
+    
 
 }
