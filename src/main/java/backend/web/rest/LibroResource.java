@@ -127,4 +127,15 @@ public class LibroResource {
         log.debug("REST request to get libros  por contrato : {}", idContrato);
         return libroRepository.buscarlibroPorContrato(idContrato);
     }
+    /**
+     * {@code GET  /getMisLibros/:idEntidad} : get the "ids" of usuario.
+     *
+     * @param id the id of the usuario to find a list of libros.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+    @GetMapping("/getMisLibros/{idUsuario}")
+    public List<Libro> getMisLibros(@PathVariable Long idUsuario) {
+        log.debug("REST request to get libros  por usuario : {}", idUsuario);
+        return libroRepository.getMisLibros(idUsuario);
+    }
 }

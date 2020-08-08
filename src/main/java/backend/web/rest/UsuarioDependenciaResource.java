@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -114,5 +116,22 @@ public class UsuarioDependenciaResource {
         log.debug("REST request to delete UsuarioDependencia : {}", id);
         usuarioDependenciaRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString())).build();
+    }
+
+    @GetMapping("/findUserByUsuarioDependencia/{idUsuario}")
+    public List<UsuarioDependencia> findUserByUsuarioDependencia(@PathVariable Long idUsuario) {
+        log.debug("REST request to get usuario dependencias  por usuario : {}", idUsuario);
+        return usuarioDependenciaRepository.findUserByUsuarioDependencia(idUsuario);
+    }
+
+    @GetMapping("/findUserByUsuarioDependenciaRolUser/{idUsuario}")
+    public String findUserByUsuarioDependenciaRolUser(@PathVariable Long idUsuario) throws JsonProcessingException{
+        String json = new ObjectMapper().writeValueAsString(usuarioDependenciaRepository.findUserByUsuarioDependenciaRolUser(idUsuario));
+        return json;
+    }
+    @GetMapping("/findContratosByDependencia/{idDependencia}")
+    public String findContratosByDependencia(@PathVariable Long idDependencia) throws JsonProcessingException{
+        String json = new ObjectMapper().writeValueAsString(usuarioDependenciaRepository.findContratosByDependencia(idDependencia));
+        return json;
     }
 }

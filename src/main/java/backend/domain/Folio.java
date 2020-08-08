@@ -116,7 +116,7 @@ public class Folio implements Serializable {
     private Set<FolioReferencia> folioReferencias = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties("folios")
+    @JsonIgnoreProperties(value="folios" ,allowSetters=true)
     private Libro libro;
 
     @ManyToOne
