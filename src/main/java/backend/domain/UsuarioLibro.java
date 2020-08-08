@@ -49,11 +49,11 @@ public class UsuarioLibro implements Serializable {
     private Libro libro;
 
     @ManyToOne
-    @JsonIgnoreProperties("usuarioLibros")
+    @JsonIgnoreProperties(value="usuarioLibros", allowSetters=true)
     private UsuarioDependencia usuarioDependencia;
 
     @ManyToOne
-    @JsonIgnoreProperties("usuarioLibros")
+    @JsonIgnoreProperties(value="usuarioLibros", allowSetters=true)
     private UsuarioLibroPerfil perfilUsuarioLibro;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
