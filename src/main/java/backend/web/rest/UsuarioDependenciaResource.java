@@ -134,4 +134,9 @@ public class UsuarioDependenciaResource {
         String json = new ObjectMapper().writeValueAsString(usuarioDependenciaRepository.findContratosByDependencia(idDependencia));
         return json;
     }
+    @GetMapping("/findContratosByUsuarioNormal/{idUsuario}")
+    public String findContratosByUsuarioNormal(@PathVariable Long idUsuario) throws JsonProcessingException{
+        String json = new ObjectMapper().writeValueAsString(usuarioDependenciaRepository.findContratosByUsuarioNormal(idUsuario));
+        return json;
+    }
 }

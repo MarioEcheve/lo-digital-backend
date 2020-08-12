@@ -139,4 +139,10 @@ public class UsuarioLibroResource {
         log.debug("REST request to get usuarios por libros  : {}", idLibro,idUsuario);
         return usuarioLibroRepository.ListaUsuariosLibros(idLibro,idUsuario);
     }
+
+    @GetMapping("/UsuariosPorLibro/{idUsuario}")
+    public List<UsuarioLibro> UsuariosPorLibro (@PathVariable("idUsuario") Long idUsuario){
+        log.debug("REST request to get usuarios libros por libros  : {}",idUsuario);
+        return usuarioLibroRepository.UsuariosPorLibro(idUsuario);
+    }
 }

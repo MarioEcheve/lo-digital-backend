@@ -79,6 +79,48 @@ public interface UsuarioDependenciaRepository extends JpaRepository<UsuarioDepen
                 "left join estado_servicio es on es.id = c.estado_servicio_id " +
                 "where dm.id = :idDependencia or dc.id = :idDependencia ", nativeQuery = true)
     List<Map<String, String>> findContratosByDependencia(@Param("idDependencia") Long idDependencia);
+
+    @Query(value="SELECT "+
+                        "c.id , "+
+                        "c.fecha_inicio_servicio ,"+
+                        "c.fecha_termino_servicio, "+
+                        "c.fecha_termino_acceso, "+
+                        "c.observaciones_servicio, "+
+                        "c.codigo, "+
+                        "c.nombre, "+
+                        "c.descripcion, "+
+                        "c.direccion, "+
+                        "m2.id as id_modalidad, "+
+                        "m2.nombre as modalidad, "+
+                        "tc.id as id_tipo_contrato, "+
+                        "tc.nombre as tipo_contrato, "+
+                        "es.id as id_estado_servicio, "+
+                        "es.nombre as estado_servicio  "+
+                        "FROM contrato c "+
+                    "inner join libro l on l.contrato_id  = c.id "+
+                    "inner join usuario_libro ul on ul.libro_id  = l.id "+
+                    "inner join usuario_dependencia ud on ud.id = ul.usuario_dependencia_id "+
+                    "inner join jhi_user ju on ju.id = ud.usuario_id   "+
+                    "inner join modalidad m2 on m2.id = c.modalidad_id "+
+                    "inner join tipo_contrato tc on tc.id = c.tipo_contrato_id "+
+                    "left join estado_servicio es on es.id = c.estado_servicio_id "+
+                    "where ju.id = :idUsuario "+
+                    "group by c.id , "+
+                        "c.fecha_inicio_servicio ,"+
+                        "c.fecha_termino_servicio, "+
+                        "c.fecha_termino_acceso, "+
+                        "c.observaciones_servicio, "+
+                        "c.codigo, "+
+                        "c.nombre, "+
+                        "c.descripcion, "+
+                        "c.direccion, "+
+                        "m2.id , "+
+                        "m2.nombre , "+
+                        "tc.id , "+
+                        "tc.nombre , "+
+                        "es.id , "+
+                        "es.nombre", nativeQuery = true)
+    List<Map<String, String>> findContratosByUsuarioNormal(@Param("idUsuario") Long idUsuario);
                      
 
 }
