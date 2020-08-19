@@ -138,4 +138,10 @@ public class LibroResource {
         log.debug("REST request to get libros  por usuario : {}", idUsuario);
         return libroRepository.getMisLibros(idUsuario);
     }
+
+    @GetMapping("/getMisLibrosContratoDetalle/{idUsuario}/{idContrato}")
+    public List<Libro> getMisLibrosContratoDetalle(@PathVariable Long idUsuario,@PathVariable Long idContrato) {
+        log.debug("REST request to get libros  por usuario : {}", idContrato);
+        return libroRepository.getMisLibrosContratoDetalle(idUsuario,idContrato);
+    }
 }

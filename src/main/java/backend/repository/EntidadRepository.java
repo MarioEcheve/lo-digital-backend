@@ -18,5 +18,5 @@ public interface EntidadRepository extends JpaRepository<Entidad, Long> {
         +"inner join b.usuarioDependencias c  "
         +"inner join c.usuario d "
         +"where d.id = :idUsuario")
-    List<Entidad> buscaEntidadPorUsuario(@Param("idUsuario") Long idUsuario);
+  List<Entidad> buscaEntidadPorUsuario(@Param("idUsuario") Long idUsuario);
 }
