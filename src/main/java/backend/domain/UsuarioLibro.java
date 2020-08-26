@@ -35,6 +35,9 @@ public class UsuarioLibro implements Serializable {
     @Column(name = "fecha_modificacion")
     private Instant fechaModificacion;
 
+    @Column(name = "admin_activo")
+    private Boolean adminActivo;
+
     @OneToMany(mappedBy = "usuarioLibro")
     private Set<GesAlerta> gesAlertas = new HashSet<>();
 
@@ -45,15 +48,15 @@ public class UsuarioLibro implements Serializable {
     private Set<GesFavorito> gesFavoritos = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties(value = "usuarioLibros", allowSetters = true )
+    @JsonIgnoreProperties(value="usuarioLibros", allowSetters = true)
     private Libro libro;
 
     @ManyToOne
-    @JsonIgnoreProperties(value="usuarioLibros", allowSetters=true)
+    @JsonIgnoreProperties("usuarioLibros")
     private UsuarioDependencia usuarioDependencia;
 
     @ManyToOne
-    @JsonIgnoreProperties(value="usuarioLibros", allowSetters=true)
+    @JsonIgnoreProperties("usuarioLibros")
     private UsuarioLibroPerfil perfilUsuarioLibro;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -115,6 +118,19 @@ public class UsuarioLibro implements Serializable {
 
     public void setFechaModificacion(Instant fechaModificacion) {
         this.fechaModificacion = fechaModificacion;
+    }
+
+    public Boolean isAdminActivo() {
+        return adminActivo;
+    }
+
+    public UsuarioLibro adminActivo(Boolean adminActivo) {
+        this.adminActivo = adminActivo;
+        return this;
+    }
+
+    public void setAdminActivo(Boolean adminActivo) {
+        this.adminActivo = adminActivo;
     }
 
     public Set<GesAlerta> getGesAlertas() {
@@ -256,6 +272,7 @@ public class UsuarioLibro implements Serializable {
             ", cargoFuncion='" + getCargoFuncion() + "'" +
             ", fechaCreacion='" + getFechaCreacion() + "'" +
             ", fechaModificacion='" + getFechaModificacion() + "'" +
+            ", adminActivo='" + isAdminActivo() + "'" +
             "}";
     }
 }

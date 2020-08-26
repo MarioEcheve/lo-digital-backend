@@ -34,6 +34,7 @@ export class UsuarioLibroUpdateComponent implements OnInit {
     cargoFuncion: [],
     fechaCreacion: [],
     fechaModificacion: [],
+    adminActivo: [],
     libro: [],
     usuarioDependencia: [],
     perfilUsuarioLibro: []
@@ -77,6 +78,7 @@ export class UsuarioLibroUpdateComponent implements OnInit {
       cargoFuncion: usuarioLibro.cargoFuncion,
       fechaCreacion: usuarioLibro.fechaCreacion ? usuarioLibro.fechaCreacion.format(DATE_TIME_FORMAT) : null,
       fechaModificacion: usuarioLibro.fechaModificacion ? usuarioLibro.fechaModificacion.format(DATE_TIME_FORMAT) : null,
+      adminActivo: usuarioLibro.adminActivo,
       libro: usuarioLibro.libro,
       usuarioDependencia: usuarioLibro.usuarioDependencia,
       perfilUsuarioLibro: usuarioLibro.perfilUsuarioLibro
@@ -109,6 +111,7 @@ export class UsuarioLibroUpdateComponent implements OnInit {
       fechaModificacion: this.editForm.get(['fechaModificacion'])!.value
         ? moment(this.editForm.get(['fechaModificacion'])!.value, DATE_TIME_FORMAT)
         : undefined,
+      adminActivo: this.editForm.get(['adminActivo'])!.value,
       libro: this.editForm.get(['libro'])!.value,
       usuarioDependencia: this.editForm.get(['usuarioDependencia'])!.value,
       perfilUsuarioLibro: this.editForm.get(['perfilUsuarioLibro'])!.value

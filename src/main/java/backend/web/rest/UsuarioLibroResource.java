@@ -145,4 +145,14 @@ public class UsuarioLibroResource {
         log.debug("REST request to get usuarios libros por libros  : {}",idUsuario);
         return usuarioLibroRepository.UsuariosPorLibro(idUsuario);
     }
+    @GetMapping("/getAdministradorActual/{idLibro}/{idDependencia}")
+    public UsuarioLibro getAdministradorActual (@PathVariable("idLibro") Long idLibro,@PathVariable("idDependencia") Long idDependencia){
+        log.debug("REST request to get usuarios libros por libros  : {}",idLibro,idDependencia);
+        return usuarioLibroRepository.getAdministradorActual(idLibro,idDependencia);
+    }
+    @GetMapping("/getAdministradoresLibro/{idLibro}/{idDependencia}")
+    public List<UsuarioLibro> getAdministradoresLibro (@PathVariable("idLibro") Long idLibro,@PathVariable("idDependencia") Long idDependencia){
+        log.debug("REST request to get usuarios libros por libros  : {}",idLibro,idDependencia);
+        return usuarioLibroRepository.getAdministradoresLibro(idLibro,idDependencia);
+    }
 }

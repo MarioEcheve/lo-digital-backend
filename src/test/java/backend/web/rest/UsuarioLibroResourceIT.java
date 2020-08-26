@@ -47,6 +47,9 @@ public class UsuarioLibroResourceIT {
     private static final Instant DEFAULT_FECHA_MODIFICACION = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_FECHA_MODIFICACION = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
+    private static final Boolean DEFAULT_ADMIN_ACTIVO = false;
+    private static final Boolean UPDATED_ADMIN_ACTIVO = true;
+
     @Autowired
     private UsuarioLibroRepository usuarioLibroRepository;
 
@@ -92,7 +95,8 @@ public class UsuarioLibroResourceIT {
             .estado(DEFAULT_ESTADO)
             .cargoFuncion(DEFAULT_CARGO_FUNCION)
             .fechaCreacion(DEFAULT_FECHA_CREACION)
-            .fechaModificacion(DEFAULT_FECHA_MODIFICACION);
+            .fechaModificacion(DEFAULT_FECHA_MODIFICACION)
+            .adminActivo(DEFAULT_ADMIN_ACTIVO);
         return usuarioLibro;
     }
     /**
@@ -106,7 +110,8 @@ public class UsuarioLibroResourceIT {
             .estado(UPDATED_ESTADO)
             .cargoFuncion(UPDATED_CARGO_FUNCION)
             .fechaCreacion(UPDATED_FECHA_CREACION)
-            .fechaModificacion(UPDATED_FECHA_MODIFICACION);
+            .fechaModificacion(UPDATED_FECHA_MODIFICACION)
+            .adminActivo(UPDATED_ADMIN_ACTIVO);
         return usuarioLibro;
     }
 
@@ -134,6 +139,7 @@ public class UsuarioLibroResourceIT {
         assertThat(testUsuarioLibro.getCargoFuncion()).isEqualTo(DEFAULT_CARGO_FUNCION);
         assertThat(testUsuarioLibro.getFechaCreacion()).isEqualTo(DEFAULT_FECHA_CREACION);
         assertThat(testUsuarioLibro.getFechaModificacion()).isEqualTo(DEFAULT_FECHA_MODIFICACION);
+        assertThat(testUsuarioLibro.isAdminActivo()).isEqualTo(DEFAULT_ADMIN_ACTIVO);
     }
 
     @Test
@@ -170,7 +176,8 @@ public class UsuarioLibroResourceIT {
             .andExpect(jsonPath("$.[*].estado").value(hasItem(DEFAULT_ESTADO.booleanValue())))
             .andExpect(jsonPath("$.[*].cargoFuncion").value(hasItem(DEFAULT_CARGO_FUNCION)))
             .andExpect(jsonPath("$.[*].fechaCreacion").value(hasItem(DEFAULT_FECHA_CREACION.toString())))
-            .andExpect(jsonPath("$.[*].fechaModificacion").value(hasItem(DEFAULT_FECHA_MODIFICACION.toString())));
+            .andExpect(jsonPath("$.[*].fechaModificacion").value(hasItem(DEFAULT_FECHA_MODIFICACION.toString())))
+            .andExpect(jsonPath("$.[*].adminActivo").value(hasItem(DEFAULT_ADMIN_ACTIVO.booleanValue())));
     }
     
     @Test
@@ -187,7 +194,8 @@ public class UsuarioLibroResourceIT {
             .andExpect(jsonPath("$.estado").value(DEFAULT_ESTADO.booleanValue()))
             .andExpect(jsonPath("$.cargoFuncion").value(DEFAULT_CARGO_FUNCION))
             .andExpect(jsonPath("$.fechaCreacion").value(DEFAULT_FECHA_CREACION.toString()))
-            .andExpect(jsonPath("$.fechaModificacion").value(DEFAULT_FECHA_MODIFICACION.toString()));
+            .andExpect(jsonPath("$.fechaModificacion").value(DEFAULT_FECHA_MODIFICACION.toString()))
+            .andExpect(jsonPath("$.adminActivo").value(DEFAULT_ADMIN_ACTIVO.booleanValue()));
     }
 
     @Test
@@ -214,7 +222,8 @@ public class UsuarioLibroResourceIT {
             .estado(UPDATED_ESTADO)
             .cargoFuncion(UPDATED_CARGO_FUNCION)
             .fechaCreacion(UPDATED_FECHA_CREACION)
-            .fechaModificacion(UPDATED_FECHA_MODIFICACION);
+            .fechaModificacion(UPDATED_FECHA_MODIFICACION)
+            .adminActivo(UPDATED_ADMIN_ACTIVO);
 
         restUsuarioLibroMockMvc.perform(put("/api/usuario-libros")
             .contentType(TestUtil.APPLICATION_JSON)
@@ -229,6 +238,7 @@ public class UsuarioLibroResourceIT {
         assertThat(testUsuarioLibro.getCargoFuncion()).isEqualTo(UPDATED_CARGO_FUNCION);
         assertThat(testUsuarioLibro.getFechaCreacion()).isEqualTo(UPDATED_FECHA_CREACION);
         assertThat(testUsuarioLibro.getFechaModificacion()).isEqualTo(UPDATED_FECHA_MODIFICACION);
+        assertThat(testUsuarioLibro.isAdminActivo()).isEqualTo(UPDATED_ADMIN_ACTIVO);
     }
 
     @Test

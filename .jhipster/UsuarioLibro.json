@@ -16,6 +16,10 @@
         {
             "fieldName": "fechaModificacion",
             "fieldType": "Instant"
+        },
+        {
+            "fieldName": "adminActivo",
+            "fieldType": "Boolean"
         }
     ],
     "relationships": [

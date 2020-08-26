@@ -12,6 +12,7 @@ export interface IUsuarioLibro {
   cargoFuncion?: string;
   fechaCreacion?: Moment;
   fechaModificacion?: Moment;
+  adminActivo?: boolean;
   gesAlertas?: IGesAlerta[];
   gesNotas?: IGesNota[];
   gesFavoritos?: IGesFavorito[];
@@ -27,6 +28,7 @@ export class UsuarioLibro implements IUsuarioLibro {
     public cargoFuncion?: string,
     public fechaCreacion?: Moment,
     public fechaModificacion?: Moment,
+    public adminActivo?: boolean,
     public gesAlertas?: IGesAlerta[],
     public gesNotas?: IGesNota[],
     public gesFavoritos?: IGesFavorito[],
@@ -35,5 +37,6 @@ export class UsuarioLibro implements IUsuarioLibro {
     public perfilUsuarioLibro?: IUsuarioLibroPerfil
   ) {
     this.estado = this.estado || false;
+    this.adminActivo = this.adminActivo || false;
   }
 }

@@ -1,11 +1,11 @@
-id;estado;cargo_funcion;fecha_creacion;fecha_modificacion
-1;false;Brand;2020-06-03T04:20:12;2020-06-02T21:56:48
-2;true;solutions maximize;2020-06-02T19:09:31;2020-06-03T15:46:47
-3;false;SMTP Kansas Sleek Concrete Keyboard;2020-06-03T04:26:24;2020-06-03T16:49:49
-4;false;override pricing structure;2020-06-03T16:35:55;2020-06-03T03:44:20
-5;false;Metrics Granite;2020-06-03T12:55:38;2020-06-03T00:24:49
-6;true;Garden;2020-06-03T06:22:25;2020-06-03T00:07:09
-7;false;Kuwaiti Dinar;2020-06-03T11:32:19;2020-06-03T02:19:28
-8;true;olive homogeneous;2020-06-02T21:48:51;2020-06-03T16:24:18
-9;false;Kuwaiti Dinar Direct;2020-06-02T22:38:59;2020-06-03T18:35:35
-10;true;payment card withdrawal;2020-06-03T07:52:48;2020-06-03T01:28:38
+id;estado;cargo_funcion;fecha_creacion;fecha_modificacion;admin_activo
+1;false;Brand;2020-06-03T04:20:12;2020-06-02T21:56:48;true
+2;true;fault-tolerant Personal Loan Account;2020-06-03T15:46:47;2020-06-03T16:01:15;true
+3;true;Kansas Sleek Concrete Keyboard;2020-06-03T04:26:24;2020-06-03T16:49:49;false
+4;false;Gloves bypass Money Market Account;2020-06-03T08:17:09;2020-06-02T20:04:56;true
+5;false;Right-sized Bhutan;2020-06-03T18:31:29;2020-06-03T10:31:19;true
+6;true;Chicken;2020-06-03T08:08:33;2020-06-03T11:32:19;true
+7;true;olive homogeneous;2020-06-02T21:48:51;2020-06-03T16:24:18;false
+8;false;functionalities Fresh Industrial;2020-06-02T23:20:16;2020-06-03T02:55:01;true
+9;true;withdrawal;2020-06-03T07:52:48;2020-06-03T01:28:38;true
+10;false;Chief Investment Account Greece;2020-06-03T04:56:19;2020-06-03T06:00:10;false

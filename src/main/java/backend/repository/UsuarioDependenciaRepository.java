@@ -104,7 +104,7 @@ public interface UsuarioDependenciaRepository extends JpaRepository<UsuarioDepen
                     "inner join modalidad m2 on m2.id = c.modalidad_id "+
                     "inner join tipo_contrato tc on tc.id = c.tipo_contrato_id "+
                     "left join estado_servicio es on es.id = c.estado_servicio_id "+
-                    "where ju.id = :idUsuario "+
+                    "where ju.id = :idUsuario and ul.estado = true "+
                     "group by c.id , "+
                         "c.fecha_inicio_servicio ,"+
                         "c.fecha_termino_servicio, "+

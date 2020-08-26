@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new UsuarioLibro(0, false, 'AAAAAAA', currentDate, currentDate);
+      elemDefault = new UsuarioLibro(0, false, 'AAAAAAA', currentDate, currentDate, false);
     });
 
     describe('Service methods', () => {
@@ -75,7 +75,8 @@ describe('Service Tests', () => {
             estado: true,
             cargoFuncion: 'BBBBBB',
             fechaCreacion: currentDate.format(DATE_TIME_FORMAT),
-            fechaModificacion: currentDate.format(DATE_TIME_FORMAT)
+            fechaModificacion: currentDate.format(DATE_TIME_FORMAT),
+            adminActivo: true
           },
           elemDefault
         );
@@ -101,7 +102,8 @@ describe('Service Tests', () => {
             estado: true,
             cargoFuncion: 'BBBBBB',
             fechaCreacion: currentDate.format(DATE_TIME_FORMAT),
-            fechaModificacion: currentDate.format(DATE_TIME_FORMAT)
+            fechaModificacion: currentDate.format(DATE_TIME_FORMAT),
+            adminActivo: true
           },
           elemDefault
         );

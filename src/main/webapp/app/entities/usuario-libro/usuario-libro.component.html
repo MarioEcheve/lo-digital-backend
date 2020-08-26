@@ -27,6 +27,7 @@
                     <th scope="col" ><span>Cargo Funcion</span></th>
                     <th scope="col" ><span>Fecha Creacion</span></th>
                     <th scope="col" ><span>Fecha Modificacion</span></th>
+                    <th scope="col" ><span>Admin Activo</span></th>
                     <th scope="col" ><span>Libro</span></th>
                     <th scope="col" ><span>Usuario Dependencia</span></th>
                     <th scope="col" ><span>Perfil Usuario Libro</span></th>
@@ -40,6 +41,7 @@
                     <td>{{ usuarioLibro.cargoFuncion }}</td>
                     <td>{{ usuarioLibro.fechaCreacion | date:'medium' }}</td>
                     <td>{{ usuarioLibro.fechaModificacion | date:'medium' }}</td>
+                    <td>{{ usuarioLibro.adminActivo }}</td>
                     <td>
                         <div *ngIf="usuarioLibro.libro">
                             <a [routerLink]="['/libro', usuarioLibro.libro?.id, 'view']" >{{ usuarioLibro.libro?.nombre }}</a>
