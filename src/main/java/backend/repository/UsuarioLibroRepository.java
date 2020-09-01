@@ -37,7 +37,7 @@ public interface UsuarioLibroRepository extends JpaRepository<UsuarioLibro, Long
         @Query( " select a from UsuarioLibro a " +
                 " inner join a.perfilUsuarioLibro b " + 
                 " inner join a.usuarioDependencia c " +
-                " where a.libro.id = :idLibro and upper(b.nombre) = 'ADMINISTRADOR' " +
+                " where a.libro.id = :idLibro and upper(b.nombre) = 'ADMINISTRADOR/S' " +
                 " and c.dependencia.id = :idDependencia and a.adminActivo= false and a.estado = true")
         List<UsuarioLibro> getAdministradoresLibro(@Param("idLibro") long idLibro,@Param("idDependencia") Long idDependencia);
 }
