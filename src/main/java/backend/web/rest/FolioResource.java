@@ -166,6 +166,10 @@ public class FolioResource {
                                                                                                     asunto));
         return json;
     }
-    
+    @GetMapping("/favoritosUsuarioLibro/{idUsuarioLibro}/{idLibro}")
+    public List<Folio> favoritosUsuarioLibro(@PathVariable Long idUsuarioLibro , @PathVariable Long idLibro) {
+        log.debug("REST request to get favoritos  por usuario libro : {}", idUsuarioLibro,idLibro);
+        return folioRepository.favoritosUsuarioLibro(idUsuarioLibro,idLibro);
+    }
 
 }

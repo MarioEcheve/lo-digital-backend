@@ -55,4 +55,11 @@ public interface FolioRepository extends JpaRepository<Folio, Long> {
                                         @Param("receptor") String receptor,
                                         @Param("asunto") String asunto);
 
+    @Query("select a from Folio a "
+    +"inner join a.gesFavoritos b "
+    +"inner join b.usuarioLibro c "
+    +"inner join a.libro d "
+    +"where c.id = :idUsuarioLibro and d.id = :idLibro order by 1 desc")
+    List<Folio> favoritosUsuarioLibro (@Param("idUsuarioLibro") Long idUsuarioLibro,@Param("idLibro") Long idLibro);
+
 }
