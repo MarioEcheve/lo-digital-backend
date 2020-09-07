@@ -116,4 +116,10 @@ public class ArchivoResource {
         archivoRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString())).build();
     }
+
+    @GetMapping("/archivosPorFolio/{idFolio}")
+    List<Archivo> buscaArchivosPorFolio(@PathVariable Long idFolio){
+        log.debug("REST request to get archivos  por folio : {}", idFolio);
+        return archivoRepository.buscaArchivosPorFolio(idFolio);
+    }
 }
