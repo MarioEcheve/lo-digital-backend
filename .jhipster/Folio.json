@@ -76,7 +76,11 @@
         },
         {
             "fieldName": "anotacion",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "10485760"
         },
         {
             "fieldName": "pdfFirmado",

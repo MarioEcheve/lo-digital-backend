@@ -24,7 +24,7 @@ export class ArchivoUpdateComponent implements OnInit {
     id: [],
     archivo: [null, [Validators.required]],
     archivoContentType: [],
-    descripcion: [null, [Validators.maxLength(30)]],
+    descripcion: [null, [Validators.maxLength(10485760)]],
     size: [null, [Validators.required]],
     folio: []
   });

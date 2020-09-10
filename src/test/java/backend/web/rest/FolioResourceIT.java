@@ -3,6 +3,7 @@ package backend.web.rest;
 import backend.BackendApp;
 import backend.domain.Folio;
 import backend.repository.FolioRepository;
+import backend.service.MailService;
 import backend.web.rest.errors.ExceptionTranslator;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -111,6 +112,9 @@ public class FolioResourceIT {
     @Autowired
     private FolioRepository folioRepository;
 
+    @Autowired
+    private  MailService mailService;
+
     @Mock
     private FolioRepository folioRepositoryMock;
 
@@ -136,7 +140,7 @@ public class FolioResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final FolioResource folioResource = new FolioResource(folioRepository);
+        final FolioResource folioResource = new FolioResource(folioRepository,mailService);
         this.restFolioMockMvc = MockMvcBuilders.standaloneSetup(folioResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -333,7 +337,7 @@ public class FolioResourceIT {
     
     @SuppressWarnings({"unchecked"})
     public void getAllFoliosWithEagerRelationshipsIsEnabled() throws Exception {
-        FolioResource folioResource = new FolioResource(folioRepositoryMock);
+        FolioResource folioResource = new FolioResource(folioRepositoryMock,mailService);
         when(folioRepositoryMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
 
         MockMvc restFolioMockMvc = MockMvcBuilders.standaloneSetup(folioResource)
@@ -350,7 +354,7 @@ public class FolioResourceIT {
 
     @SuppressWarnings({"unchecked"})
     public void getAllFoliosWithEagerRelationshipsIsNotEnabled() throws Exception {
-        FolioResource folioResource = new FolioResource(folioRepositoryMock);
+        FolioResource folioResource = new FolioResource(folioRepositoryMock,mailService);
             when(folioRepositoryMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
             MockMvc restFolioMockMvc = MockMvcBuilders.standaloneSetup(folioResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)

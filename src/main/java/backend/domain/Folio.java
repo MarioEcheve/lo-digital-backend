@@ -77,7 +77,8 @@ public class Folio implements Serializable {
     @Column(name = "asunto", length = 80, nullable = false)
     private String asunto;
 
-    @Column(name = "anotacion")
+    @Size(max = 10485760)
+    @Column(name = "anotacion", length = 10485760)
     private String anotacion;
 
     @Lob
@@ -116,7 +117,7 @@ public class Folio implements Serializable {
     private Set<FolioReferencia> folioReferencias = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties(value="folios" ,allowSetters=true)
+    @JsonIgnoreProperties("folios")
     private Libro libro;
 
     @ManyToOne

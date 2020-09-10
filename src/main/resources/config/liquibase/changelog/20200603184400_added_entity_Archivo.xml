@@ -21,7 +21,7 @@
             <column name="archivo_content_type" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="descripcion" type="varchar(30)">
+            <column name="descripcion" type="varchar(10485760)">
                 <constraints nullable="true" />
             </column>
             <column name="size" type="double">

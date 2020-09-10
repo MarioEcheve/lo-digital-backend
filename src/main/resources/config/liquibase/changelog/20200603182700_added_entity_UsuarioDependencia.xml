@@ -18,6 +18,9 @@
             <column name="nombre" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="rut" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="fecha_creacion" type="datetime">
                 <constraints nullable="true" />
             </column>
@@ -62,6 +65,7 @@
                   tableName="usuario_dependencia">
             <column name="id" type="numeric"/>
             <column name="nombre" type="string"/>
+            <column name="rut" type="string"/>
             <column name="fecha_creacion" type="datetime"/>
             <column name="fecha_modificacion" type="datetime"/>
             <column name="estado" type="boolean"/>

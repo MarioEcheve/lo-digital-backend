@@ -26,6 +26,9 @@ public class UsuarioDependencia implements Serializable {
     @Column(name = "nombre")
     private String nombre;
 
+    @Column(name = "rut")
+    private String rut;
+
     @Column(name = "fecha_creacion")
     private Instant fechaCreacion;
 
@@ -47,7 +50,7 @@ public class UsuarioDependencia implements Serializable {
     private Dependencia dependencia;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = "usuarioDependencias",allowSetters = true)
+    @JsonIgnoreProperties(value="usuarioDependencias",allowSetters = true)
     private PerfilUsuarioDependencia perfilUsuarioDependencia;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -70,6 +73,19 @@ public class UsuarioDependencia implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getRut() {
+        return rut;
+    }
+
+    public UsuarioDependencia rut(String rut) {
+        this.rut = rut;
+        return this;
+    }
+
+    public void setRut(String rut) {
+        this.rut = rut;
     }
 
     public Instant getFechaCreacion() {
@@ -197,6 +213,7 @@ public class UsuarioDependencia implements Serializable {
         return "UsuarioDependencia{" +
             "id=" + getId() +
             ", nombre='" + getNombre() + "'" +
+            ", rut='" + getRut() + "'" +
             ", fechaCreacion='" + getFechaCreacion() + "'" +
             ", fechaModificacion='" + getFechaModificacion() + "'" +
             ", estado='" + isEstado() + "'" +

@@ -6,6 +6,10 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "rut",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "fechaCreacion",
             "fieldType": "Instant"
         },

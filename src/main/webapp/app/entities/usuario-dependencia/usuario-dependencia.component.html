@@ -24,6 +24,7 @@
                 <tr>
                     <th scope="col" ><span>ID</span></th>
                     <th scope="col" ><span>Nombre</span></th>
+                    <th scope="col" ><span>Rut</span></th>
                     <th scope="col" ><span>Fecha Creacion</span></th>
                     <th scope="col" ><span>Fecha Modificacion</span></th>
                     <th scope="col" ><span>Estado</span></th>
@@ -37,6 +38,7 @@
                 <tr *ngFor="let usuarioDependencia of usuarioDependencias ;trackBy: trackId">
                     <td><a [routerLink]="['/usuario-dependencia', usuarioDependencia.id, 'view']">{{ usuarioDependencia.id }}</a></td>
                     <td>{{ usuarioDependencia.nombre }}</td>
+                    <td>{{ usuarioDependencia.rut }}</td>
                     <td>{{ usuarioDependencia.fechaCreacion | date:'medium' }}</td>
                     <td>{{ usuarioDependencia.fechaModificacion | date:'medium' }}</td>
                     <td>{{ usuarioDependencia.estado }}</td>

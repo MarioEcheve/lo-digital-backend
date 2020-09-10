@@ -2,6 +2,7 @@ package backend.web.rest;
 
 import backend.domain.Folio;
 import backend.repository.FolioRepository;
+import backend.service.MailService;
 import backend.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -37,9 +38,10 @@ public class FolioResource {
     private String applicationName;
 
     private final FolioRepository folioRepository;
-
-    public FolioResource(FolioRepository folioRepository) {
+    private final MailService mailService;
+    public FolioResource(FolioRepository folioRepository ,MailService mailService) {
         this.folioRepository = folioRepository;
+        this.mailService = mailService;
     }
 
     /**
@@ -172,4 +174,58 @@ public class FolioResource {
         return folioRepository.favoritosUsuarioLibro(idUsuarioLibro,idLibro);
     }
 
+    public  static class Email {
+        private String to;
+        private String subject;
+        private String content;
+        private Boolean isMultipart;
+        private Boolean isHtml;
+
+        public Email() {
+           
+        }
+        public String getTo() {
+            return to;
+        }
+        public void setTo(String to) {
+            this.to = to;
+        }
+        public String getSubject(){
+            return subject;
+        }
+        public void setSubject(String subject){
+            this.subject = subject;
+        }
+        public String getContent(){
+            return content;
+        }
+        public void setContent(String content){
+            this.content = content;
+        }
+        public Boolean getIsMultiPart(){
+            return isMultipart;
+        }
+        public void setIsMultiPart(Boolean isMultipart){
+            this.isMultipart = isMultipart;
+        }
+        public Boolean getIsHtml(){
+            return isHtml;
+        }
+        public void setIsHtml(Boolean isHtml){
+            this.isHtml = isHtml;
+        }
+        
+    }
+
+    @PostMapping("/folios/sendMail")
+    public Email sendMail(@Valid @RequestBody Email email) throws URISyntaxException {
+        String to = email.getTo();
+        String subject =  email.getSubject();
+        String content =  email.getContent();
+        Boolean isMultipart = email.getIsMultiPart();
+        Boolean isHtml = email.getIsHtml();
+        mailService.sendEmail(to,subject,content,false,false);
+      
+        return email;
+    }
 }

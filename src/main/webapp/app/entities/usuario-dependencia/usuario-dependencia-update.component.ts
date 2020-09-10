@@ -31,6 +31,7 @@ export class UsuarioDependenciaUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     nombre: [],
+    rut: [],
     fechaCreacion: [],
     fechaModificacion: [],
     estado: [],
@@ -72,6 +73,7 @@ export class UsuarioDependenciaUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: usuarioDependencia.id,
       nombre: usuarioDependencia.nombre,
+      rut: usuarioDependencia.rut,
       fechaCreacion: usuarioDependencia.fechaCreacion ? usuarioDependencia.fechaCreacion.format(DATE_TIME_FORMAT) : null,
       fechaModificacion: usuarioDependencia.fechaModificacion ? usuarioDependencia.fechaModificacion.format(DATE_TIME_FORMAT) : null,
       estado: usuarioDependencia.estado,
@@ -100,6 +102,7 @@ export class UsuarioDependenciaUpdateComponent implements OnInit {
       ...new UsuarioDependencia(),
       id: this.editForm.get(['id'])!.value,
       nombre: this.editForm.get(['nombre'])!.value,
+      rut: this.editForm.get(['rut'])!.value,
       fechaCreacion: this.editForm.get(['fechaCreacion'])!.value
         ? moment(this.editForm.get(['fechaCreacion'])!.value, DATE_TIME_FORMAT)
         : undefined,
