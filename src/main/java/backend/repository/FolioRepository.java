@@ -20,7 +20,7 @@ import java.util.Map;
 public interface FolioRepository extends JpaRepository<Folio, Long> {
     @Query("select a from Folio a "
         +"inner join a.libro b "
-        +"where b.id = :idLibro order by 1 desc")
+        +"where b.id = :idLibro order by  a.numeroFolio desc")
     List<Folio> buscarFolioPorLibro(@Param("idLibro") Long idLibro);
     
     @Query( value = "select count(libro_id) + 1 as numero_folio from folio  where estado_folio = true and libro_id = :idLibro" ,nativeQuery = true)

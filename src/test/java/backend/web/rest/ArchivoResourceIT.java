@@ -42,8 +42,8 @@ public class ArchivoResourceIT {
     private static final String DEFAULT_DESCRIPCION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPCION = "BBBBBBBBBB";
 
-    private static final Double DEFAULT_SIZE = 1D;
-    private static final Double UPDATED_SIZE = 2D;
+    private static final String DEFAULT_SIZE = "AAAAAAAAAA";
+    private static final String UPDATED_SIZE = "BBBBBBBBBB";
 
     @Autowired
     private ArchivoRepository archivoRepository;
@@ -186,7 +186,7 @@ public class ArchivoResourceIT {
             .andExpect(jsonPath("$.[*].archivoContentType").value(hasItem(DEFAULT_ARCHIVO_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].archivo").value(hasItem(Base64Utils.encodeToString(DEFAULT_ARCHIVO))))
             .andExpect(jsonPath("$.[*].descripcion").value(hasItem(DEFAULT_DESCRIPCION)))
-            .andExpect(jsonPath("$.[*].size").value(hasItem(DEFAULT_SIZE.doubleValue())));
+            .andExpect(jsonPath("$.[*].size").value(hasItem(DEFAULT_SIZE)));
     }
     
     @Test
@@ -203,7 +203,7 @@ public class ArchivoResourceIT {
             .andExpect(jsonPath("$.archivoContentType").value(DEFAULT_ARCHIVO_CONTENT_TYPE))
             .andExpect(jsonPath("$.archivo").value(Base64Utils.encodeToString(DEFAULT_ARCHIVO)))
             .andExpect(jsonPath("$.descripcion").value(DEFAULT_DESCRIPCION))
-            .andExpect(jsonPath("$.size").value(DEFAULT_SIZE.doubleValue()));
+            .andExpect(jsonPath("$.size").value(DEFAULT_SIZE));
     }
 
     @Test

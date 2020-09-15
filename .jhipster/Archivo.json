@@ -15,11 +15,11 @@
             "fieldValidateRules": [
                 "maxlength"
             ],
-            "fieldValidateRulesMaxlength": "10485760"
+            "fieldValidateRulesMaxlength": "100"
         },
         {
             "fieldName": "size",
-            "fieldType": "Double",
+            "fieldType": "String",
             "fieldValidateRules": [
                 "required"
             ]

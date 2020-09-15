@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(ArchivoService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Archivo(0, 'image/png', 'AAAAAAA', 'AAAAAAA', 0);
+      elemDefault = new Archivo(0, 'image/png', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -56,7 +56,7 @@ describe('Service Tests', () => {
           {
             archivo: 'BBBBBB',
             descripcion: 'BBBBBB',
-            size: 1
+            size: 'BBBBBB'
           },
           elemDefault
         );
@@ -75,7 +75,7 @@ describe('Service Tests', () => {
           {
             archivo: 'BBBBBB',
             descripcion: 'BBBBBB',
-            size: 1
+            size: 'BBBBBB'
           },
           elemDefault
         );

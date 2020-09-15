@@ -39,6 +39,24 @@
     "appsFolders": ["lo-digital-backend"],
     "directoryPath": "../",
     "monitoring": "no",
-    "consoleOptions": []
+    "consoleOptions": [],
+    "gcpProjectId": "libro-obra-digital",
+    "gcpCloudSqlInstanceName": "libro-obra-digital:us-central1:lo-digital-bd",
+    "gcpCloudSqlUserName": "fvilches",
+    "gcpCloudSqlDatabaseName": "lodigital_test",
+    "gaeServiceName": "default",
+    "gaeLocation": "northamerica-northeast1",
+    "gaeInstanceClass": "B4_1G",
+    "gaeScalingType": "basic",
+    "gaeMaxInstances": "2",
+    "gaeCloudSQLInstanceNeeded": "Y",
+    "dockerRepositoryName": "",
+    "dockerPushCommand": "docker push",
+    "kubernetesNamespace": "default",
+    "kubernetesServiceType": "LoadBalancer",
+    "kubernetesUseDynamicStorage": true,
+    "kubernetesStorageClassName": "",
+    "ingressDomain": "",
+    "istio": false
   }
 }

@@ -29,13 +29,13 @@ public class Archivo implements Serializable {
     @Column(name = "archivo_content_type", nullable = false)
     private String archivoContentType;
 
-    @Size(max = 10485760)
-    @Column(name = "descripcion", length = 10485760)
+    @Size(max = 100)
+    @Column(name = "descripcion", length = 100)
     private String descripcion;
 
     @NotNull
     @Column(name = "size", nullable = false)
-    private Double size;
+    private String size;
 
     @ManyToOne
     @JsonIgnoreProperties("archivos")
@@ -89,16 +89,16 @@ public class Archivo implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Double getSize() {
+    public String getSize() {
         return size;
     }
 
-    public Archivo size(Double size) {
+    public Archivo size(String size) {
         this.size = size;
         return this;
     }
 
-    public void setSize(Double size) {
+    public void setSize(String size) {
         this.size = size;
     }
 
@@ -139,7 +139,7 @@ public class Archivo implements Serializable {
             ", archivo='" + getArchivo() + "'" +
             ", archivoContentType='" + getArchivoContentType() + "'" +
             ", descripcion='" + getDescripcion() + "'" +
-            ", size=" + getSize() +
+            ", size='" + getSize() + "'" +
             "}";
     }
 }

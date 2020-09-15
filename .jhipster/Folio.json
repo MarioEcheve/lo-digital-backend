@@ -80,7 +80,7 @@
             "fieldValidateRules": [
                 "maxlength"
             ],
-            "fieldValidateRulesMaxlength": "10485760"
+            "fieldValidateRulesMaxlength": "9000"
         },
         {
             "fieldName": "pdfFirmado",

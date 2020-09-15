@@ -95,7 +95,7 @@ spring:
     properties:
       hibernate.jdbc.time_zone: UTC
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
       naming:
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
         implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
@@ -132,7 +132,7 @@ server:
 # Properties to be exposed on the /info management endpoint
 info:
   # Comma separated list of profiles that will trigger the ribbon to show
-  display-ribbon-on-profiles: 'dev'
+  display-ribbon-on-profiles: 'prod'
 
 # ===================================================================
 # JHipster specific properties
@@ -144,13 +144,12 @@ jhipster:
   clientApp:
     name: 'backendApp'
   # By default CORS is disabled. Uncomment to enable.
-  # cors:
-  #     allowed-origins: "*"
-  #     allowed-methods: "*"
-  #     allowed-headers: "*"
-  #     exposed-headers: "Authorization,Link,X-Total-Count"
-  #     allow-credentials: true
-  #     max-age: 1800
+  cors:
+    allowed-origins: '*'
+    allowed-methods: '*'
+    allowed-headers: '*'
+    exposed-headers: 'Authorization,Link,X-Total-Count'
+    allow-credentials: true
   mail:
     from: backend@localhost
   swagger:

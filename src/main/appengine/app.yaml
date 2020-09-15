@@ -1,0 +1,16 @@
+# ========================================================================
+# App Engine Configuration.
+# Full reference is available at:
+# https://cloud.google.com/appengine/docs/standard/java11/config/appref
+# ========================================================================
+
+runtime: java11
+instance_class: B4_1G
+service: default
+handlers:
+- url: /(.*)
+  script: auto
+  secure: always
+basic_scaling:
+  max_instances: 2
+entrypoint: java -Dthin.root=. -jar backend-0.0.1-SNAPSHOT.jar

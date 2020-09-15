@@ -77,8 +77,8 @@ public class Folio implements Serializable {
     @Column(name = "asunto", length = 80, nullable = false)
     private String asunto;
 
-    @Size(max = 10485760)
-    @Column(name = "anotacion", length = 10485760)
+    @Size(max = 9000)
+    @Column(name = "anotacion", length = 9000)
     private String anotacion;
 
     @Lob
