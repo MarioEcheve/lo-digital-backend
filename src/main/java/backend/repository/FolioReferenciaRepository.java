@@ -14,6 +14,6 @@ import java.util.Map;
 @SuppressWarnings("unused")
 @Repository
 public interface FolioReferenciaRepository extends JpaRepository<FolioReferencia, Long> {
-    @Query("select  a from FolioReferencia a where  a.idFolioOrigen =:id")
+    @Query("select  a from FolioReferencia a where  a.idFolioOrigen = :id")
     List<FolioReferencia> buscaFoliosPorFolioOrigen(@Param("id") Long id);
 }

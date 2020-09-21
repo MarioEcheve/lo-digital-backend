@@ -98,6 +98,15 @@ public class Folio implements Serializable {
     @Column(name = "id_receptor")
     private Integer idReceptor;
 
+    @Column(name = "posee_folio_referencia")
+    private Boolean poseeFolioReferencia;
+
+    @Column(name = "emisor_marcado")
+    private String emisorMarcado;
+
+    @Column(name = "tipo_folio_marcado")
+    private String tipoFolioMarcado;
+
     @OneToMany(mappedBy = "folio")
     private Set<Archivo> archivos = new HashSet<>();
 
@@ -436,6 +445,45 @@ public class Folio implements Serializable {
         this.idReceptor = idReceptor;
     }
 
+    public Boolean isPoseeFolioReferencia() {
+        return poseeFolioReferencia;
+    }
+
+    public Folio poseeFolioReferencia(Boolean poseeFolioReferencia) {
+        this.poseeFolioReferencia = poseeFolioReferencia;
+        return this;
+    }
+
+    public void setPoseeFolioReferencia(Boolean poseeFolioReferencia) {
+        this.poseeFolioReferencia = poseeFolioReferencia;
+    }
+
+    public String getEmisorMarcado() {
+        return emisorMarcado;
+    }
+
+    public Folio emisorMarcado(String emisorMarcado) {
+        this.emisorMarcado = emisorMarcado;
+        return this;
+    }
+
+    public void setEmisorMarcado(String emisorMarcado) {
+        this.emisorMarcado = emisorMarcado;
+    }
+
+    public String getTipoFolioMarcado() {
+        return tipoFolioMarcado;
+    }
+
+    public Folio tipoFolioMarcado(String tipoFolioMarcado) {
+        this.tipoFolioMarcado = tipoFolioMarcado;
+        return this;
+    }
+
+    public void setTipoFolioMarcado(String tipoFolioMarcado) {
+        this.tipoFolioMarcado = tipoFolioMarcado;
+    }
+
     public Set<Archivo> getArchivos() {
         return archivos;
     }
@@ -644,6 +692,9 @@ public class Folio implements Serializable {
             ", pdfLectura='" + getPdfLectura() + "'" +
             ", pdfLecturaContentType='" + getPdfLecturaContentType() + "'" +
             ", idReceptor=" + getIdReceptor() +
+            ", poseeFolioReferencia='" + isPoseeFolioReferencia() + "'" +
+            ", emisorMarcado='" + getEmisorMarcado() + "'" +
+            ", tipoFolioMarcado='" + getTipoFolioMarcado() + "'" +
             "}";
     }
 }

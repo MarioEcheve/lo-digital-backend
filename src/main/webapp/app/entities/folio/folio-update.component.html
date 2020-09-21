@@ -185,6 +185,24 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label" for="field_poseeFolioReferencia">Posee Folio Referencia</label>
+                    <input type="checkbox" class="form-control" name="poseeFolioReferencia" id="field_poseeFolioReferencia"
+                           formControlName="poseeFolioReferencia"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_emisorMarcado">Emisor Marcado</label>
+                    <input type="text" class="form-control" name="emisorMarcado" id="field_emisorMarcado"
+                           formControlName="emisorMarcado"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tipoFolioMarcado">Tipo Folio Marcado</label>
+                    <input type="text" class="form-control" name="tipoFolioMarcado" id="field_tipoFolioMarcado"
+                           formControlName="tipoFolioMarcado"/>
+                </div>
+
+                <div class="form-group">
                     <label for="field_folioReferencias">Folio Referencia</label>
                     <select class="form-control" id="field_folioReferencias" multiple name="folioReferencias" formControlName="folioReferencias">
                         <option [ngValue]="getSelected(editForm.get('folioReferencias')!.value, folioReferenciaOption)" *ngFor="let folioReferenciaOption of folioreferencias; trackBy: trackById">{{ folioReferenciaOption.asunto }}</option>

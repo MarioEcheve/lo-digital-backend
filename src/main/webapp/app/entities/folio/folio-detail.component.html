@@ -98,6 +98,18 @@
                 <dd>
                     <span>{{ folio.idReceptor }}</span>
                 </dd>
+                <dt><span>Posee Folio Referencia</span></dt>
+                <dd>
+                    <span>{{ folio.poseeFolioReferencia }}</span>
+                </dd>
+                <dt><span>Emisor Marcado</span></dt>
+                <dd>
+                    <span>{{ folio.emisorMarcado }}</span>
+                </dd>
+                <dt><span>Tipo Folio Marcado</span></dt>
+                <dd>
+                    <span>{{ folio.tipoFolioMarcado }}</span>
+                </dd>
                 <dt><span>Folio Referencia</span></dt>
                 <dd>
                     <span *ngFor="let folioReferencia of folio.folioReferencias; let last = last">

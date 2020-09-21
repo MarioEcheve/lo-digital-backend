@@ -64,10 +64,10 @@ spring:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
     contexts: dev
   mail:
-    host: smtp.gmail.com
-    port: 587
-    username: marioandreseche@gmail.com
-    password: narUTO128
+    host: mail.lodigital.cl
+    port: 465
+    username: aviso@lodigital.cl
+    password: epsilon2020
     protocol: smtp
     properties:
       mail.smtp.auth: true

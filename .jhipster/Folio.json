@@ -95,6 +95,18 @@
         {
             "fieldName": "idReceptor",
             "fieldType": "Integer"
+        },
+        {
+            "fieldName": "poseeFolioReferencia",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "emisorMarcado",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tipoFolioMarcado",
+            "fieldType": "String"
         }
     ],
     "relationships": [

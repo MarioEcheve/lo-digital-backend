@@ -33,6 +33,9 @@ export interface IFolio {
   pdfLecturaContentType?: string;
   pdfLectura?: any;
   idReceptor?: number;
+  poseeFolioReferencia?: boolean;
+  emisorMarcado?: string;
+  tipoFolioMarcado?: string;
   archivos?: IArchivo[];
   gesAlertas?: IGesAlerta[];
   gesNotas?: IGesNota[];
@@ -69,6 +72,9 @@ export class Folio implements IFolio {
     public pdfLecturaContentType?: string,
     public pdfLectura?: any,
     public idReceptor?: number,
+    public poseeFolioReferencia?: boolean,
+    public emisorMarcado?: string,
+    public tipoFolioMarcado?: string,
     public archivos?: IArchivo[],
     public gesAlertas?: IGesAlerta[],
     public gesNotas?: IGesNota[],
@@ -82,5 +88,6 @@ export class Folio implements IFolio {
     this.estadoLectura = this.estadoLectura || false;
     this.estadoFolio = this.estadoFolio || false;
     this.entidadCreacion = this.entidadCreacion || false;
+    this.poseeFolioReferencia = this.poseeFolioReferencia || false;
   }
 }

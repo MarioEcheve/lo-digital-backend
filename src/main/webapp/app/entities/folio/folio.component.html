@@ -44,6 +44,9 @@
                     <th scope="col" ><span>Pdf Firmado</span></th>
                     <th scope="col" ><span>Pdf Lectura</span></th>
                     <th scope="col" ><span>Id Receptor</span></th>
+                    <th scope="col" ><span>Posee Folio Referencia</span></th>
+                    <th scope="col" ><span>Emisor Marcado</span></th>
+                    <th scope="col" ><span>Tipo Folio Marcado</span></th>
                     <th scope="col" ><span>Folio Referencia</span></th>
                     <th scope="col" ><span>Libro</span></th>
                     <th scope="col" ><span>Tipo Folio</span></th>
@@ -81,6 +84,9 @@
                         <span *ngIf="folio.pdfLectura">{{ folio.pdfLecturaContentType }}, {{ byteSize(folio.pdfLectura) }}</span>
                     </td>
                     <td>{{ folio.idReceptor }}</td>
+                    <td>{{ folio.poseeFolioReferencia }}</td>
+                    <td>{{ folio.emisorMarcado }}</td>
+                    <td>{{ folio.tipoFolioMarcado }}</td>
                     <td>
                         <span *ngFor="let folioReferencia of folio.folioReferencias; let last = last">
                             <a class="form-control-static" [routerLink]="['/folio-referencia', folioReferencia?.id, 'view']">{{ folioReferencia.asunto }}</a>{{ last ? '' : ', ' }}
